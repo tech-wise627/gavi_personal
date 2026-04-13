@@ -1,1292 +1,2783 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Family Chali Japan 🇯🇵</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#FAFAF7;--red:#D62828;--navy:#1B2A4A;--gold:#F7B731;--green:#2D6A4F;--light-red:#FEE8E8;--light-gold:#FFF8E1;--light-green:#E8F5E9;--gray:#6B7280;--light-gray:#F3F4F6;--white:#fff}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--navy);line-height:1.6;min-height:100vh}
-h1,h2,h3{font-family:'Playfair Display',serif}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Chali Japan 🇯🇵</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAFAF7;
+      --red: #D62828;
+      --navy: #1B2A4A;
+      --gold: #F7B731;
+      --green: #2E7D32;
+      --light-red: #FEE9E9;
+      --light-gold: #FFF8E1;
+      --light-green: #E8F5E9;
+      --gray: #6B7280;
+      --light-gray: #F3F4F6;
+    }
 
-/* NAV */
-.nav{position:sticky;top:0;background:var(--navy);z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
-.nav-inner{display:flex;overflow-x:auto;scrollbar-width:none}
-.nav-inner::-webkit-scrollbar{display:none}
-.nav-btn{background:none;border:none;color:rgba(255,255,255,.7);padding:14px 18px;cursor:pointer;font-size:.85rem;font-weight:600;white-space:nowrap;border-bottom:3px solid transparent;transition:.2s;font-family:'Inter',sans-serif}
-.nav-btn:hover{color:#fff}
-.nav-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* TABS */
-.tab{display:none;padding:24px 16px;max-width:1100px;margin:0 auto;min-height:calc(100vh - 52px)}
-.tab.active{display:block}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* CARDS */
-.card{background:var(--white);border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:16px;transition:transform .15s,box-shadow .15s}
-.card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.1)}
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--cream);
+      color: var(--navy);
+      line-height: 1.6;
+    }
 
-/* BUTTONS */
-.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:.85rem;transition:.2s;font-family:'Inter',sans-serif;text-decoration:none}
-.btn-primary{background:var(--red);color:#fff}.btn-primary:hover{background:#b71c1c}
-.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:#0f1e35}
-.btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#1b5e20}
-.btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover{background:#e6a800}
-.btn-outline{background:transparent;border:2px solid var(--navy);color:var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
-.btn-sm{padding:5px 10px;font-size:.78rem}
-.btn-icon{background:none;border:none;cursor:pointer;font-size:1.1rem;padding:4px;border-radius:6px;transition:.2s}
-.btn-icon:hover{background:var(--light-gray)}
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
 
-/* BADGES */
-.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:.72rem;font-weight:700}
-.badge-red{background:var(--light-red);color:var(--red)}
-.badge-green{background:var(--light-green);color:var(--green)}
-.badge-gold{background:var(--light-gold);color:#7a5c00}
-.badge-navy{background:#e8ecf2;color:var(--navy)}
-.badge-gray{background:var(--light-gray);color:var(--gray)}
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-/* FORMS */
-.form-group{margin-bottom:14px}
-.form-group label{display:block;font-size:.83rem;font-weight:600;margin-bottom:5px;color:var(--navy)}
-input,select,textarea{width:100%;padding:9px 12px;border:2px solid #e5e7eb;border-radius:8px;font-size:.9rem;font-family:'Inter',sans-serif;color:var(--navy);transition:.2s;background:var(--white)}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy)}
-textarea{resize:vertical;min-height:70px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    /* Sakura Animation */
+    .sakura {
+      position: fixed;
+      top: -10px;
+      z-index: 1;
+      pointer-events: none;
+      animation: fall linear infinite;
+      opacity: 0.7;
+    }
 
-/* MODAL */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center;padding:16px}
-.modal-bg.open{display:flex}
-.modal{background:var(--white);border-radius:16px;padding:24px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
-.modal h3{margin-bottom:18px;font-size:1.2rem}
-.modal-footer{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.7;
+      }
+      90% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
 
-/* TOAST */
-.toast-container{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;gap:8px}
-.toast{background:var(--navy);color:#fff;padding:12px 18px;border-radius:10px;font-size:.88rem;font-weight:500;animation:slideIn .3s ease;max-width:280px}
-.toast.success{background:var(--green)}
-.toast.error{background:var(--red)}
-@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 60px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--cream) 0%, #FFF5F5 100%);
+    }
 
-/* OVERVIEW */
-.hero{background:linear-gradient(135deg,var(--navy) 0%,#2d3f5f 100%);color:#fff;border-radius:16px;padding:30px;margin-bottom:20px;position:relative;overflow:hidden}
-.hero::after{content:'🗾';position:absolute;font-size:120px;opacity:.08;right:-10px;bottom:-20px}
-.hero h1{font-size:clamp(1.6rem,5vw,2.4rem);margin-bottom:6px}
-.hero p{opacity:.8;font-size:.95rem}
-.countdown{background:var(--gold);color:var(--navy);display:inline-block;padding:6px 16px;border-radius:20px;font-weight:700;margin-top:12px;font-size:.9rem}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:20px}
-.stat-card{background:var(--white);border-radius:12px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.stat-card .stat-num{font-size:1.8rem;font-weight:700;color:var(--red);font-family:'Playfair Display',serif}
-.stat-card .stat-label{font-size:.78rem;color:var(--gray);margin-top:2px}
-.progress-ring{display:flex;flex-direction:column;align-items:center;gap:6px}
-.ring-wrap{position:relative;width:70px;height:70px}
-.ring-wrap svg{transform:rotate(-90deg)}
-.ring-wrap .ring-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:var(--navy)}
+    .hero::before {
+      content: '⛩️';
+      position: absolute;
+      font-size: 200px;
+      opacity: 0.05;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-/* ITINERARY */
-.city-header{display:flex;align-items:center;gap:12px;padding:14px 0 8px;border-bottom:2px solid var(--light-gray);margin-bottom:12px}
-.city-header h2{font-size:1.4rem}
-.day-block{margin-bottom:8px}
-.day-title{font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;color:var(--gray);padding:8px 0 4px;cursor:pointer;display:flex;align-items:center;justify-content:space-between}
-.time-section{margin-left:0;margin-bottom:6px}
-.time-label{font-size:.75rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;display:flex;align-items:center;gap:6px}
-.item-card{background:var(--white);border-left:4px solid var(--light-gray);border-radius:0 10px 10px 0;padding:12px 14px;margin-bottom:6px;display:flex;gap:10px;align-items:flex-start;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:.2s}
-.item-card.booked{border-left-color:var(--green);background:#f0faf3}
-.item-card.offbeat{border-left-color:var(--gold)}
-.item-card.veg{border-left-color:#4caf50}
-.item-info{flex:1;min-width:0}
-.item-name{font-weight:600;font-size:.92rem;margin-bottom:3px}
-.item-desc{font-size:.82rem;color:var(--gray);margin-bottom:6px}
-.item-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.item-actions{display:flex;gap:4px;align-items:flex-start;flex-shrink:0}
-.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.filter-btn{padding:6px 14px;border-radius:20px;border:2px solid var(--navy);background:transparent;cursor:pointer;font-size:.8rem;font-weight:600;transition:.2s;font-family:'Inter',sans-serif;color:var(--navy)}
-.filter-btn.active{background:var(--navy);color:#fff}
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      color: var(--navy);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
 
-/* CHECKLIST */
-.check-category{margin-bottom:24px}
-.check-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.check-header h3{font-size:1rem;font-weight:700}
-.prog-bar{background:var(--light-gray);border-radius:10px;height:8px;margin-bottom:12px;overflow:hidden}
-.prog-fill{height:100%;border-radius:10px;background:var(--green);transition:width .4s}
-.check-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--white);border-radius:10px;margin-bottom:6px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.check-item.done{opacity:.6}
-.check-item.done .check-text{text-decoration:line-through;color:var(--gray)}
-.check-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0}
-.check-text{flex:1;font-size:.88rem;font-weight:500}
-.priority-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.p-high{background:var(--red)}.p-medium{background:var(--gold)}.p-low{background:var(--green)}
-.alert-banner{background:var(--light-red);border:2px solid var(--red);border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:.88rem;font-weight:600;color:var(--red)}
+    .hero h1 span {
+      color: var(--red);
+    }
 
-/* BOOKINGS */
-.booking-card{border-top:4px solid var(--light-gray)}
-.booking-card.status-booked{border-top-color:var(--green)}
-.booking-card.status-pending{border-top-color:var(--gold)}
-.status-pill{cursor:pointer;user-select:none}
-.conf-input{background:var(--light-gray);border:2px dashed #d1d5db;border-radius:8px;padding:6px 10px;font-size:.82rem;width:100%;font-family:'Inter',sans-serif;color:var(--navy);margin-top:8px}
-.conf-input:focus{outline:none;border-color:var(--navy);background:#fff}
+    .hero-dates {
+      font-size: 1.25rem;
+      color: var(--gray);
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
 
-/* BUDGET */
-.budget-row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--light-gray)}
-.budget-row:last-child{border-bottom:none;font-weight:700;background:var(--light-gray);border-radius:0 0 10px 10px}
-.budget-bar-wrap{background:var(--light-gray);border-radius:6px;height:6px;flex:1;margin:0 12px;overflow:hidden}
-.budget-bar-fill{height:100%;border-radius:6px;background:var(--red);transition:width .4s}
-.slider-wrap{display:flex;align-items:center;gap:12px;margin-bottom:20px}
-.slider-wrap input[type=range]{flex:1;accent-color:var(--navy)}
-.currency-toggle{display:flex;gap:6px;margin-bottom:16px}
-.currency-btn{padding:5px 12px;border-radius:20px;border:2px solid var(--navy);background:transparent;cursor:pointer;font-size:.8rem;font-weight:700;font-family:'Inter',sans-serif;color:var(--navy);transition:.2s}
-.currency-btn.active{background:var(--navy);color:#fff}
+    .route-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
 
-/* FOOD */
-.food-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.food-tab{padding:7px 16px;border-radius:20px;border:2px solid var(--green);background:transparent;cursor:pointer;font-size:.82rem;font-weight:600;transition:.2s;font-family:'Inter',sans-serif;color:var(--green)}
-.food-tab.active{background:var(--green);color:#fff}
-.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-.food-card{background:var(--white);border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.food-card h4{font-size:.95rem;margin-bottom:4px;font-family:'Playfair Display',serif}
-.food-card .dish{font-size:.82rem;color:var(--gray);margin-bottom:10px}
-.food-card .food-meta{display:flex;justify-content:space-between;align-items:center}
-.phrase-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
-.phrase-card{background:var(--light-gold);border-radius:10px;padding:12px}
-.phrase-jp{font-size:1.1rem;font-weight:700;color:var(--navy)}
-.phrase-en{font-size:.78rem;color:var(--gray);margin-top:2px}
+    .pill {
+      background: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      color: var(--navy);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-/* RESPONSIVE */
-@media(max-width:600px){.form-row{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.food-grid{grid-template-columns:1fr}.phrase-grid{grid-template-columns:1fr}}
+    .pill-arrow {
+      color: var(--red);
+      font-weight: bold;
+    }
 
-/* MISC */
-.section-title{font-size:1.4rem;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.empty-state{text-align:center;padding:40px 20px;color:var(--gray)}
-.empty-state .emoji{font-size:3rem;margin-bottom:10px}
-.divider{border:none;border-top:2px solid var(--light-gray);margin:20px 0}
-.sakura{position:fixed;top:-10px;pointer-events:none;z-index:0;animation:fall linear infinite;opacity:.6;font-size:14px}
-@keyframes fall{0%{transform:translateY(-10px) rotate(0);opacity:0}10%{opacity:.6}90%{opacity:.6}100%{transform:translateY(100vh) rotate(360deg);opacity:0}}
-</style>
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .hero-tag {
+      background: var(--light-gold);
+      color: var(--navy);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Sticky Navigation */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      background: white;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      z-index: 1000;
+      padding: 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .nav-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-link {
+      padding: 18px 24px;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 500;
+      white-space: nowrap;
+      transition: all 0.3s;
+      border-bottom: 3px solid transparent;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--red);
+      border-bottom-color: var(--red);
+      background: var(--light-red);
+    }
+
+    /* Route Strip */
+    .route-strip {
+      background: var(--navy);
+      color: white;
+      padding: 40px 20px;
+      overflow-x: auto;
+    }
+
+    .route-strip h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: var(--gold);
+    }
+
+    .route-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .route-city {
+      background: rgba(255,255,255,0.1);
+      padding: 15px 25px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .route-city-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .route-city-nights {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin-top: 5px;
+    }
+
+    .route-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    .shinkansen-icon {
+      font-size: 1.5rem;
+    }
+
+    .travel-time {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      white-space: nowrap;
+    }
+
+    /* JR Pass Card */
+    .jr-pass-section {
+      padding: 60px 20px;
+    }
+
+    .jr-pass-card {
+      background: linear-gradient(135deg, var(--navy) 0%, #2d3f5f 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .jr-pass-card::before {
+      content: '🚄';
+      position: absolute;
+      font-size: 120px;
+      opacity: 0.1;
+      right: -20px;
+      bottom: -20px;
+    }
+
+    .jr-pass-card h2 {
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .jr-pass-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .jr-pass-price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .jr-pass-card ul {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .jr-pass-card li {
+      padding: 8px 0;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .jr-pass-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    .jr-tip {
+      background: rgba(247, 183, 49, 0.2);
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      border-left: 4px solid var(--gold);
+    }
+
+    /* City Sections */
+    .city-section {
+      padding: 80px 20px;
+    }
+
+    .city-section:nth-child(even) {
+      background: white;
+    }
+
+    .city-hero {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .city-emoji {
+      font-size: 4rem;
+      margin-bottom: 10px;
+    }
+
+    .city-hero h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .city-meta {
+      color: var(--gray);
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    .airbnb-tip {
+      background: var(--light-gold);
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+
+    .airbnb-tip strong {
+      color: var(--red);
+    }
+
+    /* Day Cards */
+    .day-cards {
+      display: grid;
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .day-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    .city-section:nth-child(even) .day-card {
+      background: var(--cream);
+    }
+
+    .day-header {
+      background: var(--navy);
+      color: white;
+      padding: 20px 25px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .day-header h3 {
+      font-size: 1.3rem;
+    }
+
+    .day-toggle {
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
+
+    .day-card.collapsed .day-toggle {
+      transform: rotate(180deg);
+    }
+
+    .day-content {
+      padding: 25px;
+    }
+
+    .day-card.collapsed .day-content {
+      display: none;
+    }
+
+    .time-block {
+      margin-bottom: 25px;
+    }
+
+    .time-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .time-label {
+      font-weight: 600;
+      color: var(--red);
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .activity {
+      background: var(--light-gray);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .city-section:nth-child(even) .activity {
+      background: white;
+    }
+
+    .activity-name {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .activity-desc {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .activity-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+
+    .tag-gem {
+      background: #E8D5F2;
+      color: #7B1FA2;
+    }
+
+    .tag-veg {
+      background: var(--light-green);
+      color: var(--green);
+    }
+
+    /* Book It Section */
+    .book-section {
+      padding: 80px 20px;
+      background: var(--light-gold);
+    }
+
+    .book-section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .booking-card {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+    }
+
+    .booking-card.booked {
+      background: var(--light-green);
+      border: 2px solid var(--green);
+    }
+
+    .booking-priority {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .priority-now { color: #C62828; }
+    .priority-soon { color: #F9A825; }
+    .priority-flex { color: var(--green); }
+
+    .booking-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .booking-desc {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .booking-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #B71C1C;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--navy);
+      color: var(--navy);
+    }
+
+    .btn-outline:hover {
+      background: var(--navy);
+      color: white;
+    }
+
+    .btn-booked {
+      background: var(--green);
+      color: white;
+    }
+
+    /* Stays Section */
+    .stays-section {
+      padding: 80px 20px;
+    }
+
+    .stays-section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .filter-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .filter-pill {
+      padding: 10px 20px;
+      border-radius: 50px;
+      border: 2px solid var(--navy);
+      background: transparent;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .filter-pill:hover, .filter-pill.active {
+      background: var(--navy);
+      color: white;
+    }
+
+    .stays-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .stay-card {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .stay-city {
+      color: var(--red);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .stay-card h4 {
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .stay-desc {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .stay-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .stay-tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 5px;
+      background: var(--light-gray);
+      color: var(--gray);
+    }
+
+    .stay-price {
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    /* Food Section */
+    .food-section {
+      padding: 80px 20px;
+      background: var(--light-green);
+    }
+
+    .food-section h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .food-subtitle {
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 30px;
+    }
+
+    .food-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .food-tab {
+      padding: 12px 25px;
+      border-radius: 50px;
+      border: none;
+      background: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .food-tab:hover, .food-tab.active {
+      background: var(--green);
+      color: white;
+    }
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .food-content {
+      display: none;
+    }
+
+    .food-content.active {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .food-card {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .food-type {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 5px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .food-veg {
+      background: var(--light-green);
+      color: var(--green);
+    }
+
+    .food-vegan {
+      background: #E8F5E9;
+      color: #1B5E20;
+    }
+
+    .food-card h4 {
+      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .food-dish {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .food-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .food-price {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .food-link {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .food-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Packing Section */
+    .packing-section {
+      padding: 80px 20px;
+    }
+
+    .packing-section h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .progress-container {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .progress-text {
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      height: 20px;
+      background: var(--light-gray);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green) 0%, #4CAF50 100%);
+      border-radius: 10px;
+      transition: width 0.5s ease;
+    }
+
+    .packing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .packing-category {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .packing-category h4 {
+      margin-bottom: 15px;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .packing-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .packing-item:last-child {
+      border-bottom: none;
+    }
+
+    .packing-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      accent-color: var(--green);
+      cursor: pointer;
+    }
+
+    .packing-item.checked label {
+      text-decoration: line-through;
+      color: var(--gray);
+    }
+
+    .packing-item label {
+      cursor: pointer;
+    }
+
+    /* Budget Section */
+    .budget-section {
+      padding: 80px 20px;
+      background: white;
+    }
+
+    .budget-section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .budget-controls {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .budget-controls label {
+      font-weight: 600;
+      margin-right: 10px;
+    }
+
+    .budget-controls select {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 2px solid var(--navy);
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .budget-table {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--cream);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .budget-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 25px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .budget-row:last-child {
+      border-bottom: none;
+    }
+
+    .budget-row.total {
+      background: var(--navy);
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .budget-category {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .budget-emoji {
+      font-size: 1.3rem;
+    }
+
+    /* Timeline Section */
+    .timeline-section {
+      padding: 80px 20px;
+      background: var(--light-red);
+    }
+
+    .timeline-section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .timeline {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--red);
+    }
+
+    .timeline-item {
+      padding-left: 60px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 10px;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--red);
+      border-radius: 50%;
+      border: 4px solid var(--light-red);
+    }
+
+    .timeline-date {
+      font-weight: 700;
+      color: var(--red);
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .timeline-tasks {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .timeline-task {
+      padding: 8px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .timeline-task::before {
+      content: '☐';
+      color: var(--gray);
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--navy);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    footer p {
+      opacity: 0.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-link {
+        padding: 15px 18px;
+        font-size: 0.9rem;
+      }
+
+      .route-visual {
+        flex-direction: column;
+      }
+
+      .route-connector {
+        transform: rotate(90deg);
+        padding: 10px 0;
+      }
+
+      .day-card .day-content {
+        display: none;
+      }
+
+      .day-card.expanded .day-content {
+        display: block;
+      }
+
+      .day-card.collapsed .day-content {
+        display: none;
+      }
+
+      .booking-grid,
+      .stays-grid,
+      .food-content.active,
+      .packing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .route-pills {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .pill-arrow {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Sakura Petals -->
+  <div id="sakura-container"></div>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <button class="nav-btn active" onclick="showTab('overview')">🗾 Overview</button>
-    <button class="nav-btn" onclick="showTab('itinerary')">🗓 Itinerary</button>
-    <button class="nav-btn" onclick="showTab('checklist')">📋 Checklist</button>
-    <button class="nav-btn" onclick="showTab('bookings')">🎫 Bookings</button>
-    <button class="nav-btn" onclick="showTab('budget')">💴 Budget</button>
-    <button class="nav-btn" onclick="showTab('food')">🥬 Food</button>
-    <button class="nav-btn" onclick="showTab('stays')">🏠 Stays</button>
-  </div>
-</nav>
-
-<!-- TOAST -->
-<div class="toast-container" id="toastContainer"></div>
-
-<!-- ═══════════ OVERVIEW ═══════════ -->
-<div class="tab active" id="tab-overview">
-  <div class="hero">
-    <h1>Family Chali Japan 🇯🇵</h1>
-    <p>May 25 – June 8, 2025 · 14 Days · Family · Vegetarian</p>
-    <div class="countdown" id="countdown">Loading...</div>
-  </div>
-  <div class="stats-grid" id="statsGrid"></div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-bottom:20px" id="ringsGrid"></div>
-  <div class="card" id="todayCard">
-    <h3 style="margin-bottom:10px">📅 Today's Plan</h3>
-    <div id="todayContent"></div>
-  </div>
-</div>
-
-<!-- ═══════════ ITINERARY ═══════════ -->
-<div class="tab" id="tab-itinerary">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
-    <h2 class="section-title" style="margin-bottom:0">🗓 Itinerary</h2>
-    <button class="btn btn-primary" onclick="openModal('addItem')">+ Add Place</button>
-  </div>
-  <div class="filter-bar" id="filterBar">
-    <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
-    <button class="filter-btn" onclick="setFilter('tokyo',this)">Tokyo</button>
-    <button class="filter-btn" onclick="setFilter('kyoto',this)">Kyoto</button>
-    <button class="filter-btn" onclick="setFilter('hiroshima',this)">Hiroshima</button>
-    <button class="filter-btn" onclick="setFilter('osaka',this)">Osaka</button>
-    <button class="filter-btn" onclick="setFilter('offbeat',this)">🔮 Offbeat</button>
-    <button class="filter-btn" onclick="setFilter('unbooked',this)">⭕ Unbooked</button>
-  </div>
-  <div id="itineraryContent"></div>
-</div>
-
-<!-- ═══════════ CHECKLIST ═══════════ -->
-<div class="tab" id="tab-checklist">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
-    <h2 class="section-title" style="margin-bottom:0">📋 Checklist</h2>
-    <button class="btn btn-primary" onclick="openModal('addCheck')">+ Add Item</button>
-  </div>
-  <div id="alertBanner"></div>
-  <div id="checklistContent"></div>
-</div>
-
-<!-- ═══════════ BOOKINGS ═══════════ -->
-<div class="tab" id="tab-bookings">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
-    <h2 class="section-title" style="margin-bottom:0">🎫 Bookings</h2>
-    <button class="btn btn-primary" onclick="openModal('addBooking')">+ Add Booking</button>
-  </div>
-  <div id="bookingSummary" class="card" style="margin-bottom:16px"></div>
-  <div id="bookingsContent"></div>
-</div>
-
-<!-- ═══════════ BUDGET ═══════════ -->
-<div class="tab" id="tab-budget">
-  <h2 class="section-title">💴 Budget</h2>
-  <div class="card">
-    <div class="slider-wrap">
-      <span style="font-weight:600;font-size:.9rem">👨‍👩‍👧‍👦 Family:</span>
-      <input type="range" min="2" max="6" value="4" id="familySlider" oninput="updateBudget()">
-      <span id="familyCount" style="font-weight:700;color:var(--navy);min-width:20px">4</span>
+  <!-- Hero Section -->
+  <section class="hero" id="overview">
+    <h1>Family Chali <span>Japan</span> 🇯🇵</h1>
+    <p class="hero-dates">May 25 – June 8, 2025 • 14 Days of Adventure</p>
+    <div class="route-pills">
+      <div class="pill">🗼 Tokyo (4 nights)</div>
+      <span class="pill-arrow">→</span>
+      <div class="pill">⛩️ Kyoto (3 nights)</div>
+      <span class="pill-arrow">→</span>
+      <div class="pill">☮️ Hiroshima (2 nights)</div>
+      <span class="pill-arrow">→</span>
+      <div class="pill">🏯 Osaka (5 nights)</div>
     </div>
-    <div class="currency-toggle">
-      <button class="currency-btn active" onclick="setCurrency('JPY',this)">¥ JPY</button>
-      <button class="currency-btn" onclick="setCurrency('INR',this)">₹ INR</button>
-      <button class="currency-btn" onclick="setCurrency('USD',this)">$ USD</button>
+    <div class="hero-tags">
+      <span class="hero-tag">👨‍👩‍👧‍👦 Family Trip</span>
+      <span class="hero-tag">🥬 Vegetarian (eggs ok)</span>
+      <span class="hero-tag">💴 Mid-Range Budget</span>
     </div>
-    <div id="budgetTable"></div>
-    <button class="btn btn-outline btn-sm" style="margin-top:12px" onclick="exportCSV()">⬇ Export CSV</button>
-  </div>
-  <h3 style="margin:20px 0 12px;font-size:1rem">+ Add Actual Expense</h3>
-  <div class="card">
-    <div class="form-row">
-      <div class="form-group"><label>Category</label><select id="expCat"><option>Stay</option><option>Transport</option><option>Food</option><option>Activity</option><option>Shopping</option><option>Misc</option></select></div>
-      <div class="form-group"><label>City</label><select id="expCity"><option>Tokyo</option><option>Kyoto</option><option>Hiroshima</option><option>Osaka</option><option>General</option></select></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Description</label><input id="expDesc" placeholder="What was it?"></div>
-      <div class="form-group"><label>Amount (₹)</label><input id="expAmt" type="number" placeholder="0"></div>
-    </div>
-    <button class="btn btn-primary" onclick="addExpense()">Add Expense</button>
-  </div>
-  <h3 style="margin:20px 0 12px;font-size:1rem">Actual Expenses</h3>
-  <div id="expenseList"></div>
-</div>
+  </section>
 
-<!-- ═══════════ FOOD ═══════════ -->
-<div class="tab" id="tab-food">
-  <h2 class="section-title">🥬 Veg Food Guide</h2>
-  <div class="food-tabs" id="foodTabs">
-    <button class="food-tab active" onclick="setFoodTab('tokyo',this)">Tokyo</button>
-    <button class="food-tab" onclick="setFoodTab('kyoto',this)">Kyoto</button>
-    <button class="food-tab" onclick="setFoodTab('hiroshima',this)">Hiroshima</button>
-    <button class="food-tab" onclick="setFoodTab('osaka',this)">Osaka</button>
-    <button class="food-tab" onclick="setFoodTab('phrases',this)">🗣 Phrases</button>
-  </div>
-  <div id="foodContent"></div>
-</div>
-
-<!-- ═══════════ STAYS ═══════════ -->
-<div class="tab" id="tab-stays">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
-    <h2 class="section-title" style="margin-bottom:0">🏠 Stays</h2>
-    <button class="btn btn-primary" onclick="openModal('addStay')">+ Add Stay</button>
-  </div>
-  <div id="staysContent"></div>
-</div>
-
-<!-- ═══════════ MODALS ═══════════ -->
-
-<!-- Add Itinerary Item -->
-<div class="modal-bg" id="modal-addItem" onclick="closeModalBg(event,'addItem')">
-  <div class="modal">
-    <h3>+ Add Place to Itinerary</h3>
-    <div class="form-row">
-      <div class="form-group"><label>City</label><select id="iCity"><option value="tokyo">Tokyo</option><option value="kyoto">Kyoto</option><option value="hiroshima">Hiroshima</option><option value="osaka">Osaka</option></select></div>
-      <div class="form-group"><label>Day #</label><input id="iDay" type="number" min="1" max="15" placeholder="1"></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Date</label><input id="iDate" type="date"></div>
-      <div class="form-group"><label>Time of Day</label><select id="iTime"><option value="morning">Morning</option><option value="afternoon">Afternoon</option><option value="evening">Evening</option></select></div>
-    </div>
-    <div class="form-group"><label>Place Name *</label><input id="iName" placeholder="Fushimi Inari Taisha"></div>
-    <div class="form-row">
-      <div class="form-group"><label>Category</label><select id="iCat"><option value="activity">Activity</option><option value="food">Food</option><option value="transport">Transport</option><option value="offbeat">Offbeat Gem</option><option value="stay">Stay</option></select></div>
-      <div class="form-group"><label>Cost (¥)</label><input id="iCost" type="number" placeholder="0"></div>
-    </div>
-    <div class="form-group"><label>Description</label><textarea id="iDesc" placeholder="What to expect..."></textarea></div>
-    <div class="form-row">
-      <div class="form-group"><label>Duration (min)</label><input id="iDur" type="number" placeholder="60"></div>
-      <div class="form-group"><label>Booking URL</label><input id="iUrl" placeholder="https://..."></div>
-    </div>
-    <div style="display:flex;gap:16px;margin-bottom:6px">
-      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.88rem;font-weight:600"><input type="checkbox" id="iOffbeat"> 🔮 Offbeat</label>
-      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.88rem;font-weight:600"><input type="checkbox" id="iVeg"> 🥬 Veg Pick</label>
-      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.88rem;font-weight:600"><input type="checkbox" id="iBooked"> ✅ Booked</label>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal('addItem')">Cancel</button>
-      <button class="btn btn-primary" onclick="saveItem()">Save</button>
-    </div>
-  </div>
-</div>
-
-<!-- Add Checklist Item -->
-<div class="modal-bg" id="modal-addCheck" onclick="closeModalBg(event,'addCheck')">
-  <div class="modal">
-    <h3>+ Add Checklist Item</h3>
-    <div class="form-group"><label>Category</label><select id="cCat"><option value="booking">🔴 Must Book</option><option value="document">📄 Document</option><option value="packing">🧳 Packing</option><option value="todo">✅ To-Do</option></select></div>
-    <div class="form-group"><label>Title *</label><input id="cTitle" placeholder="What needs to be done?"></div>
-    <div class="form-row">
-      <div class="form-group"><label>Priority</label><select id="cPriority"><option value="high">🔴 High</option><option value="medium">🟡 Medium</option><option value="low">🟢 Low</option></select></div>
-      <div class="form-group"><label>Due Date</label><input id="cDue" type="date"></div>
-    </div>
-    <div class="form-group"><label>Notes</label><textarea id="cNotes" placeholder="Optional notes..."></textarea></div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal('addCheck')">Cancel</button>
-      <button class="btn btn-primary" onclick="saveCheck()">Save</button>
-    </div>
-  </div>
-</div>
-
-<!-- Add Booking -->
-<div class="modal-bg" id="modal-addBooking" onclick="closeModalBg(event,'addBooking')">
-  <div class="modal">
-    <h3>+ Add Booking</h3>
-    <div class="form-group"><label>Name *</label><input id="bName" placeholder="Experience / Restaurant / Transport"></div>
-    <div class="form-row">
-      <div class="form-group"><label>Type</label><select id="bType"><option value="experience">Experience</option><option value="restaurant">Restaurant</option><option value="transport">Transport</option><option value="stay">Stay</option></select></div>
-      <div class="form-group"><label>Priority</label><select id="bPriority"><option value="high">🔴 Book NOW</option><option value="medium">🟡 Book Soon</option><option value="low">🟢 Flexible</option></select></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Date</label><input id="bDate" type="date"></div>
-      <div class="form-group"><label>Cost (¥)</label><input id="bCost" type="number" placeholder="0"></div>
-    </div>
-    <div class="form-group"><label>Booking URL</label><input id="bUrl" placeholder="https://..."></div>
-    <div class="form-group"><label>Notes</label><textarea id="bNotes" placeholder="What to remember..."></textarea></div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal('addBooking')">Cancel</button>
-      <button class="btn btn-primary" onclick="saveBooking()">Save</button>
-    </div>
-  </div>
-</div>
-
-<!-- Add Stay -->
-<div class="modal-bg" id="modal-addStay" onclick="closeModalBg(event,'addStay')">
-  <div class="modal">
-    <h3>+ Add Stay</h3>
-    <div class="form-row">
-      <div class="form-group"><label>City</label><select id="sCityModal"><option>Tokyo</option><option>Kyoto</option><option>Hiroshima</option><option>Miyajima</option><option>Osaka</option></select></div>
-      <div class="form-group"><label>Property Name *</label><input id="sProp" placeholder="Airbnb / Hotel name"></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Check-in</label><input id="sIn" type="date"></div>
-      <div class="form-group"><label>Check-out</label><input id="sOut" type="date"></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Confirmation Code</label><input id="sConf" placeholder="ABC123"></div>
-      <div class="form-group"><label>Nightly Rate (¥)</label><input id="sRate" type="number" placeholder="0"></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Host Name</label><input id="sHost" placeholder="Tanaka-san"></div>
-      <div class="form-group"><label>Host Phone</label><input id="sPhone" placeholder="+81..."></div>
-    </div>
-    <div class="form-group"><label>Airbnb / Booking URL</label><input id="sUrl" placeholder="https://..."></div>
-    <div class="form-group"><label>Notes</label><textarea id="sNotes"></textarea></div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal('addStay')">Cancel</button>
-      <button class="btn btn-primary" onclick="saveStay()">Save</button>
-    </div>
-  </div>
-</div>
-
-<!-- Sakura -->
-<div id="sakura"></div>
-
-<script>
-// ═══════════════════════════════════════════
-// SEED DATA
-// ═══════════════════════════════════════════
-const SEED_ITEMS = [
-  // TOKYO DAY 1
-  {id:'t1',city:'tokyo',day:1,date:'2025-05-25',time:'morning',name:'Arrive Narita → Shibuya (Narita Express)',cat:'transport',desc:'Take N\'EX with JR Pass! Check into Airbnb and freshen up.',cost:0,dur:150,url:'',offbeat:false,veg:false,booked:false},
-  {id:'t2',city:'tokyo',day:1,date:'2025-05-25',time:'afternoon',name:'Shimokitazawa Exploration',cat:'offbeat',desc:'Tokyo\'s bohemian neighbourhood — vintage shops, indie cafes, street art. Perfect jet-lag stroll.',cost:0,dur:180,url:'',offbeat:true,veg:false,booked:false},
-  {id:'t3',city:'tokyo',day:1,date:'2025-05-25',time:'afternoon',name:'Bear Pond Espresso',cat:'food',desc:'Famous coffee spot with vegetarian pastries.',cost:1500,dur:60,url:'',offbeat:false,veg:true,booked:false},
-  {id:'t4',city:'tokyo',day:1,date:'2025-05-25',time:'evening',name:'Afuri Ramen Ebisu',cat:'food',desc:'Yuzu shio ramen with vegan/vegetarian options. Light and citrusy.',cost:1200,dur:60,url:'https://afuri.com',offbeat:false,veg:true,booked:false},
-  // TOKYO DAY 2
-  {id:'t5',city:'tokyo',day:2,date:'2025-05-26',time:'morning',name:'Yanaka Ginza Shopping Street',cat:'offbeat',desc:'Old-school Tokyo neighbourhood — traditional shops, cat statues, zero tourists.',cost:0,dur:120,url:'',offbeat:true,veg:false,booked:false},
-  {id:'t6',city:'tokyo',day:2,date:'2025-05-26',time:'afternoon',name:'Nezu Shrine',cat:'activity',desc:'One of Tokyo\'s oldest shrines with azalea garden & mini torii gates (like a mini Fushimi Inari!).',cost:200,dur:90,url:'',offbeat:true,veg:false,booked:false},
-  {id:'t7',city:'tokyo',day:2,date:'2025-05-26',time:'afternoon',name:'Kayaba Coffee',cat:'food',desc:'100-year-old coffee house in a preserved wooden building. Egg sandwiches & fluffy pancakes.',cost:1000,dur:60,url:'',offbeat:true,veg:true,booked:false},
-  {id:'t8',city:'tokyo',day:2,date:'2025-05-26',time:'evening',name:'Ueno Park Sunset Stroll',cat:'activity',desc:'Beautiful park walk, street performers, temple hopping at sunset.',cost:0,dur:120,url:'',offbeat:false,veg:false,booked:false},
-  // TOKYO DAY 3
-  {id:'t9',city:'tokyo',day:3,date:'2025-05-27',time:'morning',name:'Meiji Shrine',cat:'activity',desc:'Peaceful forest shrine in the heart of Shibuya. Write wishes on wooden ema plaques.',cost:0,dur:90,url:'',offbeat:false,veg:false,booked:false},
-  {id:'t10',city:'tokyo',day:3,date:'2025-05-27',time:'afternoon',name:'Street Go-Kart (JAPANKART)',cat:'offbeat',desc:'Drive real go-karts through Tokyo streets in costume! International license required. Book ahead!',cost:10000,dur:150,url:'https://www.japan-kart.com/',offbeat:true,veg:false,booked:false},
-  {id:'t11',city:'tokyo',day:3,date:'2025-05-27',time:'evening',name:'Shibuya Sky Observation Deck',cat:'activity',desc:'360° rooftop views of Tokyo at sunset. Book the sunset slot!',cost:2200,dur:90,url:'https://www.shibuya-scramble-square.com/sky/',offbeat:false,veg:false,booked:false},
-  {id:'t12',city:'tokyo',day:3,date:'2025-05-27',time:'evening',name:'Ain Soph Journey (Vegan dinner)',cat:'food',desc:'Vegan burgers & pancakes. Fully plant-based, delicious.',cost:3000,dur:90,url:'',offbeat:false,veg:true,booked:false},
-  // TOKYO DAY 4
-  {id:'t13',city:'tokyo',day:4,date:'2025-05-28',time:'morning',name:'TeamLab Planets',cat:'activity',desc:'Immersive digital art — wade through water, infinity rooms. Book 9am slot to avoid crowds!',cost:3800,dur:180,url:'https://www.teamlab.art/e/planets/',offbeat:false,veg:false,booked:false},
-  {id:'t14',city:'tokyo',day:4,date:'2025-05-28',time:'afternoon',name:'Odaiba Island',cat:'activity',desc:'Futuristic island — Rainbow Bridge views, giant Gundam statue, beach vibes.',cost:0,dur:240,url:'',offbeat:false,veg:false,booked:false},
-  {id:'t15',city:'tokyo',day:4,date:'2025-05-28',time:'afternoon',name:'DiverCity Food Court',cat:'food',desc:'Curry, udon, and veggie options in this Odaiba mall.',cost:1500,dur:60,url:'',offbeat:false,veg:true,booked:false},
-  {id:'t16',city:'tokyo',day:4,date:'2025-05-28',time:'evening',name:'Pack & Prep for Kyoto',cat:'todo',desc:'Early Shinkansen tomorrow! Pack bags, organize JR Pass.',cost:0,dur:60,url:'',offbeat:false,veg:false,booked:false},
-  // KYOTO DAY 5
-  {id:'k1',city:'kyoto',day:5,date:'2025-05-29',time:'morning',name:'Fushimi Inari at 5:30am ✨',cat:'offbeat',desc:'Beat ALL crowds. Magic empty torii gates at sunrise. Worth every second of the early wake!',cost:0,dur:180,url:'',offbeat:true,veg:false,booked:false},
-  {id:'k2',city:'kyoto',day:5,date:'2025-05-29',time:'morning',name:'Vermillion Cafe Breakfast',cat:'food',desc:'Right at Fushimi Inari base. Great coffee & vegetarian breakfast with shrine views.',cost:1200,dur:60,url:'',offbeat:false,veg:true,booked:false},
-  {id:'k3',city:'kyoto',day:5,date:'2025-05-29',time:'afternoon',name:'Gion District Walk',cat:'activity',desc:'Geisha district stroll. Spot maiko (apprentice geisha) on their way to appointments.',cost:0,dur:120,url:'',offbeat:false,veg:false,booked:false},
-  {id:'k4',city:'kyoto',day:5,date:'2025-05-29',time:'evening',name:'Okutan Nanzenji (Tofu dinner)',cat:'food',desc:'400-year-old tofu restaurant in temple grounds. Yudofu hot-pot course. BOOK AHEAD!',cost:3500,dur:90,url:'http://www.okutan.co.jp/',offbeat:false,veg:true,booked:false},
-  // KYOTO DAY 6
-  {id:'k5',city:'kyoto',day:6,date:'2025-05-30',time:'morning',name:'Arashiyama Bamboo Grove (7am!)',cat:'activity',desc:'Arrive early for the grove without crowds. Magical morning light.',cost:0,dur:60,url:'',offbeat:false,veg:false,booked:false},
-  {id:'k6',city:'kyoto',day:6,date:'2025-05-30',time:'morning',name:'Gio-ji Temple (Hidden Gem)',cat:'offbeat',desc:'Moss temple most tourists miss. Incredibly peaceful thatched-roof temple covered in lush moss.',cost:300,dur:45,url:'',offbeat:true,veg:false,booked:false},
-  {id:'k7',city:'kyoto',day:6,date:'2025-05-30',time:'afternoon',name:'Hozugawa River Boat Ride',cat:'offbeat',desc:'Traditional wooden boat down the river. Boatmen use poles. Stunning gorge scenery.',cost:4100,dur:120,url:'',offbeat:true,veg:false,booked:false},
-  {id:'k8',city:'kyoto',day:6,date:'2025-05-30',time:'afternoon',name:'Arashiyama Yoshimura',cat:'food',desc:'Soba noodle restaurant with river views. Ask for vegetarian tempura soba.',cost:1500,dur:60,url:'',offbeat:false,veg:true,booked:false},
-  {id:'k9',city:'kyoto',day:6,date:'2025-05-30',time:'evening',name:'Monkey Park Iwatayama',cat:'activity',desc:'Hilltop park with 120 wild monkeys + panoramic Kyoto views. Fun for kids!',cost:550,dur:90,url:'',offbeat:false,veg:false,booked:false},
-  // KYOTO DAY 7
-  {id:'k10',city:'kyoto',day:7,date:'2025-05-31',time:'morning',name:'JR Train to Nara (45 min)',cat:'transport',desc:'Free with JR Pass!',cost:0,dur:45,url:'',offbeat:false,veg:false,booked:false},
-  {id:'k11',city:'kyoto',day:7,date:'2025-05-31',time:'morning',name:'Nara Park + Deer 🦌',cat:'activity',desc:'Meet the famous bowing deer! Buy shika senbei (deer crackers) and make friends.',cost:200,dur:120,url:'',offbeat:false,veg:false,booked:false},
-  {id:'k12',city:'kyoto',day:7,date:'2025-05-31',time:'afternoon',name:'Todai-ji Temple',cat:'activity',desc:'World\'s largest wooden building with giant bronze Buddha. Mind-blowing scale.',cost:600,dur:90,url:'',offbeat:false,veg:false,booked:false},
-  {id:'k13',city:'kyoto',day:7,date:'2025-05-31',time:'afternoon',name:'Naramachi Walking',cat:'offbeat',desc:'Traditional merchant district with Edo-period houses, craft shops, and hidden cafes.',cost:0,dur:120,url:'',offbeat:true,veg:false,booked:false},
-  // HIROSHIMA DAY 8
-  {id:'h1',city:'hiroshima',day:8,date:'2025-06-01',time:'morning',name:'Shinkansen Kyoto → Hiroshima',cat:'transport',desc:'1.5 hour bullet train. Grab ekiben (train bento) for the journey!',cost:0,dur:90,url:'',offbeat:false,veg:false,booked:false},
-  {id:'h2',city:'hiroshima',day:8,date:'2025-06-01',time:'morning',name:'Peace Memorial Park & Museum',cat:'activity',desc:'Atomic Bomb Dome, Peace Museum, Children\'s Peace Monument. Heavy but essential.',cost:200,dur:180,url:'',offbeat:false,veg:false,booked:false},
-  {id:'h3',city:'hiroshima',day:8,date:'2025-06-01',time:'afternoon',name:'Shukkeien Garden',cat:'offbeat',desc:'Beautiful Edo-period garden that survived the bombing. Peaceful contrast to the morning.',cost:260,dur:60,url:'',offbeat:true,veg:false,booked:false},
-  {id:'h4',city:'hiroshima',day:8,date:'2025-06-01',time:'afternoon',name:'Nagata-ya (Vegan Okonomiyaki)',cat:'food',desc:'Hiroshima-style layered okonomiyaki with vegan options available. Local institution!',cost:1200,dur:60,url:'',offbeat:false,veg:true,booked:false},
-  {id:'h5',city:'hiroshima',day:8,date:'2025-06-01',time:'evening',name:'Hiroshima Night Walk',cat:'activity',desc:'Stroll along the river, see Peace Dome lit up at night. Reflect on the day.',cost:0,dur:90,url:'',offbeat:false,veg:false,booked:false},
-  // HIROSHIMA DAY 9 (MIYAJIMA)
-  {id:'h6',city:'hiroshima',day:9,date:'2025-06-02',time:'morning',name:'JR Ferry to Miyajima Island',cat:'transport',desc:'Free with JR Pass! 10-minute scenic ferry ride.',cost:0,dur:30,url:'',offbeat:false,veg:false,booked:false},
-  {id:'h7',city:'hiroshima',day:9,date:'2025-06-02',time:'morning',name:'Floating Torii Gate',cat:'activity',desc:'Iconic vermillion gate in the water. Check tide times — low tide lets you walk to it!',cost:0,dur:60,url:'',offbeat:false,veg:false,booked:false},
-  {id:'h8',city:'hiroshima',day:9,date:'2025-06-02',time:'afternoon',name:'Mt. Misen Hike / Ropeway',cat:'offbeat',desc:'Sacred mountain with wild deer & monkeys. Take ropeway up, hike down for best views.',cost:1840,dur:240,url:'',offbeat:true,veg:false,booked:false},
-  {id:'h9',city:'hiroshima',day:9,date:'2025-06-02',time:'evening',name:'Iwaso Ryokan Check-in',cat:'stay',desc:'150-year-old inn. Includes kaiseki dinner (request vegetarian), onsen bath, futon.',cost:35000,dur:60,url:'https://www.iwaso.com/en/',offbeat:false,veg:false,booked:false},
-  {id:'h10',city:'hiroshima',day:9,date:'2025-06-02',time:'evening',name:'Night Torii Gate (after day-trippers leave)',cat:'offbeat',desc:'Walk to lit-up torii gate when almost no one is around. Pure magic.',cost:0,dur:30,url:'',offbeat:true,veg:false,booked:false},
-  // HIROSHIMA/MIYAJIMA DAY 10
-  {id:'h11',city:'hiroshima',day:10,date:'2025-06-03',time:'morning',name:'Sunrise at Torii Gate 🌅',cat:'offbeat',desc:'Wake at 5am, walk to torii gate for sunrise. You\'ll likely be completely alone. Unforgettable.',cost:0,dur:60,url:'',offbeat:true,veg:false,booked:false},
-  {id:'h12',city:'hiroshima',day:10,date:'2025-06-03',time:'morning',name:'Ryokan Breakfast + Checkout',cat:'activity',desc:'Traditional Japanese breakfast included. Pack up and ferry back to mainland.',cost:0,dur:120,url:'',offbeat:false,veg:false,booked:false},
-  {id:'h13',city:'hiroshima',day:10,date:'2025-06-03',time:'afternoon',name:'Shinkansen → Osaka',cat:'transport',desc:'1.5 hr to Shin-Osaka. Check into Namba/Shinsaibashi Airbnb.',cost:0,dur:120,url:'',offbeat:false,veg:false,booked:false},
-  // OSAKA DAY 11
-  {id:'o1',city:'osaka',day:11,date:'2025-06-03',time:'morning',name:'Osaka Castle',cat:'activity',desc:'Iconic castle with beautiful park. Museum inside shows Osaka history.',cost:600,dur:180,url:'',offbeat:false,veg:false,booked:false},
-  {id:'o2',city:'osaka',day:11,date:'2025-06-03',time:'afternoon',name:'Shinsekai District',cat:'offbeat',desc:'Retro neon district with Tsutenkaku Tower. Feels like 1960s Japan — kitschy and fun.',cost:0,dur:180,url:'',offbeat:true,veg:false,booked:false},
-  {id:'o3',city:'osaka',day:11,date:'2025-06-03',time:'afternoon',name:'Kushikatsu Veggie Skewers',cat:'food',desc:'Shinsekai specialty. Some places have vegetable-only deep-fried skewers.',cost:1500,dur:60,url:'',offbeat:false,veg:true,booked:false},
-  {id:'o4',city:'osaka',day:11,date:'2025-06-03',time:'evening',name:'Spa World',cat:'activity',desc:'Giant onsen theme park with baths from around the world. Great for families.',cost:1500,dur:180,url:'',offbeat:false,veg:false,booked:false},
-  // OSAKA DAY 12
-  {id:'o5',city:'osaka',day:12,date:'2025-06-04',time:'morning',name:'Nakazakicho',cat:'offbeat',desc:'Osaka\'s hipster village — converted old houses into cafes, galleries, vintage shops. Zero tourists.',cost:0,dur:180,url:'',offbeat:true,veg:false,booked:false},
-  {id:'o6',city:'osaka',day:12,date:'2025-06-04',time:'morning',name:'Salon de Amanto Cafe',cat:'food',desc:'Cute retro cafe in a renovated house. Vegetarian lunch plates and great coffee.',cost:1200,dur:60,url:'',offbeat:false,veg:true,booked:false},
-  {id:'o7',city:'osaka',day:12,date:'2025-06-04',time:'afternoon',name:'Kuromon Market',cat:'activity',desc:'"Osaka\'s Kitchen" — 170+ stalls. Tamagoyaki, fruit, pickles, and veggie options.',cost:2000,dur:120,url:'',offbeat:false,veg:false,booked:false},
-  {id:'o8',city:'osaka',day:12,date:'2025-06-04',time:'evening',name:'Dotonbori Night Walk',cat:'activity',desc:'Neon wonderland! Glico Running Man, canal reflections, street performers. Peak Osaka energy!',cost:0,dur:180,url:'',offbeat:false,veg:false,booked:false},
-  // OSAKA DAY 13
-  {id:'o9',city:'osaka',day:13,date:'2025-06-05',time:'morning',name:'Sumiyoshi Taisha',cat:'offbeat',desc:'One of Japan\'s oldest shrines — unique Sumiyoshi architecture, iconic arched bridge.',cost:0,dur:90,url:'',offbeat:true,veg:false,booked:false},
-  {id:'o10',city:'osaka',day:13,date:'2025-06-05',time:'afternoon',name:'Amerika-Mura (Ame-Mura)',cat:'offbeat',desc:'Osaka\'s youth culture hub. Street fashion, record stores, wild energy. Japanese Harajuku.',cost:0,dur:180,url:'',offbeat:true,veg:false,booked:false},
-  {id:'o11',city:'osaka',day:13,date:'2025-06-05',time:'evening',name:'Shinsaibashi Shopping Arcade',cat:'activity',desc:'600m covered shopping street. Great for souvenirs, fashion, and late-night shopping.',cost:0,dur:120,url:'',offbeat:false,veg:false,booked:false},
-  // OSAKA DAY 14 (KOBE)
-  {id:'o12',city:'osaka',day:14,date:'2025-06-06',time:'morning',name:'JR to Kobe (30 min)',cat:'transport',desc:'Free with JR Pass! Beautiful port city with mountain backdrop.',cost:0,dur:30,url:'',offbeat:false,veg:false,booked:false},
-  {id:'o13',city:'osaka',day:14,date:'2025-06-06',time:'morning',name:'Kitano Ijinkan District',cat:'offbeat',desc:'Western-style houses from the Meiji era. Feels like Europe in Japan.',cost:500,dur:120,url:'',offbeat:true,veg:false,booked:false},
-  {id:'o14',city:'osaka',day:14,date:'2025-06-06',time:'afternoon',name:'Nankinmachi (Kobe Chinatown)',cat:'food',desc:'Japan\'s oldest Chinatown — Buddhist veg restaurants, great vegetarian options!',cost:1500,dur:120,url:'',offbeat:false,veg:true,booked:false},
-  // OSAKA DAY 15 (DEPARTURE)
-  {id:'o15',city:'osaka',day:15,date:'2025-06-07',time:'morning',name:'Last Konbini Run 🛒',cat:'todo',desc:'Stock up on Japanese snacks, Kit-Kats, and instant noodles. Family Mart or 7-Eleven.',cost:5000,dur:30,url:'',offbeat:false,veg:false,booked:false},
-  {id:'o16',city:'osaka',day:15,date:'2025-06-07',time:'morning',name:'Kansai Airport (KIX) Departure',cat:'transport',desc:'Haruka Express from Tennoji or Nankai from Namba. Arrive 3 hours before flight!',cost:1500,dur:90,url:'',offbeat:false,veg:false,booked:false}
-];
-
-const SEED_CHECKS = [
-  // BOOKING
-  {id:'c1',cat:'booking',title:'Purchase JR Pass (14-day) online',priority:'high',due:'2025-03-25',done:false,notes:'Buy before leaving India. Get voucher shipped or collect at airport.'},
-  {id:'c2',cat:'booking',title:'Book TeamLab Planets tickets',priority:'high',due:'2025-04-25',done:false,notes:'Book 9am slot. Sells out weeks in advance!'},
-  {id:'c3',cat:'booking',title:'Book Street Go-Kart (JAPANKART)',priority:'high',due:'2025-04-25',done:false,notes:'Need International Driving Permit. Book afternoon for best photos.'},
-  {id:'c4',cat:'booking',title:'Book Shibuya Sky (sunset slot ~6pm)',priority:'high',due:'2025-04-25',done:false,notes:''},
-  {id:'c5',cat:'booking',title:'Book Iwaso Ryokan, Miyajima',priority:'high',due:'2025-03-25',done:false,notes:'Request vegetarian kaiseki dinner when booking.'},
-  {id:'c6',cat:'booking',title:'Reserve Okutan Nanzenji (tofu dinner)',priority:'medium',due:'2025-05-10',done:false,notes:'Call or email to reserve. 400-year-old restaurant!'},
-  {id:'c7',cat:'booking',title:'Book all 4 Airbnbs',priority:'high',due:'2025-03-25',done:false,notes:'Tokyo (Shibuya/Shinjuku), Kyoto (Gion), Hiroshima, Osaka (Namba)'},
-  // DOCUMENTS
-  {id:'c8',cat:'document',title:'Check passport validity (6+ months from June 8)',priority:'high',due:'2025-04-01',done:false,notes:'All family members!'},
-  {id:'c9',cat:'document',title:'Get International Driving Permit (IDP)',priority:'high',due:'2025-05-01',done:false,notes:'Required for Go-Kart. Apply at your regional transport office.'},
-  {id:'c10',cat:'document',title:'Buy travel insurance',priority:'high',due:'2025-05-01',done:false,notes:''},
-  {id:'c11',cat:'document',title:'Notify bank of Japan travel',priority:'medium',due:'2025-05-20',done:false,notes:'Avoid card blocks abroad.'},
-  {id:'c12',cat:'document',title:'Print/save all booking confirmations',priority:'medium',due:'2025-05-22',done:false,notes:''},
-  // PACKING
-  {id:'c13',cat:'packing',title:'Comfortable walking shoes (break them in!)',priority:'high',due:'2025-05-20',done:false,notes:'You\'ll walk 15,000+ steps/day'},
-  {id:'c14',cat:'packing',title:'Rain jacket (June = Japan rainy season)',priority:'high',due:'2025-05-20',done:false,notes:''},
-  {id:'c15',cat:'packing',title:'Pocket tissues (Japan has no paper towels!)',priority:'medium',due:'2025-05-22',done:false,notes:''},
-  {id:'c16',cat:'packing',title:'Portable battery pack',priority:'medium',due:'2025-05-22',done:false,notes:''},
-  {id:'c17',cat:'packing',title:'Japan Type A power adapter',priority:'low',due:'2025-05-22',done:false,notes:'Same as India — should be fine'},
-  {id:'c18',cat:'packing',title:'Modest clothing for temples',priority:'medium',due:'2025-05-22',done:false,notes:'No shorts for some temples'},
-  {id:'c19',cat:'packing',title:'Cash (¥50,000+ in hand on arrival)',priority:'high',due:'2025-05-23',done:false,notes:'Many smaller shops are cash-only'},
-  // TODO
-  {id:'c20',cat:'todo',title:'Download Google Maps offline for all 4 cities',priority:'high',due:'2025-05-23',done:false,notes:''},
-  {id:'c21',cat:'todo',title:'Download Google Translate (Japanese offline pack)',priority:'high',due:'2025-05-23',done:false,notes:'Enable camera translation!'},
-  {id:'c22',cat:'todo',title:'Set up Suica / IC card (mobile wallet)',priority:'medium',due:'2025-05-25',done:false,notes:'Can add to iPhone Wallet for Japan metro'},
-  {id:'c23',cat:'todo',title:'Check Miyajima tide times for Day 9',priority:'medium',due:'2025-05-20',done:false,notes:'Low tide = walk to torii gate!'},
-  {id:'c24',cat:'todo',title:'Learn 10 basic Japanese phrases',priority:'low',due:'2025-05-23',done:false,notes:'See Food tab for phrases!'}
-];
-
-const SEED_BOOKINGS = [
-  {id:'b1',name:'JR Pass (14-day)',type:'transport',priority:'high',date:'2025-05-25',cost:50000,url:'https://www.jrpass.com/',notes:'Activate Day 1 at any major JR station.',status:'pending',conf:''},
-  {id:'b2',name:'TeamLab Planets',type:'experience',priority:'high',date:'2025-05-28',cost:3800,url:'https://www.teamlab.art/e/planets/',notes:'Book 9am slot.',status:'pending',conf:''},
-  {id:'b3',name:'Street Go-Kart (JAPANKART)',type:'experience',priority:'high',date:'2025-05-27',cost:10000,url:'https://www.japan-kart.com/',notes:'Need IDP. Afternoon slot.',status:'pending',conf:''},
-  {id:'b4',name:'Shibuya Sky',type:'experience',priority:'high',date:'2025-05-27',cost:2200,url:'https://www.shibuya-scramble-square.com/sky/',notes:'Book ~6pm sunset slot.',status:'pending',conf:''},
-  {id:'b5',name:'Iwaso Ryokan (Miyajima)',type:'stay',priority:'high',date:'2025-06-02',cost:35000,url:'https://www.iwaso.com/en/',notes:'Request vegetarian kaiseki dinner.',status:'pending',conf:''},
-  {id:'b6',name:'Okutan Nanzenji',type:'restaurant',priority:'medium',date:'2025-05-29',cost:3500,url:'http://www.okutan.co.jp/',notes:'400yr old tofu restaurant. Call to book.',status:'pending',conf:''},
-  {id:'b7',name:'Seigen-in Shojin Ryori',type:'restaurant',priority:'low',date:'2025-05-31',cost:4000,url:'https://maps.google.com/?q=Seigen-in+Kyoto',notes:'Temple vegetarian cuisine.',status:'pending',conf:''},
-  {id:'b8',name:'Mt. Misen Ropeway (Miyajima)',type:'experience',priority:'medium',date:'2025-06-02',cost:1840,url:'https://www.miyajima-ropeway.info/english/',notes:'Check weather before going.',status:'pending',conf:''},
-  {id:'b9',name:'Tokyo Airbnb (4 nights)',type:'stay',priority:'high',date:'2025-05-25',cost:80000,url:'https://www.airbnb.com',notes:'Shibuya or Shinjuku area.',status:'pending',conf:''},
-  {id:'b10',name:'Kyoto Airbnb (3 nights)',type:'stay',priority:'high',date:'2025-05-29',cost:60000,url:'https://www.airbnb.com',notes:'Gion or Higashiyama machiya.',status:'pending',conf:''}
-];
-
-const SEED_FOOD = {
-  tokyo:[
-    {name:'Afuri Ramen Ebisu',dish:'Yuzu Shio Vegan Ramen',type:'vegan',price:'¥1,200',maps:'https://maps.google.com/?q=Afuri+Ramen+Ebisu'},
-    {name:'Ain Soph Journey',dish:'Vegan Burgers & Pancakes',type:'vegan',price:'¥1,500–2,500',maps:'https://maps.google.com/?q=Ain+Soph+Journey+Shinjuku'},
-    {name:"T's TanTan (Tokyo Station)",dish:'Vegan Tantanmen',type:'vegan',price:'¥1,000',maps:"https://maps.google.com/?q=Ts+TanTan+Tokyo+Station"},
-    {name:'Soranoiro',dish:'Veggie Soba Ramen',type:'veg',price:'¥1,100',maps:'https://maps.google.com/?q=Soranoiro+Ramen+Tokyo'},
-    {name:'Kayaba Coffee',dish:'Egg Sandwich & Pancakes',type:'veg',price:'¥800–1,200',maps:'https://maps.google.com/?q=Kayaba+Coffee+Yanaka'},
-    {name:"Brown Rice by Neal's Yard",dish:'Organic Veg Set Meal',type:'veg',price:'¥1,500',maps:'https://maps.google.com/?q=Brown+Rice+Omotesando'}
-  ],
-  kyoto:[
-    {name:'Okutan Nanzenji',dish:'Yudofu Hot Pot Tofu',type:'veg',price:'¥3,500',maps:'https://maps.google.com/?q=Okutan+Nanzenji'},
-    {name:'Shigetsu (Tenryuji)',dish:'Temple Shojin Ryori',type:'vegan',price:'¥3,300–5,500',maps:'https://maps.google.com/?q=Shigetsu+Tenryuji'},
-    {name:'Vermillion Cafe',dish:'Veggie Breakfast',type:'veg',price:'¥1,200',maps:'https://maps.google.com/?q=Vermillion+Cafe+Fushimi'},
-    {name:'Arashiyama Yoshimura',dish:'Tempura Soba',type:'veg',price:'¥1,500',maps:'https://maps.google.com/?q=Yoshimura+Arashiyama'},
-    {name:'Falafel Garden',dish:'Falafel Plates',type:'vegan',price:'¥1,000',maps:'https://maps.google.com/?q=Falafel+Garden+Kyoto'},
-    {name:'Veg Out Kyoto',dish:'Vegan Burgers & Bowls',type:'vegan',price:'¥1,200',maps:'https://maps.google.com/?q=Veg+Out+Kyoto'}
-  ],
-  hiroshima:[
-    {name:'Nagata-ya',dish:'Veggie Okonomiyaki',type:'veg',price:'¥1,200',maps:'https://maps.google.com/?q=Nagataya+Hiroshima'},
-    {name:'Lopez Hiroshima',dish:'Okonomiyaki (no meat option)',type:'veg',price:'¥1,000',maps:'https://maps.google.com/?q=Lopez+Okonomiyaki+Hiroshima'},
-    {name:'Okonomi-mura Building',dish:'Various vendors — ask for veg',type:'veg',price:'¥800–1,500',maps:'https://maps.google.com/?q=Okonomi-mura+Hiroshima'},
-    {name:'Miyajima Coffee',dish:'Light bites & coffee',type:'veg',price:'¥600–900',maps:'https://maps.google.com/?q=Miyajima+Coffee'}
-  ],
-  osaka:[
-    {name:'Salon de Amanto',dish:'Veggie Lunch Plates',type:'veg',price:'¥1,200',maps:'https://maps.google.com/?q=Salon+de+Amanto+Nakazakicho'},
-    {name:'Paprika Shokudo',dish:'Vegan Set Meals',type:'vegan',price:'¥1,200',maps:'https://maps.google.com/?q=Paprika+Shokudo+Osaka'},
-    {name:'Green Earth Osaka',dish:'Organic Vegan Cafe',type:'vegan',price:'¥1,000–1,500',maps:'https://maps.google.com/?q=Green+Earth+Osaka'},
-    {name:'Nankinmachi Veg Options',dish:'Buddhist Chinese Vegetarian',type:'veg',price:'¥800–1,500',maps:'https://maps.google.com/?q=Kobe+Chinatown'},
-    {name:'Kuromon Market Stalls',dish:'Tamagoyaki, Fruit, Pickles',type:'veg',price:'¥300–800',maps:'https://maps.google.com/?q=Kuromon+Market+Osaka'}
-  ],
-  phrases:[
-    {jp:'ベジタリアンです',en:'I am vegetarian',rom:'Bejitarian desu'},
-    {jp:'肉なしでお願いします',en:'Without meat please',rom:'Niku nashi de onegaishimasu'},
-    {jp:'卵は大丈夫です',en:'Eggs are OK',rom:'Tamago wa daijōbu desu'},
-    {jp:'魚だしは入っていますか？',en:'Does it have fish stock?',rom:'Sakana dashi wa haitte imasu ka?'},
-    {jp:'ありがとうございます',en:'Thank you very much',rom:'Arigatō gozaimasu'},
-    {jp:'すみません',en:'Excuse me / Sorry',rom:'Sumimasen'},
-    {jp:'これをください',en:'I\'ll have this one please',rom:'Kore wo kudasai'},
-    {jp:'トイレはどこですか？',en:'Where is the toilet?',rom:'Toire wa doko desu ka?'},
-    {jp:'いくらですか？',en:'How much is it?',rom:'Ikura desu ka?'},
-    {jp:'写真を撮ってもいいですか？',en:'May I take a photo?',rom:'Shashin wo totte mo ii desu ka?'},
-    {jp:'おいしい！',en:'Delicious!',rom:'Oishii!'},
-    {jp:'助けてください',en:'Please help me',rom:'Tasukete kudasai'}
-  ]
-};
-
-const SEED_STAYS = [
-  {id:'s1',city:'Tokyo',prop:'Airbnb — Shibuya/Shinjuku area',checkin:'2025-05-25',checkout:'2025-05-29',conf:'',host:'',phone:'',rate:20000,url:'https://www.airbnb.com',notes:'4 nights. Central location, metro access, family-friendly.'},
-  {id:'s2',city:'Kyoto',prop:'Airbnb — Gion/Higashiyama Machiya',checkin:'2025-05-29',checkout:'2025-06-01',conf:'',host:'',phone:'',rate:22000,url:'https://www.airbnb.com',notes:'3 nights. Traditional townhouse. Walking distance to temples.'},
-  {id:'s3',city:'Hiroshima',prop:'Airbnb — Peace Park area',checkin:'2025-06-01',checkout:'2025-06-02',conf:'',host:'',phone:'',rate:12000,url:'https://www.airbnb.com',notes:'1 night before Miyajima.'},
-  {id:'s4',city:'Miyajima',prop:'Iwaso Ryokan',checkin:'2025-06-02',checkout:'2025-06-03',conf:'',host:'',phone:'+81-829-44-2233',rate:35000,url:'https://www.iwaso.com/en/',notes:'150-year-old inn. Request vegetarian kaiseki dinner + onsen!'},
-  {id:'s5',city:'Osaka',prop:'Airbnb — Namba/Shinsaibashi',checkin:'2025-06-03',checkout:'2025-06-08',conf:'',host:'',phone:'',rate:18000,url:'https://www.airbnb.com',notes:'5 nights. Best food scene, Dotonbori walking distance.'}
-];
-
-const BUDGET_CATS = [
-  {emoji:'🏠',name:'Accommodation (14 nights)',perPerson:80000},
-  {emoji:'🚄',name:'JR Pass + Local Transport',perPerson:55000},
-  {emoji:'🍜',name:'Food (¥4,000/day avg)',perPerson:56000},
-  {emoji:'🎫',name:'Activities & Entry Fees',perPerson:25000},
-  {emoji:'🛍️',name:'Shopping & Souvenirs',perPerson:30000},
-  {emoji:'📱',name:'SIM / Misc',perPerson:10000}
-];
-
-// ═══════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════
-let state = {
-  items: [],
-  checks: [],
-  bookings: [],
-  stays: [],
-  expenses: [],
-  filter: 'all',
-  foodTab: 'tokyo',
-  currency: 'JPY',
-  familySize: 4
-};
-
-const RATES = {JPY:1, INR:0.56, USD:0.0067};
-const SYMBOLS = {JPY:'¥', INR:'₹', USD:'$'};
-
-// ═══════════════════════════════════════════
-// LOCALSTORAGE
-// ═══════════════════════════════════════════
-function save(key, val){ try{localStorage.setItem('fcj_'+key, JSON.stringify(val))}catch(e){} }
-function load(key, def){ try{const v=localStorage.getItem('fcj_'+key);return v?JSON.parse(v):def}catch(e){return def} }
-
-function init(){
-  state.items    = load('items', SEED_ITEMS);
-  state.checks   = load('checks', SEED_CHECKS);
-  state.bookings = load('bookings', SEED_BOOKINGS);
-  state.stays    = load('stays', SEED_STAYS);
-  state.expenses = load('expenses', []);
-
-  buildSakura();
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-  renderOverview();
-  renderItinerary();
-  renderChecklist();
-  renderBookings();
-  renderBudget();
-  setFoodTab('tokyo', document.querySelector('.food-tab'));
-  renderStays();
-  checkAlerts();
-}
-
-// ═══════════════════════════════════════════
-// TABS
-// ═══════════════════════════════════════════
-function showTab(id){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
-  const btns = document.querySelectorAll('.nav-btn');
-  btns.forEach(b=>{if(b.getAttribute('onclick').includes(id))b.classList.add('active')});
-  if(id==='overview') renderOverview();
-}
-
-// ═══════════════════════════════════════════
-// MODALS
-// ═══════════════════════════════════════════
-function openModal(id){ document.getElementById('modal-'+id).classList.add('open'); }
-function closeModal(id){ document.getElementById('modal-'+id).classList.remove('open'); }
-function closeModalBg(e,id){ if(e.target===e.currentTarget) closeModal(id); }
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySelectorAll('.modal-bg.open').forEach(m=>m.classList.remove('open')); });
-
-// ═══════════════════════════════════════════
-// TOAST
-// ═══════════════════════════════════════════
-function toast(msg, type=''){
-  const c=document.getElementById('toastContainer');
-  const t=document.createElement('div');
-  t.className='toast '+(type);
-  t.textContent=msg;
-  c.appendChild(t);
-  setTimeout(()=>t.remove(), 3200);
-}
-
-// ═══════════════════════════════════════════
-// OVERVIEW
-// ═══════════════════════════════════════════
-function updateCountdown(){
-  const dep=new Date('2025-05-25T00:00:00');
-  const now=new Date();
-  const diff=dep-now;
-  const el=document.getElementById('countdown');
-  if(!el)return;
-  if(diff<=0){el.textContent='✈️ Trip is happening NOW!';return;}
-  const d=Math.floor(diff/86400000);
-  const h=Math.floor((diff%86400000)/3600000);
-  const m=Math.floor((diff%3600000)/60000);
-  el.textContent=`🗓 Departure in ${d}d ${h}h ${m}m`;
-}
-
-function renderOverview(){
-  const booked = state.items.filter(i=>i.booked).length;
-  const totalItems = state.items.length;
-  const checksDone = state.checks.filter(c=>c.done).length;
-  const totalChecks = state.checks.length;
-  const packingDone = state.checks.filter(c=>c.cat==='packing'&&c.done).length;
-  const totalPacking = state.checks.filter(c=>c.cat==='packing').length;
-
-  document.getElementById('statsGrid').innerHTML=`
-    <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Cities</div></div>
-    <div class="stat-card"><div class="stat-num">14</div><div class="stat-label">Days</div></div>
-    <div class="stat-card"><div class="stat-num">¥1M+</div><div class="stat-label">Est. Budget</div></div>
-    <div class="stat-card"><div class="stat-num">${state.bookings.filter(b=>b.status==='booked').length}/${state.bookings.length}</div><div class="stat-label">Booked</div></div>
-  `;
-
-  function ring(pct,label,color){
-    const r=28,c=2*Math.PI*r,off=c-(pct/100)*c;
-    return `<div class="card" style="text-align:center;padding:16px">
-      <div class="ring-wrap" style="margin:0 auto 6px">
-        <svg width="70" height="70" viewBox="0 0 70 70">
-          <circle cx="35" cy="35" r="${r}" fill="none" stroke="#f3f4f6" stroke-width="8"/>
-          <circle cx="35" cy="35" r="${r}" fill="none" stroke="${color}" stroke-width="8" stroke-dasharray="${c}" stroke-dashoffset="${off}" stroke-linecap="round"/>
-        </svg>
-        <div class="ring-label">${pct}%</div>
+  <!-- Sticky Navigation -->
+  <nav class="sticky-nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#overview" class="nav-link">Overview</a>
+        <a href="#tokyo" class="nav-link">Tokyo</a>
+        <a href="#kyoto" class="nav-link">Kyoto</a>
+        <a href="#hiroshima" class="nav-link">Hiroshima</a>
+        <a href="#osaka" class="nav-link">Osaka</a>
+        <a href="#book-it" class="nav-link">Book It</a>
+        <a href="#food" class="nav-link">Food</a>
+        <a href="#packing" class="nav-link">Pack</a>
       </div>
-      <div style="font-size:.78rem;font-weight:600;color:var(--gray)">${label}</div>
-    </div>`;
-  }
+    </div>
+  </nav>
 
-  document.getElementById('ringsGrid').innerHTML=
-    ring(Math.round(booked/totalItems*100)||0,'Activities Booked','var(--green)')+
-    ring(Math.round(checksDone/totalChecks*100)||0,'Checklist Done','var(--navy)')+
-    ring(Math.round(packingDone/totalPacking*100)||0,'Packed','var(--gold)');
+  <!-- Route Strip -->
+  <section class="route-strip">
+    <h2>🚄 Your Shinkansen Journey</h2>
+    <div class="route-visual">
+      <div class="route-city">
+        <div class="route-city-name">Tokyo</div>
+        <div class="route-city-nights">4 nights</div>
+      </div>
+      <div class="route-connector">
+        <span class="shinkansen-icon">🚅</span>
+        <span class="travel-time">2h 15m</span>
+      </div>
+      <div class="route-city">
+        <div class="route-city-name">Kyoto</div>
+        <div class="route-city-nights">3 nights</div>
+      </div>
+      <div class="route-connector">
+        <span class="shinkansen-icon">🚅</span>
+        <span class="travel-time">45m</span>
+      </div>
+      <div class="route-city">
+        <div class="route-city-name">Hiroshima</div>
+        <div class="route-city-nights">2 nights</div>
+      </div>
+      <div class="route-connector">
+        <span class="shinkansen-icon">🚅</span>
+        <span class="travel-time">1h 30m</span>
+      </div>
+      <div class="route-city">
+        <div class="route-city-name">Osaka</div>
+        <div class="route-city-nights">5 nights</div>
+      </div>
+    </div>
+  </section>
 
-  // Today's plan
-  const today=new Date().toISOString().split('T')[0];
-  const todayItems=state.items.filter(i=>i.date===today);
-  const tc=document.getElementById('todayContent');
-  if(todayItems.length===0){
-    tc.innerHTML=`<p style="color:var(--gray);font-size:.9rem">No activities planned for today — enjoy the planning phase! 🎉</p>`;
-  } else {
-    tc.innerHTML=todayItems.map(i=>`<div style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--light-gray)">
-      <span style="font-size:.75rem;font-weight:700;color:var(--red);text-transform:uppercase;min-width:70px">${i.time}</span>
-      <span style="font-weight:600;font-size:.9rem">${i.name}</span>
-      ${i.cost?`<span class="badge badge-navy" style="margin-left:auto">¥${i.cost.toLocaleString()}</span>`:''}
-    </div>`).join('');
-  }
-}
+  <!-- JR Pass Section -->
+  <section class="jr-pass-section">
+    <div class="jr-pass-card">
+      <h2>🎫 JR Pass – Your Golden Ticket</h2>
+      <p class="jr-pass-price">¥50,000 / ~$330 USD per adult</p>
+      <h3>What&apos;s Covered:</h3>
+      <ul>
+        <li>All JR Shinkansen (bullet trains) except Nozomi &amp; Mizuho</li>
+        <li>JR local trains in all cities</li>
+        <li>JR Ferry to Miyajima Island</li>
+        <li>Narita Express to/from Tokyo</li>
+        <li>JR buses in select areas</li>
+      </ul>
+      <div class="jr-tip">
+        <strong>💡 Pro Tip:</strong> Activate your pass on Day 1 in Tokyo. The pass runs on consecutive calendar days, not 24-hour periods. Pick up at any major JR station with your exchange order.
+      </div>
+    </div>
+  </section>
 
-// ═══════════════════════════════════════════
-// ITINERARY
-// ═══════════════════════════════════════════
-const CITY_ORDER = ['tokyo','kyoto','hiroshima','osaka'];
-const CITY_META = {
-  tokyo:{emoji:'🗼',label:'Tokyo',nights:'4 Nights • May 25–29'},
-  kyoto:{emoji:'⛩️',label:'Kyoto',nights:'3 Nights • May 29–Jun 1'},
-  hiroshima:{emoji:'☮️',label:'Hiroshima & Miyajima',nights:'2 Nights • Jun 1–3'},
-  osaka:{emoji:'🏯',label:'Osaka',nights:'5 Nights • Jun 3–8'}
-};
-const TIME_ORDER = ['morning','afternoon','evening'];
-const TIME_ICONS = {morning:'🌅',afternoon:'☀️',evening:'🌙'};
+  <!-- Tokyo Section -->
+  <section class="city-section" id="tokyo">
+    <div class="container">
+      <div class="city-hero">
+        <div class="city-emoji">🗼</div>
+        <h2>Tokyo</h2>
+        <p class="city-meta">4 Nights • May 25–29</p>
+        <div class="airbnb-tip">
+          🏠 <strong>Stay in Shibuya or Shinjuku</strong> – Central access, family-friendly, great food options
+        </div>
+      </div>
 
-function setFilter(f,el){
-  state.filter=f;
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  el.classList.add('active');
-  renderItinerary();
-}
-
-function renderItinerary(){
-  let items=state.items;
-  if(state.filter==='offbeat') items=items.filter(i=>i.offbeat);
-  else if(state.filter==='unbooked') items=items.filter(i=>!i.booked);
-  else if(['tokyo','kyoto','hiroshima','osaka'].includes(state.filter)) items=items.filter(i=>i.city===state.filter);
-
-  const cities = state.filter==='all'||state.filter==='offbeat'||state.filter==='unbooked'
-    ? CITY_ORDER : [state.filter];
-
-  let html='';
-  cities.forEach(city=>{
-    const cityItems=items.filter(i=>i.city===city);
-    if(!cityItems.length) return;
-    const m=CITY_META[city];
-    html+=`<div class="city-header"><span style="font-size:2rem">${m.emoji}</span><div><h2>${m.label}</h2><p style="color:var(--gray);font-size:.82rem">${m.nights}</p></div></div>`;
-    const days=[...new Set(cityItems.map(i=>i.day))].sort((a,b)=>a-b);
-    days.forEach(day=>{
-      const dayItems=cityItems.filter(i=>i.day===day);
-      const date=dayItems[0]?.date||'';
-      html+=`<div class="day-block">
-        <div class="day-title">Day ${day}${date?` — ${fmtDate(date)}`:''}
-          <button class="btn btn-primary btn-sm" style="font-size:.72rem" onclick="prefillDay('${city}',${day},'${date}')">+ Add</button>
-        </div>`;
-      TIME_ORDER.forEach(time=>{
-        const tItems=dayItems.filter(i=>i.time===time);
-        if(!tItems.length) return;
-        html+=`<div class="time-section"><div class="time-label">${TIME_ICONS[time]} ${time}</div>`;
-        tItems.forEach(it=>{
-          const borderColor=it.booked?'var(--green)':it.offbeat?'var(--gold)':it.veg?'#4caf50':'var(--light-gray)';
-          html+=`<div class="item-card" id="item-${it.id}" style="border-left-color:${borderColor};${it.booked?'background:#f0faf3':''}">
-            <div class="item-info">
-              <div class="item-name">${it.name}</div>
-              ${it.desc?`<div class="item-desc">${it.desc}</div>`:''}
-              <div class="item-meta">
-                ${it.cost?`<span class="badge badge-navy">¥${it.cost.toLocaleString()}</span>`:''}
-                ${it.dur?`<span class="badge badge-gray">⏱ ${it.dur<60?it.dur+'m':Math.floor(it.dur/60)+'h'+(it.dur%60?''+it.dur%60+'m':'')} `+'</span>':''}
-                ${it.offbeat?'<span class="badge badge-gold">🔮 Offbeat</span>':''}
-                ${it.veg?'<span class="badge badge-green">🥬 Veg</span>':''}
-                ${it.booked?'<span class="badge badge-green">✅ Booked</span>':''}
+      <div class="day-cards">
+        <!-- Day 1 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 1 – Shimokitazawa Wander</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Arrive at Narita/Haneda
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">Take Narita Express (JR Pass!) to Shibuya. Check into Airbnb and freshen up.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2-3 hours</span>
+                  <span>💴 Free with JR Pass</span>
+                </div>
               </div>
             </div>
-            <div class="item-actions">
-              <button class="btn-icon" title="${it.booked?'Mark unbooked':'Mark booked'}" onclick="toggleBooked('${it.id}')">${it.booked?'🔓':'✅'}</button>
-              ${it.url?`<a href="${it.url}" target="_blank" class="btn-icon" title="Book Now">🔗</a>`:''}
-              <button class="btn-icon" title="Delete" onclick="deleteItem('${it.id}')">🗑</button>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">Shimokitazawa Exploration</div>
+                <div class="activity-desc">Tokyo&apos;s coolest bohemian neighbourhood. Vintage shops, indie cafes, street art, and chill vibes. Perfect jet-lag friendly wandering.</div>
+                <div class="activity-meta">
+                  <span>⏱ 3-4 hours</span>
+                  <span>💴 Free (shopping extra)</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">
+                  Café lunch at Bear Pond Espresso
+                  <span class="tag tag-veg">🥬 VEG PICK</span>
+                </div>
+                <div class="activity-desc">Famous coffee spot with vegetarian pastries and light bites.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 ¥1,500/person</span>
+                </div>
+              </div>
             </div>
-          </div>`;
-        });
-        html+='</div>';
+            <div class="time-block">
+              <div class="time-label">🌙 Evening</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Afuri Ramen Ebisu
+                  <span class="tag tag-veg">🥬 VEG PICK</span>
+                </div>
+                <div class="activity-desc">Famous yuzu shio ramen with vegetarian/vegan options. Light, citrusy, refreshing.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 ¥1,200/bowl</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 2 – Yanaka Old Town + Nezu Shrine</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Yanaka Ginza Shopping Street
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">Step back in time in Tokyo&apos;s old-school neighbourhood. Traditional shops, cat statues everywhere, and zero tourists.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Nezu Shrine
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">One of Tokyo&apos;s oldest shrines with stunning azalea garden and thousands of mini torii gates (mini Fushimi Inari!).</div>
+                <div class="activity-meta">
+                  <span>⏱ 1.5 hours</span>
+                  <span>💴 ¥200 garden entry</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">
+                  Kayaba Coffee
+                  <span class="tag tag-veg">🥬 VEG PICK</span>
+                </div>
+                <div class="activity-desc">100-year-old coffee house in a preserved wooden building. Egg sandwiches and fluffy pancakes.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 ¥1,000/person</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌙 Evening</div>
+              <div class="activity">
+                <div class="activity-name">Ueno Park Sunset Stroll</div>
+                <div class="activity-desc">Beautiful park walk, street performers, and temple hopping as the sun sets.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 3 – Street Go-Kart + Shibuya Sky Night</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">Meiji Shrine</div>
+                <div class="activity-desc">Peaceful forest shrine in the heart of Shibuya. Write wishes on wooden plaques.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1.5 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Street Go-Kart Experience
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">Drive real go-karts through Tokyo streets in costume! Book JAPANKART for the best experience. International license required.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2-3 hours</span>
+                  <span>💴 ¥10,000/person</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌙 Evening</div>
+              <div class="activity">
+                <div class="activity-name">Shibuya Sky Observation Deck</div>
+                <div class="activity-desc">360° rooftop views of Tokyo skyline at sunset. Book sunset slot for best experience.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1.5 hours</span>
+                  <span>💴 ¥2,200/person</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">
+                  Shibuya Crossing + Dinner
+                  <span class="tag tag-veg">🥬 VEG PICK</span>
+                </div>
+                <div class="activity-desc">Watch the famous crossing from Starbucks, then vegetarian dinner at Ain Soph Journey.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 ¥3,000/person</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 4 – TeamLab Planets + Odaiba</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">TeamLab Planets</div>
+                <div class="activity-desc">Immersive digital art museum – wade through water, walk through infinity. Book 9-10am slot to avoid crowds.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2-3 hours</span>
+                  <span>💴 ¥3,800/person</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">Odaiba Island Exploration</div>
+                <div class="activity-desc">Futuristic island with rainbow bridge views, giant Gundam statue, and beach vibes.</div>
+                <div class="activity-meta">
+                  <span>⏱ 3-4 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">
+                  DiverCity Food Court
+                  <span class="tag tag-veg">🥬 VEG PICK</span>
+                </div>
+                <div class="activity-desc">Multiple vegetarian options in this mall&apos;s food court including curry, udon, and more.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 ¥1,500/person</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌙 Evening</div>
+              <div class="activity">
+                <div class="activity-name">Pack &amp; Prepare for Kyoto</div>
+                <div class="activity-desc">Early Shinkansen tomorrow! Pack bags, organize JR Pass, and rest up.</div>
+                <div class="activity-meta">
+                  <span>⏱ Evening</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kyoto Section -->
+  <section class="city-section" id="kyoto">
+    <div class="container">
+      <div class="city-hero">
+        <div class="city-emoji">⛩️</div>
+        <h2>Kyoto</h2>
+        <p class="city-meta">3 Nights • May 29 – June 1</p>
+        <div class="airbnb-tip">
+          🏠 <strong>Stay in Gion or Higashiyama</strong> – Traditional machiya houses, walking distance to temples
+        </div>
+      </div>
+
+      <div class="day-cards">
+        <!-- Day 5 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 5 – Fushimi Inari Dawn</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Early Morning (5:30am!)</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Fushimi Inari at Dawn
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">Beat ALL the crowds. Arrive 5:30am for magical empty torii gates and sunrise light. Worth the early wake!</div>
+                <div class="activity-meta">
+                  <span>⏱ 2-3 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Late Morning</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Vermillion Cafe Breakfast
+                  <span class="tag tag-veg">🥬 VEG PICK</span>
+                </div>
+                <div class="activity-desc">Right at Fushimi Inari base. Great coffee and vegetarian breakfast with shrine views.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 ¥1,200/person</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">Nap + Check into Kyoto Airbnb</div>
+                <div class="activity-desc">You earned it after that early morning! Rest up in your machiya townhouse.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2-3 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">Gion District Walk</div>
+                <div class="activity-desc">Evening geisha district stroll. Spot maiko (apprentice geisha) on their way to appointments.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌙 Evening</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Okutan Nanzenji
+                  <span class="tag tag-veg">🥬 VEG PICK</span>
+                </div>
+                <div class="activity-desc">400-year-old tofu restaurant in temple grounds. Traditional yudofu (hot pot tofu) course. BOOK AHEAD!</div>
+                <div class="activity-meta">
+                  <span>⏱ 1.5 hours</span>
+                  <span>💴 ¥3,500/person</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 6 – Arashiyama Offbeat</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">Bamboo Grove (Early!)</div>
+                <div class="activity-desc">Arrive by 7am to experience the grove without crowds. Magical morning light.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">
+                  Gio-ji Temple
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">Hidden moss temple that most tourists miss. Incredibly peaceful thatched-roof temple covered in moss.</div>
+                <div class="activity-meta">
+                  <span>⏱ 45 min</span>
+                  <span>💴 ¥300</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Hozugawa River Boat Ride
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">Traditional wooden boat down the river with boatmen using poles. Stunning gorge scenery.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 ¥4,100/person</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">
+                  Arashiyama Yoshimura
+                  <span class="tag tag-veg">🥬 VEG PICK</span>
+                </div>
+                <div class="activity-desc">Soba noodle restaurant with river views. Ask for vegetarian tempura soba.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 ¥1,500/person</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌙 Evening</div>
+              <div class="activity">
+                <div class="activity-name">Monkey Park Iwatayama</div>
+                <div class="activity-desc">Hilltop park with 120 wild monkeys and panoramic Kyoto views. Fun for kids!</div>
+                <div class="activity-meta">
+                  <span>⏱ 1.5 hours</span>
+                  <span>💴 ¥550/person</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 7 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 7 – Nara Day Trip</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">Train to Nara</div>
+                <div class="activity-desc">45-minute JR train from Kyoto. Free with JR Pass!</div>
+                <div class="activity-meta">
+                  <span>⏱ 45 min</span>
+                  <span>💴 Free with JR Pass</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">Nara Park + Deer</div>
+                <div class="activity-desc">Meet the famous bowing deer! Buy deer crackers (shika senbei) and make friends.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 ¥200 for crackers</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">Todai-ji Temple</div>
+                <div class="activity-desc">World&apos;s largest wooden building with giant bronze Buddha. Mind-blowing scale.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1.5 hours</span>
+                  <span>💴 ¥600/person</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">
+                  Naramachi Walking
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">Traditional merchant district with edo-period houses, craft shops, and hidden cafes.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌙 Evening</div>
+              <div class="activity">
+                <div class="activity-name">Return to Kyoto</div>
+                <div class="activity-desc">Relax evening in Kyoto. Explore Pontocho alley for dinner or grab konbini snacks.</div>
+                <div class="activity-meta">
+                  <span>⏱ Evening</span>
+                  <span>💴 Varies</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hiroshima Section -->
+  <section class="city-section" id="hiroshima">
+    <div class="container">
+      <div class="city-hero">
+        <div class="city-emoji">☮️</div>
+        <h2>Hiroshima + Miyajima</h2>
+        <p class="city-meta">2 Nights • June 1–3</p>
+        <div class="airbnb-tip">
+          🏠 <strong>Night 1: Hiroshima City</strong> • <strong>Night 2: Miyajima Ryokan</strong> (traditional inn)
+        </div>
+      </div>
+
+      <div class="day-cards">
+        <!-- Day 8 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 8 – Hiroshima City</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">Shinkansen Kyoto → Hiroshima</div>
+                <div class="activity-desc">1.5 hour bullet train ride. Grab ekiben (train bento) for the journey!</div>
+                <div class="activity-meta">
+                  <span>⏱ 1.5 hours</span>
+                  <span>💴 Free with JR Pass</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">Peace Memorial Park</div>
+                <div class="activity-desc">Atomic Bomb Dome, Peace Memorial Museum, Children&apos;s Peace Monument. Heavy but essential.</div>
+                <div class="activity-meta">
+                  <span>⏱ 3 hours</span>
+                  <span>💴 ¥200 museum</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Shukkeien Garden
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">Beautiful Edo-period garden that survived the bombing. Peaceful contrast to the morning.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 ¥260</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">
+                  Nagata-ya Vegan Okonomiyaki
+                  <span class="tag tag-veg">🥬 VEG PICK</span>
+                </div>
+                <div class="activity-desc">Hiroshima-style layered okonomiyaki with vegan options available. Local institution.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 ¥1,200/person</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌙 Evening</div>
+              <div class="activity">
+                <div class="activity-name">Hiroshima Night Walk</div>
+                <div class="activity-desc">Stroll along the river, see the Peace Dome lit up at night. Reflect on the day.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 9 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 9 – Miyajima Island Magic</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">Ferry to Miyajima</div>
+                <div class="activity-desc">JR Ferry from Miyajimaguchi (free with JR Pass). 10-minute scenic ride.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour total</span>
+                  <span>💴 Free with JR Pass</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">Floating Torii Gate</div>
+                <div class="activity-desc">Iconic vermillion gate in the water. Check tide times – low tide lets you walk to it!</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Mt. Misen Hike/Ropeway
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">Sacred mountain with wild deer and monkeys. Take ropeway up, hike down for best views.</div>
+                <div class="activity-meta">
+                  <span>⏱ 3-4 hours</span>
+                  <span>💴 ¥1,840 ropeway</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌙 Evening</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Check into Iwaso Ryokan
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">150-year-old traditional inn. Includes kaiseki dinner (request vegetarian), onsen bath, futon sleeping.</div>
+                <div class="activity-meta">
+                  <span>⏱ Evening</span>
+                  <span>💴 ~¥35,000/room</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌙 Night</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Night Torii Gate View
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">After day-trippers leave, walk to the lit-up torii gate. Almost no one around. Magical.</div>
+                <div class="activity-meta">
+                  <span>⏱ 30 min</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 10 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 10 – Miyajima Sunrise → Osaka</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Very Early Morning (5:30am)</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Sunrise at Torii Gate
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">Wake at 5am, walk to the torii gate for sunrise. You&apos;ll likely be alone. Unforgettable.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">Ryokan Breakfast + Checkout</div>
+                <div class="activity-desc">Traditional Japanese breakfast included. Pack up and ferry back to mainland.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 Included</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">Shinkansen → Osaka</div>
+                <div class="activity-desc">1.5 hour ride to Shin-Osaka. Check into your final Airbnb in Namba or Shinsaibashi.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours total</span>
+                  <span>💴 Free with JR Pass</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Osaka Section -->
+  <section class="city-section" id="osaka">
+    <div class="container">
+      <div class="city-hero">
+        <div class="city-emoji">🏯</div>
+        <h2>Osaka</h2>
+        <p class="city-meta">5 Nights • June 3–8</p>
+        <div class="airbnb-tip">
+          🏠 <strong>Stay in Namba or Shinsaibashi</strong> – Best food scene, nightlife, and metro access
+        </div>
+      </div>
+
+      <div class="day-cards">
+        <!-- Day 11 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 11 – Shinsekai + Osaka Castle</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">Osaka Castle</div>
+                <div class="activity-desc">Iconic castle with beautiful park. Museum inside shows Osaka history.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2-3 hours</span>
+                  <span>💴 ¥600</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Shinsekai District
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">Retro neon district with Tsutenkaku Tower. Feels like 1960s Japan. Kitschy and fun.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2-3 hours</span>
+                  <span>💴 Free (tower ¥900)</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">
+                  Kushikatsu (Veggie Skewers)
+                  <span class="tag tag-veg">🥬 VEG PICK</span>
+                </div>
+                <div class="activity-desc">Shinsekai specialty. Some places have vegetable-only skewers deep fried to perfection.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 ¥1,500/person</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌙 Evening</div>
+              <div class="activity">
+                <div class="activity-name">Spa World</div>
+                <div class="activity-desc">Giant onsen theme park with baths from around the world. Great for families.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2-3 hours</span>
+                  <span>💴 ¥1,500/person</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 12 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 12 – Nakazakicho + Kuromon Market</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Nakazakicho
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">Osaka&apos;s hipster village. Converted old houses into cafes, galleries, and vintage shops. Zero tourists.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2-3 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">
+                  Salon de Amanto Cafe
+                  <span class="tag tag-veg">🥬 VEG PICK</span>
+                </div>
+                <div class="activity-desc">Cute retro cafe in a renovated house. Vegetarian lunch plates and great coffee.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 ¥1,200/person</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">Kuromon Market</div>
+                <div class="activity-desc">&quot;Osaka&apos;s Kitchen&quot; – 170+ stalls of street food. Lots of veggie options including tamagoyaki (egg omelette).</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 ¥2,000 grazing</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌙 Evening</div>
+              <div class="activity">
+                <div class="activity-name">Dotonbori Night Walk</div>
+                <div class="activity-desc">Neon wonderland! Glico Running Man, canal reflections, street performers. Peak Osaka energy.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2-3 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 13 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 13 – Sumiyoshi Taisha + Amerika-Mura</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Sumiyoshi Taisha
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">One of Japan&apos;s oldest shrines with unique Sumiyoshi architectural style. Iconic arched bridge.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1.5 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">Amerika-Mura (Ame-Mura)</div>
+                <div class="activity-desc">Osaka&apos;s youth culture hub. Street fashion, record stores, and wild energy. Japanese Harajuku.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2-3 hours</span>
+                  <span>💴 Free (shopping extra)</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">
+                  Triangle Park People Watching
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">The heart of Ame-Mura. Grab taiyaki and watch Osaka&apos;s coolest kids hang out.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1 hour</span>
+                  <span>💴 ¥300</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">🌙 Evening</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Shinsaibashi Shopping Arcade
+                </div>
+                <div class="activity-desc">600m covered shopping street. Great for souvenirs, fashion, and late-night shopping.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 Varies</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 14 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 14 – Optional: Kobe Day Trip</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">JR to Kobe</div>
+                <div class="activity-desc">30 minutes from Osaka. Beautiful port city with mountain backdrop.</div>
+                <div class="activity-meta">
+                  <span>⏱ 30 min</span>
+                  <span>💴 Free with JR Pass</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">
+                  Kitano Ijinkan
+                  <span class="tag tag-gem">🔮 OFFBEAT</span>
+                </div>
+                <div class="activity-desc">District of Western-style houses from the Meiji era. Feels like Europe in Japan.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 ~¥500/house</span>
+                </div>
+              </div>
+            </div>
+            <div class="time-block">
+              <div class="time-label">☀️ Afternoon</div>
+              <div class="activity">
+                <div class="activity-name">
+                  Nankinmachi (Chinatown)
+                  <span class="tag tag-veg">🥬 VEG PICK</span>
+                </div>
+                <div class="activity-desc">Japan&apos;s oldest Chinatown. Great for vegetarian options – Buddhist veg restaurants here!</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 ¥1,500/person</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">Kobe Harborland</div>
+                <div class="activity-desc">Waterfront area with shopping, ferris wheel, and great views of the port.</div>
+                <div class="activity-meta">
+                  <span>⏱ 2 hours</span>
+                  <span>💴 Free</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 15 -->
+        <div class="day-card">
+          <div class="day-header" onclick="toggleDay(this)">
+            <h3>Day 15 – Departure Day</h3>
+            <span class="day-toggle">▼</span>
+          </div>
+          <div class="day-content">
+            <div class="time-block">
+              <div class="time-label">🌅 Morning</div>
+              <div class="activity">
+                <div class="activity-name">Last Konbini Run</div>
+                <div class="activity-desc">Stock up on Japanese snacks, Kit-Kats, and instant noodles for home. Family Mart or 7-Eleven.</div>
+                <div class="activity-meta">
+                  <span>⏱ 30 min</span>
+                  <span>💴 Varies</span>
+                </div>
+              </div>
+              <div class="activity">
+                <div class="activity-name">Kansai Airport (KIX)</div>
+                <div class="activity-desc">Take Haruka Express from Tennoji or Nankai from Namba. Arrive 3 hours before flight.</div>
+                <div class="activity-meta">
+                  <span>⏱ 1-1.5 hours</span>
+                  <span>💴 ~¥1,500</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Book It Section -->
+  <section class="book-section" id="book-it">
+    <div class="container">
+      <h2>📋 Book It – Reservation Tracker</h2>
+      <div class="booking-grid" id="booking-grid">
+        <!-- Cards will be generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Stays Section -->
+  <section class="stays-section" id="stays">
+    <div class="container">
+      <h2>🏠 Where to Stay – Airbnb Guide</h2>
+      <div class="filter-pills">
+        <button class="filter-pill active" data-filter="all">All Cities</button>
+        <button class="filter-pill" data-filter="tokyo">Tokyo</button>
+        <button class="filter-pill" data-filter="kyoto">Kyoto</button>
+        <button class="filter-pill" data-filter="hiroshima">Hiroshima</button>
+        <button class="filter-pill" data-filter="osaka">Osaka</button>
+      </div>
+      <div class="stays-grid" id="stays-grid">
+        <!-- Cards will be generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Food Section -->
+  <section class="food-section" id="food">
+    <div class="container">
+      <h2>🥬 Vegetarian Food Bible</h2>
+      <p class="food-subtitle">Eggs OK • Vegetarian &amp; Vegan options marked</p>
+      <div class="food-tabs">
+        <button class="food-tab active" data-city="tokyo">Tokyo</button>
+        <button class="food-tab" data-city="kyoto">Kyoto</button>
+        <button class="food-tab" data-city="hiroshima">Hiroshima</button>
+        <button class="food-tab" data-city="osaka">Osaka</button>
+      </div>
+      <div id="food-container">
+        <!-- Food cards will be generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Packing Section -->
+  <section class="packing-section" id="packing">
+    <div class="container">
+      <h2>🎒 Packing Checklist</h2>
+      <div class="progress-container">
+        <p class="progress-text"><span id="packed-count">0</span> of <span id="total-count">0</span> items packed (<span id="packed-percent">0</span>%)</p>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <div class="packing-grid" id="packing-grid">
+        <!-- Packing categories will be generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Budget Section -->
+  <section class="budget-section" id="budget">
+    <div class="container">
+      <h2>💴 Budget Breakdown</h2>
+      <div class="budget-controls">
+        <label for="family-size">Family Size:</label>
+        <select id="family-size">
+          <option value="2">2 people</option>
+          <option value="3">3 people</option>
+          <option value="4" selected>4 people</option>
+          <option value="5">5 people</option>
+          <option value="6">6 people</option>
+        </select>
+      </div>
+      <div class="budget-table" id="budget-table">
+        <!-- Budget rows will be generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="timeline-section" id="timeline">
+    <div class="container">
+      <h2>📅 Pre-Trip Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2 Months Before</div>
+          <div class="timeline-tasks">
+            <div class="timeline-task">Book flights to Tokyo (NRT/HND)</div>
+            <div class="timeline-task">Purchase JR Pass online</div>
+            <div class="timeline-task">Book all Airbnbs (4 locations)</div>
+            <div class="timeline-task">Book Miyajima Ryokan (Iwaso)</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1 Month Before</div>
+          <div class="timeline-tasks">
+            <div class="timeline-task">Book TeamLab Planets tickets</div>
+            <div class="timeline-task">Book Shibuya Sky sunset slot</div>
+            <div class="timeline-task">Book Street Go-Kart (JAPANKART)</div>
+            <div class="timeline-task">Reserve Okutan Nanzenji tofu dinner</div>
+            <div class="timeline-task">Get International Driving Permits</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2 Weeks Before</div>
+          <div class="timeline-tasks">
+            <div class="timeline-task">Download Google Maps offline (all cities)</div>
+            <div class="timeline-task">Download Google Translate (Japanese offline)</div>
+            <div class="timeline-task">Set up mobile payment (IC card or Suica)</div>
+            <div class="timeline-task">Print JR Pass exchange order</div>
+            <div class="timeline-task">Confirm all reservations</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Day Before</div>
+          <div class="timeline-tasks">
+            <div class="timeline-task">Pack bags (use checklist above!)</div>
+            <div class="timeline-task">Charge all devices</div>
+            <div class="timeline-task">Print/save all booking confirmations</div>
+            <div class="timeline-task">Set alarm for early airport departure</div>
+            <div class="timeline-task">Get excited! 🎉</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with ❤️ for Family Chali&apos;s Japan Adventure 2025</p>
+    <p style="margin-top: 10px; font-size: 0.9rem;">Safe travels! いってらっしゃい!</p>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    // ==================== DATA ====================
+    const bookingData = [
+      {
+        id: 'teamlab',
+        name: 'TeamLab Planets',
+        priority: 'now',
+        desc: 'Book 9-10am slot for fewest crowds. Sells out weeks ahead!',
+        url: 'https://www.teamlab.art/e/planets/'
+      },
+      {
+        id: 'gokart',
+        name: 'Street Go-Kart (JAPANKART)',
+        priority: 'now',
+        desc: 'International license required. Book afternoon slot for best photos.',
+        url: 'https://www.japan-kart.com/'
+      },
+      {
+        id: 'shibuya',
+        name: 'Shibuya Sky',
+        priority: 'soon',
+        desc: 'Book sunset time slot (around 6pm) for best views.',
+        url: 'https://www.shibuya-scramble-square.com/sky/'
+      },
+      {
+        id: 'iwaso',
+        name: 'Iwaso Ryokan (Miyajima)',
+        priority: 'now',
+        desc: 'Historic 150-year-old inn. Request vegetarian kaiseki dinner.',
+        url: 'https://www.iwaso.com/en/'
+      },
+      {
+        id: 'jrpass',
+        name: 'JR Pass (14-day)',
+        priority: 'soon',
+        desc: 'Buy online, get voucher shipped, exchange at JR station in Japan.',
+        url: 'https://www.jrpass.com/'
+      },
+      {
+        id: 'okutan',
+        name: 'Okutan Nanzenji',
+        priority: 'soon',
+        desc: '400-year-old tofu restaurant. Call or email to reserve.',
+        url: 'http://www.okutan.co.jp/'
+      },
+      {
+        id: 'shojin',
+        name: 'Seigen-in Shojin Ryori',
+        priority: 'flex',
+        desc: 'Temple vegetarian cuisine in Kyoto. Book 1 week ahead.',
+        url: 'https://maps.google.com/?q=Seigen-in+Kyoto'
+      }
+    ];
+
+    const staysData = [
+      {
+        city: 'tokyo',
+        name: 'Shibuya / Shinjuku',
+        desc: 'Best for first-timers. Central location, easy metro access, tons of restaurants.',
+        tags: ['Family-friendly', 'Has Kitchen', 'Near Station'],
+        price: '¥15,000-25,000/night'
+      },
+      {
+        city: 'tokyo',
+        name: 'Shimokitazawa',
+        desc: 'Bohemian vibe, quieter streets, local cafes. 5 min to Shibuya.',
+        tags: ['Has Kitchen', 'Near Station'],
+        price: '¥12,000-18,000/night'
+      },
+      {
+        city: 'kyoto',
+        name: 'Gion / Higashiyama',
+        desc: 'Traditional area near temples. Look for machiya (townhouse) rentals.',
+        tags: ['Family-friendly', 'Has Kitchen'],
+        price: '¥18,000-30,000/night'
+      },
+      {
+        city: 'kyoto',
+        name: 'Kyoto Station Area',
+        desc: 'Most convenient for JR trains. Modern apartments available.',
+        tags: ['Near Station', 'Has Kitchen'],
+        price: '¥14,000-22,000/night'
+      },
+      {
+        city: 'hiroshima',
+        name: 'Peace Park Area',
+        desc: 'Walking distance to main sights. One night before Miyajima.',
+        tags: ['Near Station', 'Family-friendly'],
+        price: '¥10,000-15,000/night'
+      },
+      {
+        city: 'osaka',
+        name: 'Namba / Shinsaibashi',
+        desc: 'Best food scene, Dotonbori walking distance, great nightlife.',
+        tags: ['Family-friendly', 'Has Kitchen', 'Near Station'],
+        price: '¥15,000-25,000/night'
+      },
+      {
+        city: 'osaka',
+        name: 'Tennoji',
+        desc: 'Near zoo, cheaper than Namba, good metro connections.',
+        tags: ['Family-friendly', 'Near Station'],
+        price: '¥10,000-18,000/night'
+      }
+    ];
+
+    const foodData = {
+      tokyo: [
+        { name: 'Afuri Ramen', dish: 'Yuzu Shio Vegan Ramen', type: 'vegan', price: '¥1,200', maps: 'https://maps.google.com/?q=Afuri+Ramen+Ebisu' },
+        { name: 'Ain Soph Journey', dish: 'Vegan Burgers & Pancakes', type: 'vegan', price: '¥1,500-2,500', maps: 'https://maps.google.com/?q=Ain+Soph+Journey+Shinjuku' },
+        { name: 'T\'s TanTan', dish: 'Vegan Tantanmen', type: 'vegan', price: '¥1,000', maps: 'https://maps.google.com/?q=Ts+TanTan+Tokyo+Station' },
+        { name: 'Soranoiro', dish: 'Veggie Soba Ramen', type: 'veg', price: '¥1,100', maps: 'https://maps.google.com/?q=Soranoiro+Ramen+Tokyo' },
+        { name: 'Kayaba Coffee', dish: 'Egg Sandwich & Pancakes', type: 'veg', price: '¥800-1,200', maps: 'https://maps.google.com/?q=Kayaba+Coffee+Yanaka' },
+        { name: 'Brown Rice by Neal\'s Yard', dish: 'Organic Veg Set Meal', type: 'veg', price: '¥1,500', maps: 'https://maps.google.com/?q=Brown+Rice+Omotesando' }
+      ],
+      kyoto: [
+        { name: 'Okutan Nanzenji', dish: 'Yudofu (Hot Pot Tofu)', type: 'veg', price: '¥3,500', maps: 'https://maps.google.com/?q=Okutan+Nanzenji' },
+        { name: 'Shigetsu (Tenryuji)', dish: 'Temple Shojin Ryori', type: 'vegan', price: '¥3,300-5,500', maps: 'https://maps.google.com/?q=Shigetsu+Tenryuji' },
+        { name: 'Vermillion Cafe', dish: 'Veggie Breakfast', type: 'veg', price: '¥1,200', maps: 'https://maps.google.com/?q=Vermillion+Cafe+Fushimi' },
+        { name: 'Arashiyama Yoshimura', dish: 'Tempura Soba', type: 'veg', price: '¥1,500', maps: 'https://maps.google.com/?q=Yoshimura+Arashiyama' },
+        { name: 'Falafel Garden', dish: 'Falafel Plates', type: 'vegan', price: '¥1,000', maps: 'https://maps.google.com/?q=Falafel+Garden+Kyoto' },
+        { name: 'Veg Out', dish: 'Vegan Burgers', type: 'vegan', price: '¥1,200', maps: 'https://maps.google.com/?q=Veg+Out+Kyoto' }
+      ],
+      hiroshima: [
+        { name: 'Nagata-ya', dish: 'Veggie Okonomiyaki', type: 'veg', price: '¥1,200', maps: 'https://maps.google.com/?q=Nagataya+Hiroshima' },
+        { name: 'Lopez (Hiroshima)', dish: 'Okonomiyaki (no meat)', type: 'veg', price: '¥1,000', maps: 'https://maps.google.com/?q=Lopez+Okonomiyaki+Hiroshima' },
+        { name: 'Okonomi-mura (Building)', dish: 'Various vendors', type: 'veg', price: '¥800-1,500', maps: 'https://maps.google.com/?q=Okonomi-mura+Hiroshima' },
+        { name: 'Miyajima Coffee', dish: 'Light bites & coffee', type: 'veg', price: '¥600-900', maps: 'https://maps.google.com/?q=Miyajima+Coffee' }
+      ],
+      osaka: [
+        { name: 'Salon de Amanto', dish: 'Veggie Lunch Plates', type: 'veg', price: '¥1,200', maps: 'https://maps.google.com/?q=Salon+de+Amanto+Nakazakicho' },
+        { name: 'Paprika Shokudo', dish: 'Vegan Set Meals', type: 'vegan', price: '¥1,200', maps: 'https://maps.google.com/?q=Paprika+Shokudo+Osaka' },
+        { name: 'Green Earth', dish: 'Organic Vegan Cafe', type: 'vegan', price: '¥1,000-1,500', maps: 'https://maps.google.com/?q=Green+Earth+Osaka' },
+        { name: 'Nankinmachi Veg Options', dish: 'Buddhist Chinese Veg', type: 'veg', price: '¥800-1,500', maps: 'https://maps.google.com/?q=Kobe+Chinatown' },
+        { name: 'Kuromon Market Stalls', dish: 'Tamagoyaki, Fruit, Pickles', type: 'veg', price: '¥300-800', maps: 'https://maps.google.com/?q=Kuromon+Market+Osaka' }
+      ]
+    };
+
+    const packingData = {
+      'Documents 📄': [
+        'Passports (valid 6+ months)',
+        'Flight confirmations',
+        'JR Pass exchange order',
+        'Airbnb confirmations',
+        'International Driving Permit',
+        'Travel insurance docs',
+        'Credit cards (notify bank!)',
+        'Cash (¥50,000+ for arrival)'
+      ],
+      'Clothing 👕': [
+        'Comfortable walking shoes',
+        'Rain jacket (June = rainy season)',
+        'Light layers',
+        'Modest temple clothes',
+        'Swimwear (onsen)',
+        'Socks (no holes - temples!)',
+        'Hat/sun protection'
+      ],
+      'Tech 📱': [
+        'Phone + charger',
+        'Portable battery pack',
+        'Japan power adapter (Type A)',
+        'Camera + charger',
+        'Download offline maps',
+        'Download Google Translate'
+      ],
+      'Activities 🎯': [
+        'Day backpack',
+        'Reusable water bottle',
+        'Pocket tissues (no paper towels!)',
+        'Small towel (handkerchief)',
+        'Sunscreen',
+        'Bug spray (Miyajima)'
+      ],
+      'Meds/Toiletries 💊': [
+        'Prescriptions',
+        'Motion sickness meds',
+        'Pain relievers',
+        'Allergy meds',
+        'Hand sanitizer',
+        'Toothbrush/toiletries'
+      ]
+    };
+
+    const budgetData = [
+      { emoji: '🏠', name: 'Accommodation (14 nights)', perPerson: 80000 },
+      { emoji: '🚄', name: 'Transport (JR Pass + local)', perPerson: 55000 },
+      { emoji: '🍜', name: 'Food (¥4,000/day avg)', perPerson: 56000 },
+      { emoji: '🎫', name: 'Activities & Entry Fees', perPerson: 25000 },
+      { emoji: '🛍️', name: 'Shopping & Souvenirs', perPerson: 30000 },
+      { emoji: '📱', name: 'Misc (SIM, tips, etc)', perPerson: 10000 }
+    ];
+
+    // ==================== INITIALIZATION ====================
+    document.addEventListener('DOMContentLoaded', function() {
+      createSakura();
+      initBookings();
+      initStays();
+      initFood();
+      initPacking();
+      initBudget();
+      initScrollEffects();
+      initMobileCards();
+    });
+
+    // ==================== SAKURA ANIMATION ====================
+    function createSakura() {
+      const container = document.getElementById('sakura-container');
+      const petals = 15;
+      
+      for (let i = 0; i < petals; i++) {
+        const petal = document.createElement('div');
+        petal.className = 'sakura';
+        petal.innerHTML = '🌸';
+        petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.fontSize = (Math.random() * 15 + 10) + 'px';
+        petal.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        petal.style.animationDelay = (Math.random() * 10) + 's';
+        container.appendChild(petal);
+      }
+    }
+
+    // ==================== BOOKING CARDS ====================
+    function initBookings() {
+      const grid = document.getElementById('booking-grid');
+      const booked = JSON.parse(localStorage.getItem('japanBooked') || '{}');
+      
+      bookingData.forEach(item => {
+        const isBooked = booked[item.id] || false;
+        const priorityText = item.priority === 'now' ? '🔴 Book NOW' : 
+                            item.priority === 'soon' ? '🟡 Book Soon' : '🟢 Flexible';
+        const priorityClass = item.priority === 'now' ? 'priority-now' : 
+                             item.priority === 'soon' ? 'priority-soon' : 'priority-flex';
+        
+        const card = document.createElement('div');
+        card.className = `booking-card ${isBooked ? 'booked' : ''}`;
+        card.innerHTML = `
+          <div class="booking-priority ${priorityClass}">${priorityText}</div>
+          <h4>${item.name}</h4>
+          <p class="booking-desc">${item.desc}</p>
+          <div class="booking-actions">
+            <a href="${item.url}" target="_blank" class="btn btn-primary">Book Now →</a>
+            <button class="btn ${isBooked ? 'btn-booked' : 'btn-outline'}" onclick="toggleBooked('${item.id}', this)">
+              ${isBooked ? '✓ Booked' : 'Mark Booked'}
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
       });
-      html+='</div>';
+    }
+
+    function toggleBooked(id, btn) {
+      const booked = JSON.parse(localStorage.getItem('japanBooked') || '{}');
+      booked[id] = !booked[id];
+      localStorage.setItem('japanBooked', JSON.stringify(booked));
+      
+      const card = btn.closest('.booking-card');
+      card.classList.toggle('booked');
+      btn.classList.toggle('btn-booked');
+      btn.classList.toggle('btn-outline');
+      btn.textContent = booked[id] ? '✓ Booked' : 'Mark Booked';
+    }
+
+    // ==================== STAYS CARDS ====================
+    function initStays() {
+      const grid = document.getElementById('stays-grid');
+      renderStays('all');
+      
+      document.querySelectorAll('.filter-pill').forEach(pill => {
+        pill.addEventListener('click', function() {
+          document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+          this.classList.add('active');
+          renderStays(this.dataset.filter);
+        });
+      });
+    }
+
+    function renderStays(filter) {
+      const grid = document.getElementById('stays-grid');
+      grid.innerHTML = '';
+      
+      const filtered = filter === 'all' ? staysData : staysData.filter(s => s.city === filter);
+      
+      filtered.forEach(stay => {
+        const card = document.createElement('div');
+        card.className = 'stay-card';
+        card.innerHTML = `
+          <div class="stay-city">${stay.city}</div>
+          <h4>${stay.name}</h4>
+          <p class="stay-desc">${stay.desc}</p>
+          <div class="stay-tags">
+            ${stay.tags.map(tag => `<span class="stay-tag">${tag}</span>`).join('')}
+          </div>
+          <div class="stay-price">${stay.price}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // ==================== FOOD TABS ====================
+    function initFood() {
+      const container = document.getElementById('food-container');
+      
+      // Create all city sections
+      Object.keys(foodData).forEach(city => {
+        const section = document.createElement('div');
+        section.className = `food-content ${city === 'tokyo' ? 'active' : ''}`;
+        section.id = `food-${city}`;
+        
+        foodData[city].forEach(resto => {
+          const card = document.createElement('div');
+          card.className = 'food-card';
+          card.innerHTML = `
+            <span class="food-type ${resto.type === 'vegan' ? 'food-vegan' : 'food-veg'}">
+              ${resto.type === 'vegan' ? '🌱 Vegan' : '🥬 Vegetarian'}
+            </span>
+            <h4>${resto.name}</h4>
+            <p class="food-dish">${resto.dish}</p>
+            <div class="food-meta">
+              <span class="food-price">${resto.price}</span>
+              <a href="${resto.maps}" target="_blank" class="food-link">📍 Maps</a>
+            </div>
+          `;
+          section.appendChild(card);
+        });
+        
+        container.appendChild(section);
+      });
+      
+      // Tab click handlers
+      document.querySelectorAll('.food-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+          document.querySelectorAll('.food-tab').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.food-content').forEach(c => c.classList.remove('active'));
+          
+          this.classList.add('active');
+          document.getElementById(`food-${this.dataset.city}`).classList.add('active');
+        });
+      });
+    }
+
+    // ==================== PACKING LIST ====================
+    function initPacking() {
+      const grid = document.getElementById('packing-grid');
+      const packed = JSON.parse(localStorage.getItem('japanPacking') || '{}');
+      let totalItems = 0;
+      
+      Object.keys(packingData).forEach(category => {
+        const items = packingData[category];
+        totalItems += items.length;
+        
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'packing-category';
+        categoryDiv.innerHTML = `<h4>${category}</h4>`;
+        
+        items.forEach((item, index) => {
+          const itemId = `${category}-${index}`;
+          const isChecked = packed[itemId] || false;
+          
+          const itemDiv = document.createElement('div');
+          itemDiv.className = `packing-item ${isChecked ? 'checked' : ''}`;
+          itemDiv.innerHTML = `
+            <input type="checkbox" id="${itemId}" ${isChecked ? 'checked' : ''} onchange="togglePacking('${itemId}', this)">
+            <label for="${itemId}">${item}</label>
+          `;
+          categoryDiv.appendChild(itemDiv);
+        });
+        
+        grid.appendChild(categoryDiv);
+      });
+      
+      document.getElementById('total-count').textContent = totalItems;
+      updatePackingProgress();
+    }
+
+    function togglePacking(id, checkbox) {
+      const packed = JSON.parse(localStorage.getItem('japanPacking') || '{}');
+      packed[id] = checkbox.checked;
+      localStorage.setItem('japanPacking', JSON.stringify(packed));
+      
+      const item = checkbox.closest('.packing-item');
+      item.classList.toggle('checked', checkbox.checked);
+      
+      updatePackingProgress();
+    }
+
+    function updatePackingProgress() {
+      const packed = JSON.parse(localStorage.getItem('japanPacking') || '{}');
+      const total = parseInt(document.getElementById('total-count').textContent);
+      const packedCount = Object.values(packed).filter(v => v).length;
+      const percent = Math.round((packedCount / total) * 100);
+      
+      document.getElementById('packed-count').textContent = packedCount;
+      document.getElementById('packed-percent').textContent = percent;
+      document.getElementById('progress-fill').style.width = percent + '%';
+    }
+
+    // ==================== BUDGET CALCULATOR ====================
+    function initBudget() {
+      updateBudget();
+      document.getElementById('family-size').addEventListener('change', updateBudget);
+    }
+
+    function updateBudget() {
+      const familySize = parseInt(document.getElementById('family-size').value);
+      const table = document.getElementById('budget-table');
+      table.innerHTML = '';
+      
+      let grandTotal = 0;
+      
+      budgetData.forEach(item => {
+        const total = item.perPerson * familySize;
+        grandTotal += total;
+        
+        const row = document.createElement('div');
+        row.className = 'budget-row';
+        row.innerHTML = `
+          <div class="budget-category">
+            <span class="budget-emoji">${item.emoji}</span>
+            <span>${item.name}</span>
+          </div>
+          <div>¥${total.toLocaleString()} (~$${Math.round(total / 150).toLocaleString()})</div>
+        `;
+        table.appendChild(row);
+      });
+      
+      const totalRow = document.createElement('div');
+      totalRow.className = 'budget-row total';
+      totalRow.innerHTML = `
+        <div>TOTAL (${familySize} people)</div>
+        <div>¥${grandTotal.toLocaleString()} (~$${Math.round(grandTotal / 150).toLocaleString()})</div>
+      `;
+      table.appendChild(totalRow);
+    }
+
+    // ==================== SCROLL EFFECTS ====================
+    function initScrollEffects() {
+      const backToTop = document.getElementById('back-to-top');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      window.addEventListener('scroll', function() {
+        // Back to top button
+        if (window.scrollY > 500) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+        
+        // Active nav link
+        const sections = document.querySelectorAll('section[id]');
+        let current = '';
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 100;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ==================== DAY CARDS ====================
+    function initMobileCards() {
+      if (window.innerWidth <= 768) {
+        document.querySelectorAll('.day-card').forEach(card => {
+          card.classList.add('collapsed');
+        });
+      }
+    }
+
+    function toggleDay(header) {
+      const card = header.parentElement;
+      card.classList.toggle('collapsed');
+      card.classList.toggle('expanded');
+    }
+
+    // Responsive day cards
+    window.addEventListener('resize', function() {
+      const cards = document.querySelectorAll('.day-card');
+      if (window.innerWidth <= 768) {
+        cards.forEach(card => {
+          if (!card.classList.contains('expanded')) {
+            card.classList.add('collapsed');
+          }
+        });
+      } else {
+        cards.forEach(card => {
+          card.classList.remove('collapsed');
+        });
+      }
     });
-  });
-
-  if(!html) html=`<div class="empty-state"><div class="emoji">🗓</div><p>No items match this filter.</p></div>`;
-  document.getElementById('itineraryContent').innerHTML=html;
-}
-
-function prefillDay(city,day,date){
-  document.getElementById('iCity').value=city;
-  document.getElementById('iDay').value=day;
-  document.getElementById('iDate').value=date;
-  openModal('addItem');
-}
-
-function saveItem(){
-  const name=document.getElementById('iName').value.trim();
-  if(!name){toast('Place name is required','error');return;}
-  const item={
-    id:'i'+Date.now(),
-    city:document.getElementById('iCity').value,
-    day:parseInt(document.getElementById('iDay').value)||1,
-    date:document.getElementById('iDate').value,
-    time:document.getElementById('iTime').value,
-    name,
-    cat:document.getElementById('iCat').value,
-    desc:document.getElementById('iDesc').value,
-    cost:parseFloat(document.getElementById('iCost').value)||0,
-    dur:parseFloat(document.getElementById('iDur').value)||0,
-    url:document.getElementById('iUrl').value,
-    offbeat:document.getElementById('iOffbeat').checked,
-    veg:document.getElementById('iVeg').checked,
-    booked:document.getElementById('iBooked').checked,
-    notes:''
-  };
-  state.items.push(item);
-  save('items',state.items);
-  closeModal('addItem');
-  clearForm(['iName','iDesc','iCost','iDur','iUrl','iDay','iDate']);
-  document.getElementById('iOffbeat').checked=false;
-  document.getElementById('iVeg').checked=false;
-  document.getElementById('iBooked').checked=false;
-  renderItinerary();
-  toast('Place added! 📍','success');
-}
-
-function toggleBooked(id){
-  const it=state.items.find(i=>i.id===id);
-  if(!it)return;
-  it.booked=!it.booked;
-  save('items',state.items);
-  renderItinerary();
-  renderOverview();
-  toast(it.booked?'Marked as booked ✅':'Marked as unbooked');
-}
-
-function deleteItem(id){
-  if(!confirm('Remove this place?'))return;
-  state.items=state.items.filter(i=>i.id!==id);
-  save('items',state.items);
-  renderItinerary();
-  toast('Removed','');
-}
-
-// ═══════════════════════════════════════════
-// CHECKLIST
-// ═══════════════════════════════════════════
-const CAT_META={
-  booking:{label:'🔴 Must Book',color:'var(--red)'},
-  document:{label:'📄 Documents',color:'var(--navy)'},
-  packing:{label:'🧳 Packing',color:'var(--gold)'},
-  todo:{label:'✅ To-Do',color:'var(--green)'}
-};
-
-function checkAlerts(){
-  const overdue=state.checks.filter(c=>!c.done&&c.priority==='high');
-  const el=document.getElementById('alertBanner');
-  if(overdue.length){
-    el.innerHTML=`<div class="alert-banner">⚠️ ${overdue.length} high-priority item${overdue.length>1?'s':''} still pending: ${overdue.slice(0,3).map(c=>c.title).join(', ')}${overdue.length>3?'...':''}</div>`;
-  }
-}
-
-function renderChecklist(){
-  let html='';
-  Object.keys(CAT_META).forEach(cat=>{
-    const items=state.checks.filter(c=>c.cat===cat);
-    const done=items.filter(c=>c.done).length;
-    const pct=items.length?Math.round(done/items.length*100):0;
-    const m=CAT_META[cat];
-    html+=`<div class="check-category">
-      <div class="check-header">
-        <h3 style="color:${m.color}">${m.label}</h3>
-        <span style="font-size:.82rem;color:var(--gray)">${done}/${items.length}</span>
-      </div>
-      <div class="prog-bar"><div class="prog-fill" style="width:${pct}%;background:${m.color}"></div></div>`;
-    const sorted=[...items.filter(c=>!c.done),...items.filter(c=>c.done)];
-    sorted.forEach(c=>{
-      html+=`<div class="check-item ${c.done?'done':''}" id="chk-${c.id}">
-        <input type="checkbox" ${c.done?'checked':''} onchange="toggleCheck('${c.id}',this.checked)">
-        <div class="priority-dot p-${c.priority}"></div>
-        <span class="check-text">${c.title}${c.due?` <span style="font-size:.75rem;color:var(--gray)">· due ${fmtDate(c.due)}</span>`:''}</span>
-        ${c.notes?`<span title="${c.notes}" style="cursor:help;font-size:.85rem">💬</span>`:''}
-        <button class="btn-icon" style="font-size:.9rem" onclick="deleteCheck('${c.id}')">🗑</button>
-      </div>`;
-    });
-    html+='</div>';
-  });
-  document.getElementById('checklistContent').innerHTML=html;
-  checkAlerts();
-}
-
-function toggleCheck(id,val){
-  const c=state.checks.find(x=>x.id===id);
-  if(c){c.done=val;save('checks',state.checks);renderChecklist();renderOverview();}
-}
-
-function deleteCheck(id){
-  if(!confirm('Remove this item?'))return;
-  state.checks=state.checks.filter(c=>c.id!==id);
-  save('checks',state.checks);renderChecklist();
-}
-
-function saveCheck(){
-  const title=document.getElementById('cTitle').value.trim();
-  if(!title){toast('Title required','error');return;}
-  state.checks.push({
-    id:'c'+Date.now(),
-    cat:document.getElementById('cCat').value,
-    title,
-    priority:document.getElementById('cPriority').value,
-    due:document.getElementById('cDue').value,
-    done:false,
-    notes:document.getElementById('cNotes').value
-  });
-  save('checks',state.checks);
-  closeModal('addCheck');
-  clearForm(['cTitle','cDue','cNotes']);
-  renderChecklist();
-  toast('Item added ✅','success');
-}
-
-// ═══════════════════════════════════════════
-// BOOKINGS
-// ═══════════════════════════════════════════
-const PRIORITY_LABELS={high:'🔴 Book NOW',medium:'🟡 Book Soon',low:'🟢 Flexible'};
-const STATUS_CYCLE={pending:'booked',booked:'confirmed',confirmed:'pending'};
-const STATUS_STYLE={pending:'badge-gold',booked:'badge-green',confirmed:'badge-navy'};
-
-function renderBookings(){
-  const booked=state.bookings.filter(b=>b.status!=='pending').length;
-  const totalCost=state.bookings.reduce((s,b)=>s+b.cost,0);
-  const bookedCost=state.bookings.filter(b=>b.status!=='pending').reduce((s,b)=>s+b.cost,0);
-  document.getElementById('bookingSummary').innerHTML=`
-    <div style="display:flex;flex-wrap:wrap;gap:20px">
-      <div><div style="font-size:1.4rem;font-weight:700;color:var(--green)">${booked}/${state.bookings.length}</div><div style="font-size:.78rem;color:var(--gray)">Booked/Confirmed</div></div>
-      <div><div style="font-size:1.4rem;font-weight:700;color:var(--navy)">¥${bookedCost.toLocaleString()}</div><div style="font-size:.78rem;color:var(--gray)">Spent on bookings</div></div>
-      <div><div style="font-size:1.4rem;font-weight:700;color:var(--red)">¥${(totalCost-bookedCost).toLocaleString()}</div><div style="font-size:.78rem;color:var(--gray)">Still to pay</div></div>
-    </div>`;
-
-  let html='';
-  state.bookings.forEach(b=>{
-    html+=`<div class="card booking-card status-${b.status}" id="bk-${b.id}">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px">
-        <div>
-          <div style="font-weight:700;font-size:1rem;margin-bottom:4px">${b.name}</div>
-          <span class="badge badge-${b.priority==='high'?'red':b.priority==='medium'?'gold':'green'}" style="margin-right:6px">${PRIORITY_LABELS[b.priority]}</span>
-          <span class="badge badge-navy">${b.type}</span>
-        </div>
-        <div style="display:flex;gap:6px;align-items:center">
-          <span class="badge ${STATUS_STYLE[b.status]} status-pill" onclick="cycleStatus('${b.id}')" title="Click to change status">${b.status}</span>
-          ${b.url?`<a href="${b.url}" target="_blank" class="btn btn-primary btn-sm">Book →</a>`:''}
-          <button class="btn-icon" onclick="deleteBooking('${b.id}')">🗑</button>
-        </div>
-      </div>
-      ${b.date?`<div style="font-size:.82rem;color:var(--gray);margin-bottom:6px">📅 ${fmtDate(b.date)}${b.cost?` · ¥${b.cost.toLocaleString()}`:''}</div>`:''}
-      ${b.notes?`<div style="font-size:.82rem;color:var(--gray);margin-bottom:8px">💬 ${b.notes}</div>`:''}
-      <input class="conf-input" placeholder="📝 Enter confirmation code..." value="${b.conf||''}" onchange="saveConf('${b.id}',this.value)">
-    </div>`;
-  });
-  if(!html) html=`<div class="empty-state"><div class="emoji">🎫</div><p>No bookings yet. Add one!</p></div>`;
-  document.getElementById('bookingsContent').innerHTML=html;
-}
-
-function cycleStatus(id){
-  const b=state.bookings.find(x=>x.id===id);
-  if(!b)return;
-  b.status=STATUS_CYCLE[b.status];
-  save('bookings',state.bookings);
-  renderBookings();
-  toast('Status: '+b.status,'success');
-}
-
-function saveConf(id,val){
-  const b=state.bookings.find(x=>x.id===id);
-  if(b){b.conf=val;save('bookings',state.bookings);}
-}
-
-function deleteBooking(id){
-  if(!confirm('Remove this booking?'))return;
-  state.bookings=state.bookings.filter(b=>b.id!==id);
-  save('bookings',state.bookings);
-  renderBookings();
-}
-
-function saveBooking(){
-  const name=document.getElementById('bName').value.trim();
-  if(!name){toast('Name required','error');return;}
-  state.bookings.push({
-    id:'b'+Date.now(),
-    name,
-    type:document.getElementById('bType').value,
-    priority:document.getElementById('bPriority').value,
-    date:document.getElementById('bDate').value,
-    cost:parseFloat(document.getElementById('bCost').value)||0,
-    url:document.getElementById('bUrl').value,
-    notes:document.getElementById('bNotes').value,
-    status:'pending',conf:''
-  });
-  save('bookings',state.bookings);
-  closeModal('addBooking');
-  clearForm(['bName','bDate','bCost','bUrl','bNotes']);
-  renderBookings();
-  toast('Booking added 🎫','success');
-}
-
-// ═══════════════════════════════════════════
-// BUDGET
-// ═══════════════════════════════════════════
-function setCurrency(c,el){
-  state.currency=c;
-  document.querySelectorAll('.currency-btn').forEach(b=>b.classList.remove('active'));
-  el.classList.add('active');
-  updateBudget();
-}
-
-function fmt(jpy){
-  const r=RATES[state.currency];
-  const s=SYMBOLS[state.currency];
-  return s+(jpy*r).toLocaleString(undefined,{maximumFractionDigits:0});
-}
-
-function updateBudget(){
-  const n=parseInt(document.getElementById('familySlider').value);
-  state.familySize=n;
-  document.getElementById('familyCount').textContent=n;
-  let html='';
-  let grand=0;
-  BUDGET_CATS.forEach(c=>{
-    const total=c.perPerson*n;
-    grand+=total;
-    html+=`<div class="budget-row">
-      <div style="display:flex;align-items:center;gap:8px"><span>${c.emoji}</span><span style="font-size:.88rem">${c.name}</span></div>
-      <div style="font-weight:600;font-size:.9rem;white-space:nowrap">${fmt(total)}</div>
-    </div>`;
-  });
-  const totalExpJPY=state.expenses.reduce((s,e)=>s+(e.amt/RATES.INR),0);
-  html+=`<div class="budget-row" style="border-top:2px solid var(--navy)">
-    <div style="font-weight:700">TOTAL (${n} people)</div>
-    <div style="font-weight:700;color:var(--red)">${fmt(grand)}</div>
-  </div>`;
-  if(state.expenses.length){
-    html+=`<div class="budget-row" style="background:var(--light-green)">
-      <div style="font-weight:600;color:var(--green)">Actual Spent (logged)</div>
-      <div style="font-weight:700;color:var(--green)">${fmt(totalExpJPY)}</div>
-    </div>`;
-  }
-  document.getElementById('budgetTable').innerHTML=html;
-  renderExpenses();
-}
-
-function addExpense(){
-  const desc=document.getElementById('expDesc').value.trim();
-  const amt=parseFloat(document.getElementById('expAmt').value);
-  if(!desc||!amt){toast('Fill description and amount','error');return;}
-  state.expenses.push({
-    id:'e'+Date.now(),
-    cat:document.getElementById('expCat').value,
-    city:document.getElementById('expCity').value,
-    desc,amt,
-    date:new Date().toISOString().split('T')[0]
-  });
-  save('expenses',state.expenses);
-  clearForm(['expDesc','expAmt']);
-  updateBudget();
-  toast('Expense logged 💴','success');
-}
-
-function renderExpenses(){
-  const el=document.getElementById('expenseList');
-  if(!state.expenses.length){el.innerHTML=`<div class="empty-state"><div class="emoji">💴</div><p>No expenses logged yet.</p></div>`;return;}
-  let html='';
-  const total=state.expenses.reduce((s,e)=>s+e.amt,0);
-  state.expenses.slice().reverse().forEach(e=>{
-    html+=`<div class="card" style="padding:12px 16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-      <div>
-        <div style="font-weight:600;font-size:.88rem">${e.desc}</div>
-        <div style="font-size:.75rem;color:var(--gray)">${e.cat} · ${e.city} · ${fmtDate(e.date)}</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px">
-        <span style="font-weight:700;color:var(--navy)">₹${e.amt.toLocaleString()}</span>
-        <button class="btn-icon" onclick="deleteExp('${e.id}')">🗑</button>
-      </div>
-    </div>`;
-  });
-  html+=`<div class="card" style="background:var(--navy);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;font-weight:700">
-    <span>Total Spent</span><span>₹${total.toLocaleString()}</span>
-  </div>`;
-  el.innerHTML=html;
-}
-
-function deleteExp(id){
-  state.expenses=state.expenses.filter(e=>e.id!==id);
-  save('expenses',state.expenses);
-  updateBudget();
-}
-
-function exportCSV(){
-  let csv='Category,City,Description,Amount (₹),Date\n';
-  state.expenses.forEach(e=>{csv+=`${e.cat},${e.city},"${e.desc}",${e.amt},${e.date}\n`;});
-  const a=document.createElement('a');
-  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
-  a.download='japan-expenses.csv';
-  a.click();
-}
-
-// ═══════════════════════════════════════════
-// FOOD
-// ═══════════════════════════════════════════
-function setFoodTab(city, el){
-  state.foodTab=city;
-  document.querySelectorAll('.food-tab').forEach(b=>b.classList.remove('active'));
-  if(el) el.classList.add('active');
-  else {
-    document.querySelectorAll('.food-tab').forEach(b=>{
-      if(b.getAttribute('onclick').includes("'"+city+"'")) b.classList.add('active');
-    });
-  }
-  renderFood();
-}
-
-function renderFood(){
-  const city=state.foodTab;
-  const el=document.getElementById('foodContent');
-  if(city==='phrases'){
-    const items=SEED_FOOD.phrases;
-    el.innerHTML=`<h3 style="margin-bottom:14px;font-size:1rem;font-weight:700">🗣 Useful Japanese Phrases</h3>
-      <div class="phrase-grid">${items.map(p=>`<div class="phrase-card">
-        <div class="phrase-jp">${p.jp}</div>
-        <div style="font-size:.78rem;color:var(--navy);font-style:italic;margin:2px 0">${p.rom}</div>
-        <div class="phrase-en">${p.en}</div>
-      </div>`).join('')}</div>`;
-    return;
-  }
-  const items=SEED_FOOD[city]||[];
-  el.innerHTML=`<div class="food-grid">${items.map(r=>`<div class="food-card">
-    <span class="badge ${r.type==='vegan'?'badge-green':'badge-navy'}" style="margin-bottom:8px">${r.type==='vegan'?'🌱 Vegan':'🥬 Vegetarian'}</span>
-    <h4>${r.name}</h4>
-    <p class="dish">${r.dish}</p>
-    <div class="food-meta">
-      <span style="font-weight:700;color:var(--navy)">${r.price}</span>
-      <a href="${r.maps}" target="_blank" class="btn btn-sm btn-outline" style="font-size:.75rem">📍 Maps</a>
-    </div>
-  </div>`).join('')}</div>`;
-}
-
-// ═══════════════════════════════════════════
-// STAYS
-// ═══════════════════════════════════════════
-function renderStays(){
-  const el=document.getElementById('staysContent');
-  if(!state.stays.length){el.innerHTML=`<div class="empty-state"><div class="emoji">🏠</div><p>No stays added yet.</p></div>`;return;}
-  let totalCost=0;
-  let html=state.stays.map(s=>{
-    const nights=s.checkin&&s.checkout?Math.round((new Date(s.checkout)-new Date(s.checkin))/86400000):0;
-    const total=s.rate*nights;
-    totalCost+=total||0;
-    return `<div class="card" id="stay-${s.id}">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:10px">
-        <div>
-          <span class="badge badge-red" style="margin-bottom:6px">${s.city}</span>
-          <h3 style="font-size:1rem;margin-bottom:4px">${s.prop}</h3>
-          ${s.checkin?`<div style="font-size:.82rem;color:var(--gray)">📅 ${fmtDate(s.checkin)} → ${fmtDate(s.checkout)} (${nights} nights)</div>`:''}
-        </div>
-        <div style="text-align:right">
-          ${s.rate?`<div style="font-weight:700;color:var(--navy)">¥${s.rate.toLocaleString()}/night</div>`:''}
-          ${total?`<div style="font-size:.8rem;color:var(--gray)">Total: ¥${total.toLocaleString()}</div>`:''}
-        </div>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px">
-        ${s.conf?`<span class="badge badge-navy">🔑 ${s.conf}</span>`:'<span class="badge badge-gray">No confirmation yet</span>'}
-        ${s.host?`<span class="badge badge-gold">👤 ${s.host}</span>`:''}
-        ${s.phone?`<a href="tel:${s.phone}" class="badge badge-green" style="text-decoration:none">📞 ${s.phone}</a>`:''}
-      </div>
-      ${s.notes?`<div style="font-size:.82rem;color:var(--gray);margin-bottom:8px">💬 ${s.notes}</div>`:''}
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        ${s.url?`<a href="${s.url}" target="_blank" class="btn btn-primary btn-sm">View Listing →</a>`:''}
-        <button class="btn btn-outline btn-sm" onclick="editStay('${s.id}')">✏️ Edit</button>
-        <button class="btn btn-outline btn-sm" onclick="deleteStay('${s.id}')">🗑 Remove</button>
-      </div>
-    </div>`;
-  }).join('');
-  if(totalCost) html+=`<div class="card" style="background:var(--navy);color:#fff">
-    <div style="display:flex;justify-content:space-between;font-weight:700">
-      <span>Total Accommodation Cost</span><span>¥${totalCost.toLocaleString()}</span>
-    </div>
-  </div>`;
-  el.innerHTML=html;
-}
-
-function saveStay(){
-  const prop=document.getElementById('sProp').value.trim();
-  if(!prop){toast('Property name required','error');return;}
-  state.stays.push({
-    id:'s'+Date.now(),
-    city:document.getElementById('sCityModal').value,
-    prop,
-    checkin:document.getElementById('sIn').value,
-    checkout:document.getElementById('sOut').value,
-    conf:document.getElementById('sConf').value,
-    rate:parseFloat(document.getElementById('sRate').value)||0,
-    host:document.getElementById('sHost').value,
-    phone:document.getElementById('sPhone').value,
-    url:document.getElementById('sUrl').value,
-    notes:document.getElementById('sNotes').value
-  });
-  save('stays',state.stays);
-  closeModal('addStay');
-  clearForm(['sProp','sIn','sOut','sConf','sRate','sHost','sPhone','sUrl','sNotes']);
-  renderStays();
-  toast('Stay added 🏠','success');
-}
-
-function editStay(id){
-  const s=state.stays.find(x=>x.id===id);
-  if(!s)return;
-  document.getElementById('sCityModal').value=s.city;
-  document.getElementById('sProp').value=s.prop;
-  document.getElementById('sIn').value=s.checkin;
-  document.getElementById('sOut').value=s.checkout;
-  document.getElementById('sConf').value=s.conf||'';
-  document.getElementById('sRate').value=s.rate||'';
-  document.getElementById('sHost').value=s.host||'';
-  document.getElementById('sPhone').value=s.phone||'';
-  document.getElementById('sUrl').value=s.url||'';
-  document.getElementById('sNotes').value=s.notes||'';
-  // Remove old + save new on submit
-  const btn=document.querySelector('#modal-addStay .btn-primary');
-  btn.onclick=()=>{
-    state.stays=state.stays.filter(x=>x.id!==id);
-    btn.onclick=saveStay;
-    saveStay();
-  };
-  openModal('addStay');
-}
-
-function deleteStay(id){
-  if(!confirm('Remove this stay?'))return;
-  state.stays=state.stays.filter(s=>s.id!==id);
-  save('stays',state.stays);
-  renderStays();
-  toast('Stay removed');
-}
-
-// ═══════════════════════════════════════════
-// UTILS
-// ═══════════════════════════════════════════
-function fmtDate(d){
-  if(!d)return'';
-  const dt=new Date(d+'T00:00:00');
-  return dt.toLocaleDateString('en-IN',{day:'numeric',month:'short'});
-}
-
-function clearForm(ids){ids.forEach(id=>{const el=document.getElementById(id);if(el)el.value='';})}
-
-function buildSakura(){
-  const c=document.getElementById('sakura');
-  for(let i=0;i<12;i++){
-    const s=document.createElement('div');
-    s.className='sakura';
-    s.textContent='🌸';
-    s.style.left=Math.random()*100+'vw';
-    s.style.fontSize=(Math.random()*10+8)+'px';
-    s.style.animationDuration=(Math.random()*10+10)+'s';
-    s.style.animationDelay=(Math.random()*15)+'s';
-    c.appendChild(s);
-  }
-}
-
-// ═══════════════════════════════════════════
-// START
-// ═══════════════════════════════════════════
-init();
-</script>
+  </script>
 </body>
 </html>
