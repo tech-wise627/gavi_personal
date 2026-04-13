@@ -68,17 +68,17 @@ export default function TripPlanner() {
           </div>
 
           {/* City Timeline Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4">
+          <div className="flex flex-nowrap items-center justify-start md:justify-center gap-2 md:gap-4 overflow-x-auto no-scrollbar pb-4 w-full px-4">
             <CityPill icon="🗼" name="Tokyo" nights="5 nights" />
-            <span className="text-red-300 text-xl">→</span>
+            <span className="text-red-300 text-xl flex-shrink-0">→</span>
             <CityPill icon="🗻" name="Fuji" nights="1 night" />
-            <span className="text-red-300 text-xl">→</span>
+            <span className="text-red-300 text-xl flex-shrink-0">→</span>
             <CityPill icon="⛩️" name="Kyoto" nights="3 nights" />
-            <span className="text-red-300 text-xl">→</span>
+            <span className="text-red-300 text-xl flex-shrink-0">→</span>
             <CityPill icon="☮️" name="Hiroshima" nights="2 nights" />
-            <span className="text-red-300 text-xl">→</span>
+            <span className="text-red-300 text-xl flex-shrink-0">→</span>
             <CityPill icon="🦌" name="Miyajima" nights="1 night" />
-            <span className="text-red-300 text-xl">→</span>
+            <span className="text-red-300 text-xl flex-shrink-0">→</span>
             <CityPill icon="🏯" name="Osaka" nights="2 nights" />
           </div>
 
@@ -163,7 +163,7 @@ export default function TripPlanner() {
 
 function CityPill({ icon, name, nights }: { icon: string; name: string; nights: string }) {
   return (
-    <div className="bg-white px-8 py-4 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-slate-50 flex items-center gap-4 transition-all hover:scale-105 hover:shadow-xl cursor-default group">
+    <div className="flex-shrink-0 bg-white px-8 py-4 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-slate-50 flex items-center gap-4 transition-all hover:scale-105 hover:shadow-xl cursor-default group">
       <span className="text-3xl group-hover:rotate-12 transition-transform">{icon}</span>
       <div className="text-left leading-tight">
         <p className="text-lg font-black text-[#1a2a44]">{name}</p>
