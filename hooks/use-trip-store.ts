@@ -95,6 +95,21 @@ export function useTripStore() {
     updateData({ expenses: data.expenses.filter((e) => e.id !== id) });
   };
 
+  // CRUD for Stays
+  const addStay = (stay: Omit<Stay, "id">) => {
+    if (!data) return;
+    const newStay: Stay = {
+      ...stay,
+      id: "s" + Date.now(),
+    };
+    updateData({ stays: [...data.stays, newStay].sort((a, b) => a.checkin.localeCompare(b.checkin)) });
+  };
+
+  const deleteStay = (id: string) => {
+    if (!data) return;
+    updateData({ stays: data.stays.filter((s) => s.id !== id) });
+  };
+
   return {
     data,
     updateData,
@@ -103,5 +118,7 @@ export function useTripStore() {
     toggleCheck,
     addExpense,
     deleteExpense,
+    addStay,
+    deleteStay,
   };
 }
