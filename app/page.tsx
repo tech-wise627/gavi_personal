@@ -56,9 +56,9 @@ export default function TripPlanner() {
           </svg>
         </div>
 
-        <div className="text-center space-y-12 max-w-5xl animate-in fade-in zoom-in duration-1000">
+        <div className="text-center space-y-12 max-w-5xl animate-in fade-in zoom-in duration-1000 pt-32 md:pt-48">
           <div className="space-y-4">
-            <h1 className="text-6xl md:text-9xl font-serif font-black tracking-tighter text-[#1a2a44] flex items-center justify-center gap-4 flex-wrap leading-none">
+            <h1 className="text-6xl md:text-9xl font-serif font-black tracking-tighter text-[#1a2a44] flex items-center justify-center gap-4 flex-wrap leading-tight">
               Family Chali <span className="text-[#e63946]">Japan</span> 
               <span className="text-5xl md:text-8xl">🇯🇵</span>
             </h1>
