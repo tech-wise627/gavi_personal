@@ -3,102 +3,82 @@
 import { useTripStore } from "../../hooks/use-trip-store";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { cn } from "../../lib/utils";
-
-const PRIORITY_LABELS = { high: "🔴 Book NOW", medium: "🟡 Book Soon", low: "🟢 Flexible" };
-const STATUS_STYLE = { pending: "bg-[#F7B731]", booked: "bg-[#2D6A4F]", confirmed: "bg-[#1B2A4A]" };
 
 export function BookingsSection() {
-  const { data, updateData } = useTripStore();
+  const { data } = useTripStore();
 
   if (!data) return null;
 
-  const totalCost = data.bookings.reduce((s, b) => s + b.cost, 0);
-  const bookedCost = data.bookings.filter(b => b.status !== 'pending').reduce((s, b) => s + b.cost, 0);
-
   return (
-    <div className="space-y-6">
-      <Card className="border-none shadow-sm rounded-2xl p-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div>
-            <div className="text-2xl font-bold text-[#2D6A4F]">
-              {data.bookings.filter(b => b.status !== 'pending').length} / {data.bookings.length}
-            </div>
-            <div className="text-[10px] uppercase font-bold text-muted-foreground tracking-widest mt-1">
-              Booked/Confirmed
-            </div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold text-[#1B2A4A]">¥{bookedCost.toLocaleString()}</div>
-            <div className="text-[10px] uppercase font-bold text-muted-foreground tracking-widest mt-1">
-              Spent on bookings
-            </div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold text-[#D62828]">¥{(totalCost - bookedCost).toLocaleString()}</div>
-            <div className="text-[10px] uppercase font-bold text-muted-foreground tracking-widest mt-1">
-              Still to pay
-            </div>
-          </div>
-        </div>
-      </Card>
+    <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      <div className="text-center space-y-4">
+        <h2 className="text-4xl font-serif font-black text-[#1a2a44]">Reservation Tracker</h2>
+        <p className="text-slate-500 font-medium">Keep track of all your high-priority bookings in one place.</p>
+      </div>
 
-      <div className="grid gap-4">
-        {data.bookings.map((b) => (
-          <Card key={b.id} className={cn(
-            "border-none border-t-4 shadow-sm rounded-xl transition-all",
-            b.status === 'confirmed' ? "border-t-[#1B2A4A]" : b.status === 'booked' ? "border-t-[#2D6A4F]" : "border-t-[#F7B731]"
-          )}>
-            <CardContent className="p-5 space-y-4">
-              <div className="flex items-start justify-between gap-4">
-                <div className="space-y-1">
-                  <h4 className="font-bold text-sm">{b.name}</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary" className="text-[10px] bg-slate-100 font-bold uppercase">
-                      {PRIORITY_LABELS[b.priority]}
-                    </Badge>
-                    <Badge variant="secondary" className="text-[10px] bg-slate-100 font-bold uppercase">
-                      {b.type}
-                    </Badge>
-                  </div>
-                </div>
-                <Badge className={cn("text-[10px] font-bold uppercase text-white px-3 py-1", STATUS_STYLE[b.status])}>
-                  {b.status}
-                </Badge>
-              </div>
-
-              {(b.date || b.cost > 0 || b.notes) && (
-                <div className="text-xs text-muted-foreground space-y-1">
-                  {b.date && <div>📅 {getFormattedDate(b.date)}</div>}
-                  {b.cost > 0 && <div>💰 ¥{b.cost.toLocaleString()}</div>}
-                  {b.notes && <div className="italic">💬 {b.notes}</div>}
-                </div>
-              )}
-
-              <div className="flex gap-2">
-                <Input 
-                  className="rounded-xl border-dashed h-9 text-xs" 
-                  placeholder="📝 Enter confirmation code..." 
-                  defaultValue={b.conf}
-                />
-                {b.url && (
-                  <Button size="sm" variant="default" className="bg-[#1B2A4A] h-9 text-xs px-4 rounded-xl" asChild>
-                    <a href={b.url} target="_blank">Book →</a>
-                  </Button>
-                )}
-              </div>
-            </CardContent>
-          </Card>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {data.bookings.map((booking) => (
+          <BookingCard key={booking.id} booking={booking} />
         ))}
       </div>
     </div>
   );
 }
 
-function getFormattedDate(d?: string) {
-  if (!d) return "";
-  const dt = new Date(d + "T00:00:00");
-  return dt.toLocaleDateString("en-IN", { day: "numeric", month: "short" });
+function BookingCard({ booking }: { booking: any }) {
+  const isPending = booking.status === 'pending';
+  
+  return (
+    <Card className="border-none shadow-sm rounded-3xl overflow-hidden group hover:shadow-xl transition-all duration-300 bg-white">
+      <CardContent className="p-6 space-y-6">
+        <div className="flex justify-between items-start">
+          <Badge className={cn(
+            "px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border-none",
+            isPending ? "bg-red-50 text-red-600" : "bg-green-50 text-green-600"
+          )}>
+            {isPending ? "🔴 Book NOW" : "✅ RESERVED"}
+          </Badge>
+          <span className="text-2xl">{booking.type === 'transport' ? '🚄' : '🎟️'}</span>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-black text-[#1a2a44] leading-tight mb-2 group-hover:text-[#e63946] transition-colors">
+            {booking.name}
+          </h3>
+          <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">
+            {booking.date ? new Date(booking.date).toLocaleDateString("en-IN", { day: 'numeric', month: 'short' }) : 'No Date Set'}
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          <div className="flex justify-between items-center text-sm font-bold">
+            <span className="text-slate-400">Est. Cost</span>
+            <span className={cn(isPending ? "text-[#e63946]" : "text-slate-400")}>
+              ¥{booking.cost.toLocaleString()}
+            </span>
+          </div>
+          {booking.notes && (
+            <p className="text-[10px] text-slate-400 leading-relaxed italic">{booking.notes}</p>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-2 pt-2">
+          {isPending ? (
+            <button className="w-full bg-[#1a2a44] hover:bg-[#1a2a44]/90 text-white font-bold py-3 px-4 rounded-2xl text-xs transition-all flex items-center justify-center gap-2 group/btn">
+              Book Now <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
+            </button>
+          ) : (
+            <button className="w-full bg-slate-50 text-slate-400 font-bold py-3 px-4 rounded-2xl text-xs cursor-default">
+              Completed
+            </button>
+          )}
+          <button className="w-full bg-slate-50 hover:bg-slate-100 text-slate-500 font-bold py-3 px-4 rounded-2xl text-xs transition-all">
+            {isPending ? "Mark Booked" : "Edit Details"}
+          </button>
+        </div>
+      </CardContent>
+    </Card>
+  );
 }
+
+import { cn } from "../../lib/utils";

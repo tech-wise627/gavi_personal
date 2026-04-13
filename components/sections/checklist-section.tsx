@@ -1,107 +1,83 @@
 "use client";
 
 import { useTripStore } from "../../hooks/use-trip-store";
-import { ChecklistItem, Priority } from "../../lib/types";
-import { Progress } from "../ui/progress";
-import { Checkbox } from "../ui/checkbox";
-import { Card, CardContent } from "../ui/card";
-import { cn } from "../../lib/utils";
-
-const CAT_META = {
-  booking: { label: "🔴 Must Book", color: "bg-[#D62828]" },
-  document: { label: "📄 Documents", color: "bg-[#1B2A4A]" },
-  packing: { label: "🧳 Packing", color: "bg-[#F7B731]" },
-  todo: { label: "✅ To-Do", color: "bg-[#2D6A4F]" },
-};
+import { Badge } from "../ui/badge";
 
 export function ChecklistSection() {
   const { data, toggleCheck } = useTripStore();
 
   if (!data) return null;
 
-  const categories = Object.keys(CAT_META) as (keyof typeof CAT_META)[];
+  const categories = [
+    { id: 'booking', label: 'Documents & Bookings', icon: '📄' },
+    { id: 'packing', label: 'Essential Packing', icon: '🎒' },
+    { id: 'document', label: 'Pre-Trip Checklist', icon: '✅' },
+  ];
 
   return (
-    <div className="space-y-8">
-      {categories.map((cat) => {
-        const items = data.checks.filter((c) => c.cat === cat);
-        const doneCount = items.filter((c) => c.done).length;
-        const progress = items.length > 0 ? (doneCount / items.length) * 100 : 0;
-        const meta = CAT_META[cat];
+    <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      <div className="text-center space-y-4">
+        <h2 className="text-4xl font-serif font-black text-[#1a2a44]">Packing & <span className="text-[#e63946]">Prep</span></h2>
+        <p className="text-slate-500 font-medium">The small details that make a big difference.</p>
+      </div>
 
-        return (
-          <div key={cat} className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="font-bold text-sm" style={{ color: "var(--navy)" }}>
-                {meta.label}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        {categories.map((cat) => (
+          <div key={cat.id} className="space-y-6">
+            <div className="flex items-center gap-3 border-b-2 border-slate-100 pb-4">
+              <span className="text-2xl">{cat.icon}</span>
+              <h3 className="text-xs font-black uppercase tracking-widest text-[#1a2a44]">
+                {cat.label}
               </h3>
-              <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
-                {doneCount} / {items.length}
-              </span>
             </div>
             
-            <Progress value={progress} className="h-2 bg-slate-100" />
-
-            <div className="grid gap-2">
-              {items.map((item) => (
-                <CheckItem 
-                  key={item.id} 
-                  item={item} 
-                  onToggle={() => toggleCheck(item.id)} 
-                />
-              ))}
+            <div className="space-y-3">
+              {data.checks
+                .filter(item => item.cat === cat.id)
+                .map(item => (
+                  <button
+                    key={item.id}
+                    onClick={() => toggleCheck(item.id)}
+                    className={cn(
+                      "w-full text-left p-4 rounded-2xl transition-all flex items-start gap-4 group border-2",
+                      item.done 
+                        ? "bg-slate-50 border-transparent opacity-60" 
+                        : "bg-white border-slate-100 hover:border-[#e63946]/30 shadow-sm"
+                    )}
+                  >
+                    <div className={cn(
+                      "h-5 w-5 rounded-lg border-2 mt-0.5 flex items-center justify-center transition-all",
+                      item.done ? "bg-green-500 border-green-500" : "bg-white border-slate-200 group-hover:border-[#e63946]"
+                    )}>
+                      {item.done && <span className="text-white text-[10px]">✓</span>}
+                    </div>
+                    <div className="space-y-1">
+                      <p className={cn(
+                        "text-xs font-bold leading-tight",
+                        item.done ? "line-through text-slate-400" : "text-[#1a2a44]"
+                      )}>
+                        {item.title}
+                      </p>
+                      {item.notes && !item.done && (
+                        <p className="text-[10px] text-slate-400 font-medium leading-relaxed italic line-clamp-2">
+                          {item.notes}
+                        </p>
+                      )}
+                      {item.priority === 'high' && !item.done && (
+                        <Badge className="bg-red-50 text-red-600 border-none px-2 py-0 h-4 text-[7px] font-black uppercase shadow-none mt-2">
+                          Priority
+                        </Badge>
+                      )}
+                    </div>
+                  </button>
+                ))
+              }
             </div>
           </div>
-        );
-      })}
+        ))}
+      </div>
     </div>
   );
 }
 
-function CheckItem({ item, onToggle }: { item: ChecklistItem; onToggle: () => void }) {
-  const priorityColors: Record<Priority, string> = {
-    high: "bg-[#D62828]",
-    medium: "bg-[#F7B731]",
-    low: "bg-[#2D6A4F]",
-  };
-
-  return (
-    <Card className={cn(
-      "border-none shadow-sm rounded-xl transition-all",
-      item.done && "opacity-60"
-    )}>
-      <CardContent className="p-4 flex items-center gap-3">
-        <Checkbox 
-          checked={item.done} 
-          onCheckedChange={onToggle}
-          className="w-5 h-5 rounded-md border-2"
-        />
-        <div className={cn("inline-block w-2 h-2 rounded-full flex-shrink-0", priorityColors[item.priority])} />
-        <div className="flex-1 min-w-0">
-          <p className={cn(
-            "text-sm font-semibold truncate",
-            item.done && "line-through text-muted-foreground"
-          )}>
-            {item.title}
-          </p>
-          {item.notes && (
-            <p className="text-[10px] text-muted-foreground italic truncate">
-              {item.notes}
-            </p>
-          )}
-        </div>
-        {item.due && (
-          <div className="text-[9px] font-bold uppercase text-slate-400 whitespace-nowrap">
-            {getFormattedDate(item.due)}
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
-
-function getFormattedDate(d?: string) {
-  if (!d) return "";
-  const dt = new Date(d + "T00:00:00");
-  return dt.toLocaleDateString("en-IN", { day: "numeric", month: "short" });
-}
+import { cn } from "../../lib/utils";

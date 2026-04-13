@@ -1,111 +1,118 @@
 "use client";
 
 import { useTripStore } from "../../hooks/use-trip-store";
-import { Countdown } from "../countdown";
 import { Card, CardContent } from "../ui/card";
+import { Badge } from "../ui/badge";
 
 export function OverviewSection() {
   const { data } = useTripStore();
 
   if (!data) return null;
 
-  const bookedCount = data.items.filter(i => i.booked).length;
-  const totalItems = data.items.length;
-  const checksDone = data.checks.filter(c => c.done).length;
-  const totalChecks = data.checks.length;
-  const packingDone = data.checks.filter(c => c.cat === 'packing' && c.done).length;
-  const totalPacking = data.checks.filter(c => c.cat === 'packing').length;
-
-  const getPct = (done: number, total: number) => 
-    total === 0 ? 0 : Math.round((done / total) * 100);
-
   return (
-    <div className="space-y-6">
-      <div className="relative bg-gradient-to-br from-[#1B2A4A] to-[#2d3f5f] text-white rounded-2xl p-8 shadow-lg overflow-hidden">
-        <div className="relative z-10">
-          <h1 className="text-3xl md:text-4xl font-serif font-bold mb-2">
-            Family Chali Japan 🇯🇵
-          </h1>
-          <p className="text-white/80 text-sm">
-            May 25 – June 8, 2025 · 14 Days · Family · Vegetarian
-          </p>
-          <Countdown />
+    <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+      {/* Hero Section */}
+      <div className="text-center space-y-6">
+        <h1 className="text-5xl md:text-7xl font-serif font-black tracking-tight text-[#1a2a44]">
+          Family Chali <span className="text-[#e63946]">Japan</span> 🇯🇵
+        </h1>
+        <p className="text-slate-500 font-medium tracking-wide">
+          May 25 – June 8, 2025 • 14 Days of Adventure
+        </p>
+
+        {/* City Timeline Pills */}
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mt-8">
+          <CityPill icon="🗼" name="Tokyo" nights="4 nights" />
+          <span className="text-red-300">→</span>
+          <CityPill icon="⛩️" name="Kyoto" nights="3 nights" />
+          <span className="text-red-300">→</span>
+          <CityPill icon="☮️" name="Hiroshima" nights="2 nights" />
+          <span className="text-red-300">→</span>
+          <CityPill icon="🏯" name="Osaka" nights="5 nights" />
         </div>
-        <div className="absolute -right-4 -bottom-8 text-9xl opacity-10 select-none">
-          🗾
+
+        {/* Meta Status Pills */}
+        <div className="flex items-center justify-center gap-3 mt-8">
+          <Badge className="bg-[#fff8e1] text-[#795548] border-none px-4 py-1.5 rounded-full font-bold shadow-sm">
+            👨‍👩‍👧‍👦 Family Trip
+          </Badge>
+          <Badge className="bg-[#e8f5e9] text-[#2e7d32] border-none px-4 py-1.5 rounded-full font-bold shadow-sm">
+            🥬 Vegetarian (eggs ok)
+          </Badge>
+          <Badge className="bg-[#f3f4f6] text-[#4b5563] border-none px-4 py-1.5 rounded-full font-bold shadow-sm">
+            💵 Mid-Range Budget
+          </Badge>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatCard num="4" label="Cities" />
-        <StatCard num="14" label="Days" />
-        <StatCard num="¥1M+" label="Est. Budget" />
-        <StatCard 
-          num={`${data.bookings.filter(b => b.status === 'booked').length}/${data.bookings.length}`} 
-          label="Booked" 
-        />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <ProgressRing pct={getPct(bookedCount, totalItems)} label="Activities Booked" color="#2D6A4F" />
-        <ProgressRing pct={getPct(checksDone, totalChecks)} label="Checklist Done" color="#1B2A4A" />
-        <ProgressRing pct={getPct(packingDone, totalPacking)} label="Packed" color="#F7B731" />
-      </div>
-
-      <Card className="border-none shadow-sm rounded-xl overflow-hidden">
-        <CardContent className="p-6">
-          <h3 className="font-serif font-bold text-lg mb-4 flex items-center gap-2">
-            📅 Today's Plan
-          </h3>
-          <div className="text-sm text-muted-foreground italic">
-            No activities planned for today — enjoy the planning phase! 🎉
+      {/* JR Pass Premium Card */}
+      <div className="max-w-2xl mx-auto pt-8">
+        <Card className="bg-[#1a2a44] text-white border-[3px] border-[#d4af37]/30 rounded-3xl overflow-hidden shadow-2xl relative">
+          <div className="absolute top-0 right-0 p-4 opacity-10">
+            <span className="text-8xl">🚄</span>
           </div>
-        </CardContent>
-      </Card>
+          <CardContent className="p-8 relative z-10">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-2xl">🎫</span>
+              <h3 className="text-[#d4af37] font-serif font-bold text-xl uppercase tracking-widest">The Golden Ticket</h3>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="flex justify-between items-end border-b border-white/10 pb-4">
+                <div>
+                  <p className="text-white/60 text-xs uppercase font-bold tracking-widest mb-1">Pass Version</p>
+                  <p className="text-xl font-bold">14-Day Whole Japan Rail Pass</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-[#d4af37] text-2xl font-black italic">¥80,000</p>
+                  <p className="text-white/40 text-[10px] uppercase font-bold tracking-tighter">Per Adult</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <InclusionItem text="Unlimited Shinkansen Travel" />
+                <InclusionItem text="Narita Express (N'EX) Included" />
+                <InclusionItem text="Local JR Lines & Miyajima Ferry" />
+                <InclusionItem text="Seat Reservations (Free)" />
+              </div>
+
+              <div className="pt-4 flex items-center justify-between gap-4">
+                <div className="p-3 bg-white/5 rounded-2xl flex-1">
+                  <p className="text-[10px] text-white/50 uppercase font-bold mb-1">Status</p>
+                  <p className="text-sm font-bold flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+                    Pending Purchase
+                  </p>
+                </div>
+                <button className="bg-[#e63946] hover:bg-[#c92a35] text-white font-bold py-4 px-8 rounded-2xl text-sm transition-all shadow-lg hover:shadow-red-500/20 underline-offset-4 hover:underline">
+                  Book Now →
+                </button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
 
-function StatCard({ num, label }: { num: string; label: string }) {
+function CityPill({ icon, name, nights }: { icon: string; name: string; nights: string }) {
   return (
-    <Card className="border-none shadow-sm text-center py-6 rounded-xl">
-      <CardContent className="p-0">
-        <div className="text-2xl font-serif font-bold text-[#D62828]">{num}</div>
-        <div className="text-[10px] uppercase tracking-wider font-bold text-muted-foreground mt-1">
-          {label}
-        </div>
-      </CardContent>
-    </Card>
+    <div className="bg-white px-4 py-2 rounded-full shadow-sm border border-slate-100 flex items-center gap-2 transition-transform hover:scale-105 cursor-default">
+      <span className="text-lg">{icon}</span>
+      <div className="text-left leading-tight">
+        <p className="text-xs font-black text-[#1a2a44]">{name}</p>
+        <p className="text-[8px] uppercase font-bold text-slate-400 tracking-tighter">{nights}</p>
+      </div>
+    </div>
   );
 }
 
-function ProgressRing({ pct, label, color }: { pct: number; label: string; color: string }) {
-  const r = 28;
-  const c = 2 * Math.PI * r;
-  const off = c - (pct / 100) * c;
-
+function InclusionItem({ text }: { text: string }) {
   return (
-    <Card className="border-none shadow-sm text-center py-6 rounded-xl flex flex-col items-center">
-      <CardContent className="p-0 space-y-3">
-        <div className="relative w-[70px] height-[70px]">
-          <svg width="70" height="70" className="rotate-[-90deg]">
-            <circle cx="35" cy="35" r={r} fill="none" stroke="#f3f4f6" strokeWidth="6" />
-            <circle 
-              cx="35" cy="35" r={r} 
-              fill="none" stroke={color} strokeWidth="6" 
-              strokeDasharray={c} strokeDashoffset={off} 
-              strokeLinecap="round"
-              className="transition-all duration-700 ease-out"
-            />
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center font-bold text-sm">
-            {pct}%
-          </div>
-        </div>
-        <div className="text-[10px] uppercase tracking-wider font-bold text-muted-foreground">
-          {label}
-        </div>
-      </CardContent>
-    </Card>
+    <div className="flex items-center gap-2 text-xs">
+      <span className="text-[#d4af37]">✓</span>
+      <span className="text-white/80">{text}</span>
+    </div>
   );
 }

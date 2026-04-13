@@ -6,12 +6,13 @@ export function SakuraBloom() {
   const [petals, setPetals] = useState<any[]>([]);
 
   useEffect(() => {
-    const newPetals = Array.from({ length: 15 }).map((_, i) => ({
+    const newPetals = Array.from({ length: 20 }).map((_, i) => ({
       id: i,
-      left: Math.random() * 100 + "vw",
-      fontSize: Math.random() * 10 + 10 + "px",
-      duration: Math.random() * 8 + 7 + "s",
+      left: Math.random() * 105 - 5 + "vw",
+      size: Math.random() * 0.8 + 0.5 + "rem",
+      duration: Math.random() * 10 + 10 + "s", // Slower, more elegant
       delay: Math.random() * 10 + "s",
+      drift: Math.random() * 50 + 50 + "px",
     }));
     setPetals(newPetals);
   }, []);
@@ -21,28 +22,24 @@ export function SakuraBloom() {
       {petals.map((p) => (
         <div
           key={p.id}
-          className="absolute top-[-20px] animate-fall opacity-60"
+          className="absolute top-[-20px] opacity-60 mix-blend-multiply"
           style={{
             left: p.left,
-            fontSize: p.fontSize,
-            animationDuration: p.duration,
-            animationDelay: p.delay,
-            animationIterationCount: "infinite",
-            animationTimingFunction: "linear",
+            fontSize: p.size,
+            animation: `sakura-fall ${p.duration} linear ${p.delay} infinite`,
+            color: "#ffdae0",
+            filter: "drop-shadow(0 0 2px rgba(255,192,203,0.5))",
           }}
         >
           🌸
         </div>
       ))}
       <style jsx global>{`
-        @keyframes fall {
-          0% { transform: translateY(-10px) rotate(0); opacity: 0; }
-          10% { opacity: 0.6; }
-          90% { opacity: 0.6; }
-          100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-        .animate-fall {
-          animation-name: fall;
+        @keyframes sakura-fall {
+          0% { transform: translateY(-10px) translateX(0) rotate(0deg); opacity: 0; }
+          10% { opacity: 0.8; }
+          90% { opacity: 0.8; }
+          100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; }
         }
       `}</style>
     </div>
