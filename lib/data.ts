@@ -1,78 +1,109 @@
 import { TripItem, ChecklistItem, Booking, FoodItem, Phrase, Stay } from "./types";
 
 export const SEED_ITEMS: TripItem[] = [
-  { id: 't1', city: 'tokyo', day: 1, date: '2025-05-25', time: 'morning', name: 'Arrive Narita → Shibuya (Narita Express)', cat: 'transport', desc: "Take N'EX with JR Pass! Check into Airbnb and freshen up.", cost: 0, dur: 150, url: '', offbeat: false, veg: false, booked: false },
-  { id: 't2', city: 'tokyo', day: 1, date: '2025-05-25', time: 'afternoon', name: 'Shimokitazawa Exploration', cat: 'offbeat', desc: "Tokyo's bohemian neighbourhood — vintage shops, indie cafes, street art. Perfect jet-lag stroll.", cost: 0, dur: 180, url: '', offbeat: true, veg: false, booked: false },
-  { id: 't3', city: 'tokyo', day: 1, date: '2025-05-25', time: 'afternoon', name: 'Bear Pond Espresso', cat: 'food', desc: 'Famous coffee spot with vegetarian pastries.', cost: 1500, dur: 60, url: '', offbeat: false, veg: true, booked: false },
-  { id: 't4', city: 'tokyo', day: 1, date: '2025-05-25', time: 'evening', name: 'Afuri Ramen Ebisu', cat: 'food', desc: 'Yuzu shio ramen with vegan/vegetarian options. Light and citrusy.', cost: 1200, dur: 60, url: 'https://afuri.com', offbeat: false, veg: true, booked: false },
-  { id: 't5', city: 'tokyo', day: 2, date: '2025-05-26', time: 'morning', name: 'Yanaka Ginza Shopping Street', cat: 'offbeat', desc: 'Old-school Tokyo neighbourhood — traditional shops, cat statues, zero tourists.', cost: 0, dur: 120, url: '', offbeat: true, veg: false, booked: false },
-  { id: 't6', city: 'tokyo', day: 2, date: '2025-05-26', time: 'afternoon', name: 'Nezu Shrine', cat: 'activity', desc: "One of Tokyo's oldest shrines with azalea garden & mini torii gates (like a mini Fushimi Inari!).", cost: 200, dur: 90, url: '', offbeat: true, veg: false, booked: false },
-  { id: 't7', city: 'tokyo', day: 2, date: '2025-05-26', time: 'afternoon', name: 'Kayaba Coffee', cat: 'food', desc: '100-year-old coffee house in a preserved wooden building. Egg sandwiches & fluffy pancakes.', cost: 1000, dur: 60, url: '', offbeat: true, veg: true, booked: false },
-  { id: 't8', city: 'tokyo', day: 2, date: '2025-05-26', time: 'evening', name: 'Ueno Park Sunset Stroll', cat: 'activity', desc: 'Beautiful park walk, street performers, temple hopping at sunset.', cost: 0, dur: 120, url: '', offbeat: false, veg: false, booked: false },
-  { id: 't9', city: 'tokyo', day: 3, date: '2025-05-27', time: 'morning', name: 'Meiji Shrine', cat: 'activity', desc: 'Peaceful forest shrine in the heart of Shibuya. Write wishes on wooden ema plaques.', cost: 0, dur: 90, url: '', offbeat: false, veg: false, booked: false },
-  { id: 't10', city: 'tokyo', day: 3, date: '2025-05-27', time: 'afternoon', name: 'Street Go-Kart (JAPANKART)', cat: 'offbeat', desc: 'Drive real go-karts through Tokyo streets in costume! International license required. Book ahead!', cost: 10000, dur: 150, url: 'https://www.japan-kart.com/', offbeat: true, veg: false, booked: false },
-  { id: 't11', city: 'tokyo', day: 3, date: '2025-05-27', time: 'evening', name: 'Shibuya Sky Observation Deck', cat: 'activity', desc: '360° rooftop views of Tokyo at sunset. Book the sunset slot!', cost: 2200, dur: 90, url: 'https://www.shibuya-scramble-square.com/sky/', offbeat: false, veg: false, booked: false },
-  { id: 't12', city: 'tokyo', day: 3, date: '2025-05-27', time: 'evening', name: 'Ain Soph Journey (Vegan dinner)', cat: 'food', desc: 'Vegan burgers & pancakes. Fully plant-based, delicious.', cost: 3000, dur: 90, url: '', offbeat: false, veg: true, booked: false },
-  { id: 't13', city: 'tokyo', day: 4, date: '2025-05-28', time: 'morning', name: 'TeamLab Planets', cat: 'activity', desc: 'Immersive digital art — wade through water, infinity rooms. Book 9am slot to avoid crowds!', cost: 3800, dur: 180, url: 'https://www.teamlab.art/e/planets/', offbeat: false, veg: false, booked: false },
-  { id: 't14', city: 'tokyo', day: 4, date: '2025-05-28', time: 'afternoon', name: 'Odaiba Island', cat: 'activity', desc: 'Futuristic island — Rainbow Bridge views, giant Gundam statue, beach vibes.', cost: 0, dur: 240, url: '', offbeat: false, veg: false, booked: false },
-  { id: 't15', city: 'tokyo', day: 4, date: '2025-05-28', time: 'afternoon', name: 'DiverCity Food Court', cat: 'food', desc: 'Curry, udon, and veggie options in this Odaiba mall.', cost: 1500, dur: 60, url: '', offbeat: false, veg: true, booked: false },
-  { id: 't16', city: 'tokyo', day: 4, date: '2025-05-28', time: 'evening', name: 'Pack & Prep for Kyoto', cat: 'todo', desc: 'Early Shinkansen tomorrow! Pack bags, organize JR Pass.', cost: 0, dur: 60, url: '', offbeat: false, veg: false, booked: false },
+  // DAY 1: ARRIVAL (MAY 25)
+  { id: 'd1-1', city: 'tokyo', day: 1, date: '2025-05-25', time: 'morning', name: 'Narita/Haneda Arrival', cat: 'transport', desc: 'Activate JR Pass, pick up Suica IC cards, and get pocket Wi-Fi.', cost: 0, dur: 90, url: '', offbeat: false, veg: false, booked: false },
+  { id: 'd1-2', city: 'tokyo', day: 1, date: '2025-05-25', time: 'afternoon', name: 'Train to Shimokitazawa', cat: 'transport', desc: '~1 hr from Narita. Check in, unpack, and short neighbourhood walk.', cost: 0, dur: 90, url: '', offbeat: false, veg: false, booked: false },
+  { id: 'd1-3', city: 'tokyo', day: 1, date: '2025-05-25', time: 'evening', name: 'Dinner & Early Rest', cat: 'food', desc: 'Dinner from konbini or local tofu café. Reset the clock by 9 PM.', cost: 1500, dur: 60, url: '', offbeat: false, veg: true, booked: false },
 
-  { id: 'k1', city: 'kyoto', day: 5, date: '2025-05-29', time: 'morning', name: 'Fushimi Inari at 5:30am ✨', cat: 'offbeat', desc: 'Beat ALL crowds. Magic empty torii gates at sunrise. Worth every second of the early wake!', cost: 0, dur: 180, url: '', offbeat: true, veg: false, booked: false },
-  { id: 'k2', city: 'kyoto', day: 5, date: '2025-05-29', time: 'morning', name: 'Vermillion Cafe Breakfast', cat: 'food', desc: 'Right at Fushimi Inari base. Great coffee & vegetarian breakfast with shrine views.', cost: 1200, dur: 60, url: '', offbeat: false, veg: true, booked: false },
-  { id: 'k3', city: 'kyoto', day: 5, date: '2025-05-29', time: 'afternoon', name: 'Gion District Walk', cat: 'activity', desc: 'Geisha district stroll. Spot maiko (apprentice geisha) on their way to appointments.', cost: 0, dur: 120, url: '', offbeat: false, veg: false, booked: false },
-  { id: 'k4', city: 'kyoto', day: 5, date: '2025-05-29', time: 'evening', name: 'Okutan Nanzenji (Tofu dinner)', cat: 'food', desc: '400-year-old tofu restaurant in temple grounds. Yudofu hot-pot course. BOOK AHEAD!', cost: 3500, dur: 90, url: 'http://www.okutan.co.jp/', offbeat: false, veg: true, booked: false },
-  { id: 'k5', city: 'kyoto', day: 6, date: '2025-05-30', time: 'morning', name: 'Arashiyama Bamboo Grove (7am!)', cat: 'activity', desc: 'Arrive early for the grove without crowds. Magical morning light.', cost: 0, dur: 60, url: '', offbeat: false, veg: false, booked: false },
-  { id: 'k6', city: 'kyoto', day: 6, date: '2025-05-30', time: 'morning', name: 'Gio-ji Temple (Hidden Gem)', cat: 'offbeat', desc: 'Moss temple most tourists miss. Incredibly peaceful thatched-roof temple covered in lush moss.', cost: 300, dur: 45, url: '', offbeat: true, veg: false, booked: false },
-  { id: 'k7', city: 'kyoto', day: 6, date: '2025-05-30', time: 'afternoon', name: 'Hozugawa River Boat Ride', cat: 'offbeat', desc: 'Traditional wooden boat down the river. Boatmen use poles. Stunning gorge scenery.', cost: 4100, dur: 120, url: '', offbeat: true, veg: false, booked: false },
-  { id: 'k8', city: 'kyoto', day: 6, date: '2025-05-30', time: 'afternoon', name: 'Arashiyama Yoshimura', cat: 'food', desc: 'Soba noodle restaurant with river views. Ask for vegetarian tempura soba.', cost: 1500, dur: 60, url: '', offbeat: false, veg: true, booked: false },
-  { id: 'k9', city: 'kyoto', day: 6, date: '2025-05-30', time: 'evening', name: 'Monkey Park Iwatayama', cat: 'activity', desc: 'Hilltop park with 120 wild monkeys + panoramic Kyoto views. Fun for kids!', cost: 550, dur: 90, url: '', offbeat: false, veg: false, booked: false },
-  { id: 'k10', city: 'kyoto', day: 7, date: '2025-05-31', time: 'morning', name: 'JR Train to Nara (45 min)', cat: 'transport', desc: 'Free with JR Pass!', cost: 0, dur: 45, url: '', offbeat: false, veg: false, booked: false },
-  { id: 'k11', city: 'kyoto', day: 7, date: '2025-05-31', time: 'morning', name: 'Nara Park + Deer 🦌', cat: 'activity', desc: 'Meet the famous bowing deer! Buy shika senbei (deer crackers) and make friends.', cost: 200, dur: 120, url: '', offbeat: false, veg: false, booked: false },
-  { id: 'k12', city: 'kyoto', day: 7, date: '2025-05-31', time: 'afternoon', name: 'Todai-ji Temple', cat: 'activity', desc: "World's largest wooden building with giant bronze Buddha. Mind-blowing scale.", cost: 600, dur: 90, url: '', offbeat: false, veg: false, booked: false },
-  { id: 'k13', city: 'kyoto', day: 7, date: '2025-05-31', time: 'afternoon', name: 'Naramachi Walking', cat: 'offbeat', desc: 'Traditional merchant district with Edo-period houses, craft shops, and hidden cafes.', cost: 0, dur: 120, url: '', offbeat: true, veg: false, booked: false },
+  // DAY 2: OLD TOKYO (MAY 26)
+  { id: 'd2-1', city: 'tokyo', day: 2, date: '2025-05-26', time: 'morning', name: 'Yanaka Neighbourhood', cat: 'offbeat', desc: 'Edo-era backstreets, 70+ temples, local cats. Japan before modernity.', cost: 0, dur: 120, url: '', offbeat: true, veg: false, booked: false },
+  { id: 'd2-2', city: 'tokyo', day: 2, date: '2025-05-26', time: 'morning', name: 'Nezu Shrine', cat: 'activity', desc: 'Quiet torii tunnel through a hillside garden. Like a mini Fushimi Inari.', cost: 0, dur: 60, url: '', offbeat: true, veg: false, booked: false },
+  { id: 'd2-3', city: 'tokyo', day: 2, date: '2025-05-26', time: 'afternoon', name: 'Nakameguro & Daikanyama', cat: 'activity', desc: 'Canal walk lined with boutiques. Visit Daikanyama T-Site (aesthetic multi-building bookshop).', cost: 0, dur: 180, url: '', offbeat: true, veg: false, booked: false },
+  { id: 'd2-4', city: 'tokyo', day: 2, date: '2025-05-26', time: 'evening', name: 'Dinner: Taizen, Shimokitazawa', cat: 'food', desc: 'Vegetarian Japanese izakaya, set meals ¥1,500–2,500.', cost: 2500, dur: 90, url: '', offbeat: true, veg: true, booked: false },
 
-  { id: 'h1', city: 'hiroshima', day: 8, date: '2025-06-01', time: 'morning', name: 'Shinkansen Kyoto → Hiroshima', cat: 'transport', desc: '1.5 hour bullet train. Grab ekiben (train bento) for the journey!', cost: 0, dur: 90, url: '', offbeat: false, veg: false, booked: false },
-  { id: 'h2', city: 'hiroshima', day: 8, date: '2025-06-01', time: 'morning', name: 'Peace Memorial Park & Museum', cat: 'activity', desc: 'Atomic Bomb Dome, Peace Museum, Children\'s Peace Monument. Heavy but essential.', cost: 200, dur: 180, url: '', offbeat: false, veg: false, booked: false },
-  { id: 'h3', city: 'hiroshima', day: 8, date: '2025-06-01', time: 'afternoon', name: 'Shukkeien Garden', cat: 'offbeat', desc: 'Beautiful Edo-period garden that survived the bombing. Peaceful contrast to the morning.', cost: 260, dur: 60, url: '', offbeat: true, veg: false, booked: false },
-  { id: 'h4', city: 'hiroshima', day: 8, date: '2025-06-01', time: 'afternoon', name: 'Nagata-ya (Vegan Okonomiyaki)', cat: 'food', desc: 'Hiroshima-style layered okonomiyaki with vegan options available. Local institution!', cost: 1200, dur: 60, url: '', offbeat: false, veg: true, booked: false },
-  { id: 'h5', city: 'hiroshima', day: 8, date: '2025-06-01', time: 'evening', name: 'Hiroshima Night Walk', cat: 'activity', desc: 'Stroll along the river, see Peace Dome lit up at night. Reflect on the day.', cost: 0, dur: 90, url: '', offbeat: false, veg: false, booked: false },
-  { id: 'h6', city: 'hiroshima', day: 9, date: '2025-06-02', time: 'morning', name: 'JR Ferry to Miyajima Island', cat: 'transport', desc: 'Free with JR Pass! 10-minute scenic ferry ride.', cost: 0, dur: 30, url: '', offbeat: false, veg: false, booked: false },
-  { id: 'h7', city: 'hiroshima', day: 9, date: '2025-06-02', time: 'morning', name: 'Floating Torii Gate', cat: 'activity', desc: 'Iconic vermillion gate in the water. Check tide times — low tide lets you walk to it!', cost: 0, dur: 60, url: '', offbeat: false, veg: false, booked: false },
-  { id: 'h8', city: 'hiroshima', day: 9, date: '2025-06-02', time: 'afternoon', name: 'Mt. Misen Hike / Ropeway', cat: 'offbeat', desc: 'Sacred mountain with wild deer & monkeys. Take ropeway up, hike down for best views.', cost: 1840, dur: 240, url: '', offbeat: true, veg: false, booked: false },
-  { id: 'h9', city: 'hiroshima', day: 9, date: '2025-06-02', time: 'evening', name: 'Iwaso Ryokan Check-in', cat: 'stay', desc: '150-year-old inn. Includes kaiseki dinner (request vegetarian), onsen bath, futon.', cost: 35000, dur: 60, url: 'https://www.iwaso.com/en/', offbeat: false, veg: false, booked: false },
-  { id: 'h10', city: 'hiroshima', day: 9, date: '2025-06-02', time: 'evening', name: 'Night Torii Gate (after day-trippers leave)', cat: 'offbeat', desc: 'Walk to lit-up torii gate when almost no one is around. Pure magic.', cost: 0, dur: 30, url: '', offbeat: true, veg: false, booked: false },
+  // DAY 3: TECH DAY (MAY 27)
+  { id: 'd3-1', city: 'tokyo', day: 3, date: '2025-05-27', time: 'morning', name: 'Miraikan (Odaiba)', cat: 'activity', desc: 'Geo-Cosmos, Quantum Computer Disco, ISS replica. (Note: Closed Tuesdays, adjust if needed).', cost: 630, dur: 180, url: 'https://www.miraikan.jst.go.jp/en/', offbeat: false, veg: false, booked: false },
+  { id: 'd3-2', city: 'tokyo', day: 3, date: '2025-05-27', time: 'afternoon', name: 'TeamLab Planets', cat: 'activity', desc: 'Immersive digital art. Infinity mirrors, floating flowers, koi pools. Book in advance!', cost: 3200, dur: 120, url: 'https://www.teamlab.art/e/planets/', offbeat: false, veg: false, booked: false },
+  { id: 'd3-3', city: 'tokyo', day: 3, date: '2025-05-27', time: 'evening', name: 'Odaiba Waterfront Sunset', cat: 'activity', desc: 'Rainbow Bridge, Tokyo skyline reflection in the bay.', cost: 0, dur: 90, url: '', offbeat: false, veg: false, booked: false },
 
-  { id: 'o1', city: 'osaka', day: 11, date: '2025-06-03', time: 'morning', name: 'Osaka Castle', cat: 'activity', desc: 'Iconic castle with beautiful park. Museum inside shows Osaka history.', cost: 600, dur: 180, url: '', offbeat: false, veg: false, booked: false },
-  { id: 'o2', city: 'osaka', day: 11, date: '2025-06-03', time: 'afternoon', name: 'Shinsekai District', cat: 'offbeat', desc: 'Retro neon district with Tsutenkaku Tower. Feels like 1960s Japan — kitschy and fun.', cost: 0, dur: 180, url: '', offbeat: true, veg: false, booked: false },
-  { id: 'o3', city: 'osaka', day: 11, date: '2025-06-03', time: 'afternoon', name: 'Kushikatsu Veggie Skewers', cat: 'food', desc: 'Shinsekai specialty. Some places have vegetable-only deep-fried skewers.', cost: 1500, dur: 60, url: '', offbeat: false, veg: true, booked: false },
-  { id: 'o4', city: 'osaka', day: 11, date: '2025-06-03', time: 'evening', name: 'Spa World', cat: 'activity', desc: 'Giant onsen theme park with baths from around the world. Great for families.', cost: 1500, dur: 180, url: '', offbeat: false, veg: false, booked: false },
+  // DAY 4: CARS DAY (MAY 28)
+  { id: 'd4-1', city: 'yokohama', day: 4, date: '2025-05-28', time: 'morning', name: 'Yokohama Minato Mirai', cat: 'activity', desc: 'Cup Noodles Museum, Yokohama Air Cabin, and VS PARK variety show games.', cost: 2000, dur: 240, url: '', offbeat: false, veg: false, booked: false },
+  { id: 'd4-2', city: 'yokohama', day: 4, date: '2025-05-28', time: 'evening', name: 'Daikoku Parking Area', cat: 'offbeat', desc: 'World-famous JDM car meet. Nissan GT-Rs, Skylines, etc. Book a guided tour.', cost: 15000, dur: 240, url: '', offbeat: true, veg: false, booked: false },
+
+  // DAY 5: STREET KART (MAY 29)
+  { id: 'd5-1', city: 'tokyo', day: 5, date: '2025-05-29', time: 'afternoon', name: 'Street Go-Kart (JAPANKART)', cat: 'offbeat', desc: 'Drive through Shibuya & Harajuku. International Driving Permit required.', cost: 15000, dur: 120, url: '', offbeat: true, veg: false, booked: false },
+  { id: 'd5-2', city: 'tokyo', day: 5, date: '2025-05-29', time: 'evening', name: 'Shibuya Crossing & Sky', cat: 'activity', desc: 'Shibuya Scramble and Shibuya Sky rooftop observation deck.', cost: 2000, dur: 120, url: 'https://www.shibuya-scramble-square.com/sky/', offbeat: false, veg: false, booked: false },
+  { id: 'd5-3', city: 'tokyo', day: 5, date: '2025-05-29', time: 'evening', name: "Dinner: T's TANTAN, Shibuya", cat: 'food', desc: 'Fully vegetarian ramen, perfect late-night meal.', cost: 1200, dur: 60, url: '', offbeat: false, veg: true, booked: false },
+
+  // DAY 6: FUJI TRAVEL (MAY 30)
+  { id: 'd6-1', city: 'kawaguchiko', day: 6, date: '2025-05-30', time: 'morning', name: 'Travel to Fuji', cat: 'transport', desc: 'Fujikyu Express from Shinjuku to Kawaguchiko (40 min).', cost: 1750, dur: 40, url: '', offbeat: false, veg: false, booked: false },
+  { id: 'd6-2', city: 'kawaguchiko', day: 6, date: '2025-05-30', time: 'afternoon', name: 'Oshino Hakkai', cat: 'activity', desc: '8 crystal-clear ponds fed by Fuji snowmelt. Peaceful and local.', cost: 0, dur: 120, url: '', offbeat: false, veg: false, booked: false },
+  { id: 'd6-3', city: 'kawaguchiko', day: 6, date: '2025-05-30', time: 'afternoon', name: 'Chureito Pagoda Golden Hour', cat: 'activity', desc: '398 steps up for the iconic Fuji backdrop.', cost: 0, dur: 60, url: '', offbeat: false, veg: false, booked: false },
+
+  // DAY 7: KYOTO TRAVEL (MAY 31)
+  { id: 'd7-1', city: 'kawaguchiko', day: 7, date: '2025-05-31', time: 'morning', name: 'Fuji Dawn over Lake', cat: 'activity', desc: 'Lake Kawaguchi north shore walk for mirror reflections.', cost: 0, dur: 90, url: '', offbeat: true, veg: false, booked: false },
+  { id: 'd7-2', city: 'kyoto', day: 7, date: '2025-05-31', time: 'afternoon', name: 'Shinkansen to Kyoto', cat: 'transport', desc: 'Mishima → Kyoto (1.5 hrs). Arrive mid-afternoon.', cost: 0, dur: 90, url: '', offbeat: false, veg: false, booked: false },
+
+  // DAY 8: FOREST & RIVER (JUNE 1)
+  { id: 'd8-1', city: 'kyoto', day: 8, date: '2025-06-01', time: 'morning', name: 'Fushimi Inari (5:30am)', cat: 'activity', desc: 'Beat the crowds. Zero people between 5 and 7 AM.', cost: 0, dur: 180, url: '', offbeat: true, veg: false, booked: false },
+  { id: 'd8-2', city: 'kyoto', day: 8, date: '2025-06-01', time: 'afternoon', name: 'Otagi Nenbutsuji & Arashiyama', cat: 'activity', desc: '1,200 stone statues and a rowboat on the Oi River.', cost: 1500, dur: 240, url: '', offbeat: true, veg: false, booked: false },
+
+  // DAY 9: NARA DAY TRIP (JUNE 2)
+  { id: 'd9-1', city: 'nara', day: 9, date: '2025-06-02', time: 'morning', name: 'Nara Deer Park', cat: 'activity', desc: '1,200 wild sika deer and Yoshikien Garden.', cost: 200, dur: 180, url: '', offbeat: false, veg: false, booked: false },
+  { id: 'd9-2', city: 'nara', day: 9, date: '2025-06-02', time: 'afternoon', name: 'Kasugayama Primeval Forest', cat: 'offbeat', desc: 'Ancient UNESCO forest path behind the shrine.', cost: 0, dur: 120, url: '', offbeat: true, veg: false, booked: false },
+
+  // DAY 10: HIROSHIMA TRAVEL (JUNE 3)
+  { id: 'd10-1', city: 'kyoto', day: 10, date: '2025-06-03', time: 'morning', name: 'Shinkansen to Hiroshima', cat: 'transport', desc: 'Kyoto → Hiroshima (1h 45min).', cost: 0, dur: 105, url: '', offbeat: false, veg: false, booked: false },
+  { id: 'd10-2', city: 'hiroshima', day: 10, date: '2025-06-03', time: 'afternoon', name: 'Shukkeien Garden', cat: 'activity', desc: 'Miniature Japanese landscape garden.', cost: 260, dur: 90, url: '', offbeat: true, veg: false, booked: false },
+
+  // DAY 11: HIROSHIMA CULTUTE (JUNE 4)
+  { id: 'd11-1', city: 'hiroshima', day: 11, date: '2025-06-04', time: 'morning', name: 'Orizuru Tower', cat: 'activity', desc: 'Observation tower, fold paper cranes. Peace Park views.', cost: 1600, dur: 90, url: '', offbeat: false, veg: false, booked: false },
+  { id: 'd11-2', city: 'hiroshima', day: 11, date: '2025-06-04', time: 'afternoon', name: 'Mitaki Temple (Hidden Gem)', cat: 'offbeat', desc: 'Forest temple with lanterns and waterfalls. No tourists.', cost: 0, dur: 120, url: '', offbeat: true, veg: false, booked: false },
+
+  // DAY 12: MIYAJIMA (JUNE 5)
+  { id: 'd12-1', city: 'miyajima', day: 12, date: '2025-06-05', time: 'afternoon', name: 'Itsukushima Floating Shrine', cat: 'stay', desc: 'Check into Ryokan. High tide for the floating gate.', cost: 45000, dur: 180, url: '', offbeat: false, veg: false, booked: false },
+  { id: 'd12-2', city: 'miyajima', day: 12, date: '2025-06-05', time: 'evening', name: 'Night Walk at Torii Gate', cat: 'offbeat', desc: 'Island is quiet after day-trippers leave. Pure magic.', cost: 0, dur: 60, url: '', offbeat: true, veg: false, booked: false },
+
+  // DAY 13: OSAKA TRAVEL (JUNE 6)
+  { id: 'd13-1', city: 'osaka', day: 13, date: '2025-06-06', time: 'afternoon', name: 'Shinsekai & Maishima', cat: 'offbeat', desc: 'Retro Osaka streets and the Hundertwasser-designed incinerator.', cost: 0, dur: 180, url: '', offbeat: true, veg: false, booked: false },
+
+  // DAY 14: OSAKA EXPLORATION (JUNE 7)
+  { id: 'd14-1', city: 'osaka', day: 14, date: '2025-06-07', time: 'morning', name: 'Nakazakicho Neighbourhood', cat: 'offbeat', desc: 'Wooden houses, galleries, and independent cafés. Zero tourists.', cost: 0, dur: 120, url: '', offbeat: true, veg: false, booked: false },
+  { id: 'd14-2', city: 'osaka', day: 14, date: '2025-06-07', time: 'afternoon', name: 'Panasonic Museum', cat: 'activity', desc: "Traces the founder's journey to a global tech empire.", cost: 0, dur: 120, url: '', offbeat: true, veg: false, booked: false },
+
+  // DAY 15: DEPARTURE (JUNE 8)
+  { id: 'd15-1', city: 'osaka', day: 15, date: '2025-06-08', time: 'morning', name: 'Haruka Express to KIX', cat: 'transport', desc: 'Tennoji → Kansai Airport (50 min).', cost: 0, dur: 50, url: '', offbeat: false, veg: false, booked: false },
 ];
 
 export const SEED_CHECKS: ChecklistItem[] = [
-  { id: 'c1', cat: 'booking', title: 'Purchase JR Pass (14-day) online', priority: 'high', due: '2025-03-25', done: false, notes: 'Buy before leaving India. Get voucher shipped or collect at airport.' },
-  { id: 'c2', cat: 'booking', title: 'Book TeamLab Planets tickets', priority: 'high', due: '2025-04-25', done: false, notes: 'Book 9am slot. Sells out weeks in advance!' },
-  { id: 'c7', cat: 'booking', title: 'Book all 4 Airbnbs', priority: 'high', due: '2025-03-25', done: false, notes: 'Tokyo (Shibuya/Shinjuku), Kyoto (Gion), Hiroshima, Osaka (Namba)' },
-  { id: 'c8', cat: 'document', title: 'Check passport validity', priority: 'high', due: '2025-04-01', done: false, notes: 'All family members!' },
-  { id: 'c13', cat: 'packing', title: 'Comfortable walking shoes', priority: 'high', due: '2025-05-20', done: false, notes: "You'll walk 15,000+ steps/day" },
+  { id: 'c1', cat: 'booking', title: 'Purchase JR Pass (14-day)', priority: 'high', due: '2025-03-25', done: false, notes: 'Buy before leaving India.' },
+  { id: 'c2', cat: 'booking', title: 'Book TeamLab Planets', priority: 'high', due: '2025-04-25', done: false, notes: 'Sells out weeks in advance!' },
+  { id: 'c3', cat: 'booking', title: 'Book JDM Daikoku Tour', priority: 'high', due: '2025-04-15', done: false, notes: 'Crucial for Day 4 night.' },
+  { id: 'c4', cat: 'booking', title: 'International Driving Permit', priority: 'high', due: '2025-04-01', done: false, notes: 'Required for Street Kart and Hakone drive.' },
+  { id: 'c13', cat: 'packing', title: 'Comfortable walking shoes', priority: 'high', due: '2025-05-20', done: false, notes: "15,000+ steps per day expected." },
 ];
 
 export const SEED_BOOKINGS: Booking[] = [
-  { id: 'b1', name: 'JR Pass (14-day)', type: 'transport', priority: 'high', date: '2025-05-25', cost: 50000, url: 'https://www.jrpass.com/', notes: 'Activate Day 1 at any major JR station.', status: 'pending', conf: '' },
-  { id: 'b2', name: 'TeamLab Planets', type: 'experience', priority: 'high', date: '2025-05-28', cost: 3800, url: 'https://www.teamlab.art/e/planets/', notes: 'Book 9am slot.', status: 'pending', conf: '' },
+  { id: 'b1', name: 'JR Pass (14-day)', type: 'transport', priority: 'high', date: '2025-05-25', cost: 80000, url: '', notes: 'Activate at Narita.', status: 'pending', conf: '' },
+  { id: 'b2', name: 'TeamLab Planets', type: 'experience', priority: 'high', date: '2025-05-27', cost: 3200, url: '', notes: 'Book Afternoon slot.', status: 'pending', conf: '' },
+  { id: 'b3', name: 'Street Go-Karting', type: 'experience', priority: 'medium', date: '2025-05-29', cost: 15000, url: '', notes: 'Requires IDP.', status: 'pending', conf: '' },
+  { id: 'b4', name: 'JDM Daikoku PA Tour', type: 'experience', priority: 'high', date: '2025-05-28', cost: 15000, url: '', notes: 'Hotel pickup.', status: 'pending', conf: '' },
 ];
 
 export const SEED_STAYS: Stay[] = [
-  { id: 's1', city: 'Tokyo', prop: 'Airbnb — Shibuya/Shinjuku area', checkin: '2025-05-25', checkout: '2025-05-29', conf: '', host: '', phone: '', rate: 20000, url: 'https://www.airbnb.com', notes: '4 nights. Central location, metro access, family-friendly.' },
+  { id: 's1', city: 'Tokyo', prop: 'Airbnb — Shimokitazawa', checkin: '2025-05-25', checkout: '2025-05-30', conf: '', host: '', phone: '', rate: 20000, url: '', notes: 'Shimokitazawa base for first 5 days.' },
+  { id: 's2', city: 'Kawaguchiko', prop: 'Lakeside Ryokan', checkin: '2025-05-30', checkout: '2025-05-31', conf: '', host: '', phone: '', rate: 45000, url: '', notes: 'Fuji view from window.' },
+  { id: 's3', city: 'Kyoto', prop: 'Airbnb — Fushimi Sake District', checkin: '2025-05-31', checkout: '2025-06-03', conf: '', host: '', phone: '', rate: 18000, url: '', notes: 'Near Fushimi Inari.' },
+  { id: 's4', city: 'Hiroshima', prop: 'City Hotel', checkin: '2025-06-03', checkout: '2025-06-05', conf: '', host: '', phone: '', rate: 15000, url: '', notes: 'Waterfront area.' },
+  { id: 's5', city: 'Miyajima', prop: 'Iwaso Ryokan', checkin: '2025-06-05', checkout: '2025-06-06', conf: '', host: '', phone: '', rate: 45000, url: '', notes: 'Traditional tatami room, established 1854.' },
+  { id: 's6', city: 'Osaka', prop: 'Airbnb — Tennoji', checkin: '2025-06-06', checkout: '2025-06-08', conf: '', host: '', phone: '', rate: 16000, url: '', notes: 'Tennoji base for final 2 days.' },
 ];
 
 export const SEED_FOOD: Record<string, FoodItem[]> = {
   tokyo: [
-    { name: 'Afuri Ramen Ebisu', dish: 'Yuzu Shio Vegan Ramen', type: 'vegan', price: '¥1,200', maps: 'https://maps.google.com/?q=Afuri+Ramen+Ebisu' },
-    { name: 'Ain Soph Journey', dish: 'Vegan Burgers & Pancakes', type: 'vegan', price: '¥1,500–2,500', maps: 'https://maps.google.com/?q=Ain+Soph+Journey+Shinjuku' },
+    { name: 'Taizen, Shimokitazawa', dish: 'Veg Izakaya Set Meals', type: 'veg', price: '¥1,500–2,500', maps: '' },
+    { name: "T's TANTAN, Shibuya", dish: 'Sesame Vegan Ramen', type: 'vegan', price: '¥1,200', maps: '' },
   ],
   kyoto: [
-    { name: 'Okutan Nanzenji', dish: 'Yudofu Hot Pot Tofu', type: 'veg', price: '¥3,500', maps: 'https://maps.google.com/?q=Okutan+Nanzenji' },
+    { name: 'Mumokuteki Café', dish: 'Vegan Japanese Set', type: 'vegan', price: '¥1,800', maps: '' },
+  ],
+  hiroshima: [
+    { name: 'Nagataya', dish: 'Hiroshima Okonomiyaki (Veg)', type: 'veg', price: '¥1,500', maps: '' },
+    { name: 'Jirokichi', dish: 'Teppanyaki Izakaya', type: 'vegan', price: '¥2,000', maps: '' },
+  ],
+  osaka: [
+    { name: 'Green Earth', dish: 'Heritage Vegan Set', type: 'vegan', price: '¥1,600', maps: '' },
   ]
 };
 

@@ -63,25 +63,29 @@ export default function TripPlanner() {
               <span className="text-5xl md:text-8xl">🇯🇵</span>
             </h1>
             <p className="text-slate-400 font-bold tracking-[0.4em] text-[10px] md:text-sm uppercase">
-              MAY 25 — JUNE 8, 2025 • 14 DAYS OF ADVENTURE
+              MAY 25 — JUNE 8, 2025 • 15 DAYS OF ADVENTURE
             </p>
           </div>
 
           {/* City Timeline Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4">
-            <CityPill icon="🗼" name="Tokyo" nights="4 nights" />
+            <CityPill icon="🗼" name="Tokyo" nights="5 nights" />
+            <span className="text-red-300 text-xl">→</span>
+            <CityPill icon="🗻" name="Fuji" nights="1 night" />
             <span className="text-red-300 text-xl">→</span>
             <CityPill icon="⛩️" name="Kyoto" nights="3 nights" />
             <span className="text-red-300 text-xl">→</span>
             <CityPill icon="☮️" name="Hiroshima" nights="2 nights" />
             <span className="text-red-300 text-xl">→</span>
-            <CityPill icon="🏯" name="Osaka" nights="5 nights" />
+            <CityPill icon="🦌" name="Miyajima" nights="1 night" />
+            <span className="text-red-300 text-xl">→</span>
+            <CityPill icon="🏯" name="Osaka" nights="2 nights" />
           </div>
 
           {/* Meta Status Pills */}
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Badge className="bg-[#fefce8] text-[#1a2a44] border-none px-8 py-4 rounded-2xl font-black shadow-sm text-xs transition-transform hover:scale-105">
-              👨‍👩‍👧‍👦 Family Trip
+              👨‍👩‍👧‍👦 Family Trip (4 Members)
             </Badge>
             <Badge className="bg-[#fefce8] text-[#1a2a44] border-none px-8 py-4 rounded-2xl font-black shadow-sm text-xs transition-transform hover:scale-105">
               🥬 Vegetarian (eggs ok)
@@ -92,7 +96,7 @@ export default function TripPlanner() {
           </div>
 
           <div className="pt-12 animate-bounce">
-            <p className="text-[10px] font-black text-slate-300 tracking-[0.3em] uppercase">Scroll to Explore</p>
+            <p className="text-[10px] font-black text-slate-300 tracking-[0.3em] uppercase underline underline-offset-8 decoration-red-400">Scroll to Explore</p>
             <div className="text-slate-300 mt-2">↓</div>
           </div>
         </div>

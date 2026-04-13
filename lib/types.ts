@@ -1,4 +1,4 @@
-export type City = 'tokyo' | 'kyoto' | 'hiroshima' | 'osaka' | 'general';
+export type City = 'tokyo' | 'kyoto' | 'hiroshima' | 'osaka' | 'yokohama' | 'kawaguchiko' | 'miyajima' | 'nara' | 'general';
 export type Category = 'activity' | 'food' | 'transport' | 'offbeat' | 'stay' | 'todo';
 export type TimeOfDay = 'morning' | 'afternoon' | 'evening';
 export type BookingStatus = 'pending' | 'booked' | 'confirmed';

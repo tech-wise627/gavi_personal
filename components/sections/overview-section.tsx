@@ -75,10 +75,10 @@ export function OverviewSection() {
             </div>
             
             <div className="grid grid-cols-2 gap-6">
-              <StatItem num="4" label="Cities" />
-              <StatItem num="14" label="Days" />
-              <StatItem num="4" label="Members" />
-              <StatItem num="0" label="Booked" />
+              <StatItem num={new Set(data.items.map(i => i.city)).size.toString()} label="Destinations" />
+              <StatItem num={Math.max(...data.items.map(i => i.day)).toString()} label="Days" />
+              <StatItem num={data.familySize.toString()} label="Family Size" />
+              <StatItem num={bookedCount.toString()} label="Booked" />
             </div>
 
             <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 italic text-slate-400 text-sm font-medium">
