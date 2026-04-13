@@ -12,13 +12,25 @@ export function OverviewSection() {
   return (
     <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-1000">
       {/* Hero Section */}
-      <div className="text-center space-y-6">
-        <h1 className="text-5xl md:text-7xl font-serif font-black tracking-tight text-[#1a2a44]">
-          Family Chali <span className="text-[#e63946]">Japan</span> 🇯🇵
-        </h1>
-        <p className="text-slate-500 font-medium tracking-wide">
-          May 25 – June 8, 2025 • 14 Days of Adventure
-        </p>
+      <div className="text-center space-y-8 relative py-12">
+        {/* Subtle Torii Gate Background */}
+        <div className="absolute inset-x-0 top-0 flex justify-center opacity-[0.03] pointer-events-none -z-10 select-none translate-y-[-10%]">
+          <svg width="400" height="400" viewBox="0 0 100 100" fill="currentColor">
+            <path d="M10 20 L90 20 L90 25 L80 25 L80 80 L70 80 L70 25 L30 25 L30 80 L20 80 L20 25 L10 25 Z" />
+            <path d="M5 10 Q50 15 95 10 L95 15 Q50 20 5 15 Z" />
+            <path d="M5 25 Q50 28 95 25 L95 30 Q50 33 5 30 Z" />
+          </svg>
+        </div>
+
+        <div className="space-y-4">
+          <h1 className="text-5xl md:text-8xl font-serif font-black tracking-tighter text-[#1a2a44] flex items-center justify-center gap-4 flex-wrap">
+            Family Chali <span className="text-[#e63946]">Japan</span> 
+            <span className="text-6xl md:text-7xl">🇯🇵</span>
+          </h1>
+          <p className="text-slate-400 font-bold tracking-widest text-[10px] md:text-xs">
+            MAY 25 — JUNE 8, 2025 • 14 DAYS OF ADVENTURE
+          </p>
+        </div>
 
         {/* City Timeline Pills */}
         <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mt-8">
@@ -32,14 +44,14 @@ export function OverviewSection() {
         </div>
 
         {/* Meta Status Pills */}
-        <div className="flex items-center justify-center gap-3 mt-8">
-          <Badge className="bg-[#fff8e1] text-[#795548] border-none px-4 py-1.5 rounded-full font-bold shadow-sm">
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+          <Badge className="bg-[#fefce8] text-[#1a2a44] border-none px-6 py-3 rounded-xl font-bold shadow-sm text-xs">
             👨‍👩‍👧‍👦 Family Trip
           </Badge>
-          <Badge className="bg-[#e8f5e9] text-[#2e7d32] border-none px-4 py-1.5 rounded-full font-bold shadow-sm">
+          <Badge className="bg-[#fefce8] text-[#1a2a44] border-none px-6 py-3 rounded-xl font-bold shadow-sm text-xs">
             🥬 Vegetarian (eggs ok)
           </Badge>
-          <Badge className="bg-[#f3f4f6] text-[#4b5563] border-none px-4 py-1.5 rounded-full font-bold shadow-sm">
+          <Badge className="bg-[#fefce8] text-[#1a2a44] border-none px-6 py-3 rounded-xl font-bold shadow-sm text-xs">
             💵 Mid-Range Budget
           </Badge>
         </div>
@@ -98,11 +110,10 @@ export function OverviewSection() {
 
 function CityPill({ icon, name, nights }: { icon: string; name: string; nights: string }) {
   return (
-    <div className="bg-white px-4 py-2 rounded-full shadow-sm border border-slate-100 flex items-center gap-2 transition-transform hover:scale-105 cursor-default">
-      <span className="text-lg">{icon}</span>
+    <div className="bg-white px-5 py-2.5 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-50 flex items-center gap-3 transition-transform hover:scale-105 cursor-default">
+      <span className="text-xl">{icon}</span>
       <div className="text-left leading-tight">
-        <p className="text-xs font-black text-[#1a2a44]">{name}</p>
-        <p className="text-[8px] uppercase font-bold text-slate-400 tracking-tighter">{nights}</p>
+        <p className="text-[13px] font-black text-[#1a2a44]">{name} ({nights})</p>
       </div>
     </div>
   );
